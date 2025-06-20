@@ -12,13 +12,19 @@ function SearchItem({logo, siteName, link, title, description}) {
           <div>
             <div className="text-sm">{siteName}</div>
             <div className="text-xs flex gap-2 items-center">
-              <span>{prettyPrintLink(link)}</span>
+              <a
+                className="hover:underline hover:text-blue-300"
+                href={link}
+                tabIndex="-1"
+              >
+                {prettyPrintLink(link)}
+              </a>
               {' · '}
               <a className="text-blue-300 hover:underline" href="#">
                 Translate this page
               </a>
               <button type="button">
-                <EllipsisVerticalIcon className="size-[1.125rem]" />
+                <EllipsisVerticalIcon className="size-5 hover:bg-white/25 rounded-full p-0.5" />
               </button>
             </div>
           </div>

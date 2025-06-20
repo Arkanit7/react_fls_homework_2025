@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
 import Sidebar from '@/components/composed/Sidebar'
+import Spoiler from '../Spoiler'
 
 function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
   const currentIndex = tasks.findIndex((task) => task.id === currentTaskId)
@@ -22,8 +23,13 @@ function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
           <Container>
             <div className="space-y-4">
               <div className="border border-cyan-400 bg-cyan-400/20 space-y-1 p-2 rounded-md">
-                <h1 className="text-2xl">{currentTaskData.title}</h1>
-                <p className="text-sm">{currentTaskData.description}</p>
+                <Spoiler
+                  title={currentTaskData.title}
+                  type="h1"
+                  className="space-y-1"
+                >
+                  <p className="text-sm">{currentTaskData.description}</p>
+                </Spoiler>
               </div>
               <div>
                 <CurrentTaskComponent />

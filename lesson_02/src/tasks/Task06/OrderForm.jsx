@@ -16,14 +16,17 @@ function OrderForm({makeOrder}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Field
           placeholder="Назва страви"
           required
           name="dish"
           autoComplete="off"
+          className="flex-99"
         />
-        <Button type="submit">Замовити</Button>
+        <Button className="flex-1" type="submit">
+          Замовити
+        </Button>
       </div>
     </form>
   )

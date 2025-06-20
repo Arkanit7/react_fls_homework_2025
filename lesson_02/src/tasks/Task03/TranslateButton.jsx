@@ -21,7 +21,8 @@ function TranslateButton({status}) {
           type="submit"
           variant="success"
           size="lg"
-          className="w-full bg-green-500 hover:bg-green-400"
+          className="w-full
+        "
         >
           Далі
         </Button>

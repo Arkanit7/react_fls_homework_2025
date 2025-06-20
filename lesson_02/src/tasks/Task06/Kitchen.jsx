@@ -10,7 +10,7 @@ function Kitchen() {
   return (
     <div className="space-y-4">
       <OrderForm makeOrder={makeOrder} />
-      <div className="grid md:grid-cols-3 md:grid-rows-[auto_1fr] min-h-60">
+      <div className="grid md:grid-cols-3 md:grid-rows-[auto_1fr] gap-3 min-h-60">
         <KitchenSection
           title="Очікують на виконання"
           orders={orders.filter(({status}) => status === ORDER_STATUS.WAITING)}

@@ -4,7 +4,12 @@ import TranslateManager from './TranslateManager'
 function Task03() {
   return (
     <div className="flex justify-center">
-      <TranslateManager list={translateList} />
+      <div
+        className="basis-xs
+      "
+      >
+        <TranslateManager list={translateList} />
+      </div>
     </div>
   )
 }

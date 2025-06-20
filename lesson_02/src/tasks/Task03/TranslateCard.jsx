@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {STATUS} from '@/tasks/Task03/constants'
 import FieldGroup from '@/components/FieldGroup'
 import TranslateButton from '@/tasks/Task03/TranslateButton'
@@ -25,53 +24,28 @@ function Notification({status}) {
   }
 }
 
-function TranslateCard({original, TranslateList, imgSrc, showNextCard}) {
-  const [status, setStatus] = useState(STATUS.IDLE)
-  const [phrase, setPhrase] = useState('')
-
-  function checkAnswer() {
-    const normalizedPhrase = phrase.trim().toLowerCase()
-
-    if (TranslateList.includes(normalizedPhrase)) setStatus(STATUS.SUCCESS)
-    else setStatus(STATUS.ERROR)
-  }
-
-  function handleReset() {
-    setStatus(STATUS.IDLE)
-    setPhrase('')
-  }
-
-  function applyNextAction() {
-    switch (status) {
-      case STATUS.ERROR:
-        handleReset()
-        break
-      case STATUS.SUCCESS:
-        handleReset()
-        showNextCard()
-        break
-      default:
-        checkAnswer()
-    }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-
-    applyNextAction()
-  }
-
+function TranslateCard({
+  phrase,
+  setPhrase,
+  status,
+  currentQuestion,
+  handleSubmit,
+}) {
   return (
     <div
-      className={`bg-gray-800 max-w-sm rounded-lg overflow-hidden border-2 ring-2 ${getCardClass(
+      className={`bg-gray-800 rounded-lg overflow-hidden border-2 ring-2 ${getCardClass(
         status,
       )}`}
     >
-      <div className="aspect-video">
-        <img className="size-full object-cover" src={imgSrc} alt="" />
+      <div className="aspect-4/3">
+        <img
+          className="size-full object-cover"
+          src={currentQuestion.imgSrc}
+          alt=""
+        />
       </div>
       <div className="p-4 space-y-4">
-        <p className="text-3xl text-center">{original}</p>
+        <p className="text-3xl text-center">{currentQuestion.word}</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <p className="grid gap-3">

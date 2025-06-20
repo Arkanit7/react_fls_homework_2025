@@ -5,6 +5,11 @@ import {useState} from 'react'
 function BusinessClassServices({services, updateServices}) {
   const [hasAppetizer, setHasAppetizer] = useState(false)
 
+  function handlePrefersAppetizer({target: {checked}}) {
+    setHasAppetizer(checked)
+    updateServices('appetizer', '')
+  }
+
   return (
     <div className="space-y-4">
       <RadioSet
@@ -23,12 +28,12 @@ function BusinessClassServices({services, updateServices}) {
         <>
           <p>
             <label>
-              Бажаєте закуску?{' '}
               <input
-                onChange={(e) => setHasAppetizer(e.target.checked)}
+                onChange={handlePrefersAppetizer}
                 className="accent-cyan-400"
                 type="checkbox"
-              />
+              />{' '}
+              Бажаєте закуску?
             </label>
           </p>
           {hasAppetizer && (

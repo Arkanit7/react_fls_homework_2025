@@ -7,7 +7,7 @@ function FieldGroup({label, ...restProps}) {
   return (
     <>
       <label htmlFor={id}>{label}</label>
-      <Field id={id} {...restProps} />
+      <Field id={id} {...restProps} className="w-full" />
     </>
   )
 }
