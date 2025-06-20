@@ -1,0 +1,50 @@
+.flow-1 > *:where(:not(:last-child)) {
+  margin-bottom: 0.25rem;
+}
+
+.flow-2 > *:where(:not(:last-child)) {
+  margin-bottom: 0.5rem;
+}
+
+.flow-3 > *:where(:not(:last-child)) {
+  margin-bottom: 1rem;
+}
+
+.flow-4 > *:where(:not(:last-child)) {
+  margin-bottom: 1.5rem;
+}
+
+.flow-4 > *:where(:not(:last-child)) {
+  margin-bottom: 3rem;
+}
+
+.container-prose {
+  max-inline-size: 75ch;
+  margin-inline: auto;
+  padding-inline: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.task-card {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.task-card:is(:focus-visible, :hover) {
+  color: rgba(var(--bs-info-rgb), var(--bs-border-opacity)) !important;
+}
+
+.background-image {
+  inline-size: 24rem;
+  position: fixed;
+  z-index: -1;
+  opacity: 0.25;
+  bottom: -3rem;
+  right: -3rem;
+  animation: rotate 80s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    rotate: 1turn;
+  }
+}

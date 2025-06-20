@@ -1,0 +1,10 @@
+.finance {
+  max-inline-size: 45ch;
+}
+
+.info-screen {
+  block-size: 3lh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+}

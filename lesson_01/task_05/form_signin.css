@@ -1,0 +1,19 @@
+.form-signin {
+  max-width: 20rem;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:first-child input {
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+  margin-bottom: -1px;
+}
+
+.form-signin .form-floating:last-child input {
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
