@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import FieldGroup from '@/components/FieldGroup'
+import FieldGroup from '@/components/composed/FieldGroup'
 import {ArrowLeftEndOnRectangleIcon} from '@heroicons/react/24/solid'
 import useLoginForm from './useLoginForm'
 

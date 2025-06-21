@@ -1,5 +1,5 @@
 import {STATUS} from '@/tasks/Task03/constants'
-import FieldGroup from '@/components/FieldGroup'
+import FieldGroup from '@/components/composed/FieldGroup'
 import TranslateButton from '@/tasks/Task03/TranslateButton'
 
 function getCardClass(status) {

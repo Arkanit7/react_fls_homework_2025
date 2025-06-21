@@ -18,9 +18,6 @@ class Task {
   }
 }
 
-export const PROJECT_TITLE =
-  'Урок №2: Стилі. Умовне відображення. Списки. Deploy | React FLS HW 2025'
-
 export const TASKS = [
   new Task({
     title: 'Задача №1',

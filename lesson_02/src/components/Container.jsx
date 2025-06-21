@@ -1,5 +1,7 @@
-function Container(props) {
-  return <div className="container mx-auto px-3" {...props}></div>
+function Container({className = '', ...restProps}) {
+  return (
+    <div className={`max-w-4xl mx-auto px-3 ${className}`} {...restProps} />
+  )
 }
 
 export default Container

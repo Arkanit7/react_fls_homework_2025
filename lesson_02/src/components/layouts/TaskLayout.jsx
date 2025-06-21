@@ -9,7 +9,7 @@ function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
 
   return (
     <div className="overflow-clip">
-      <div className="grid grid-cols-[12rem_1fr] min-h-svh">
+      <div className="grid grid-cols-[10rem_1fr] min-h-svh">
         <aside>
           <div className="px-3 py-6 sticky top-0 h-svh bg-gray-900 overflow-auto border-e border-e-gray-800">
             <Sidebar

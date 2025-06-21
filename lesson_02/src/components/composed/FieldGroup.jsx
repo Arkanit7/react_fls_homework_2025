@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import Field from './Field'
+import Field from '../Field'
 
 function FieldGroup({label, ...restProps}) {
   const [id] = useState(() => crypto.randomUUID())
