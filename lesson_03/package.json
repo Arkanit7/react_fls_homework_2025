@@ -1,12 +1,11 @@
 {
-  "name": "react_practice_02",
+  "name": "react_fls_homework_2025_lesson_03",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "format": "npx prettier ./src --write",
     "lint": "eslint .",
     "preview": "vite preview"
   },
