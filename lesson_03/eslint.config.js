@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 
 export default [
-  { ignores: ['dist'] },
+  {ignores: ['dist']},
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -13,7 +13,7 @@ export default [
       globals: globals.browser,
       parserOptions: {
         ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
+        ecmaFeatures: {jsx: true},
         sourceType: 'module',
       },
     },
@@ -24,10 +24,15 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'prefer-const': 'error',
+      'no-use-before-define': 'error',
+      'no-else-return': 'error',
+      'dot-notation': 'error',
+      'no-unused-expressions': 'error',
+      'no-unused-vars': ['error', {varsIgnorePattern: '^[A-Z_]'}],
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        {allowConstantExport: true},
       ],
     },
   },
