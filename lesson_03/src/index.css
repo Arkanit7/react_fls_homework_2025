@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+@import "./theme";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input:is([type="checkbox"], [type="radio"]):not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .button {
+    @apply rounded-lg text-gray-950 bg-cyan-400 max-xs:w-full transition-colors duration-200 px-2 py-4;
+  }
+}
