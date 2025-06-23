@@ -1,10 +1,11 @@
 import clsx from 'clsx'
 import {FEEDBACK_TYPES} from '../constants'
 
-function Word({value, isSelected, selectWord, feedback}) {
+function WordItem({value, isSelected, selectWord, feedback, isRemoved}) {
   const feedbackType = feedback?.type
   const disabled = Boolean(feedbackType)
   const classes = clsx(
+    isRemoved && 'invisible',
     isSelected && 'ring-2 ring-cyan-400',
     feedbackType === FEEDBACK_TYPES.ERROR && 'ring-2 ring-red-400',
     feedbackType === FEEDBACK_TYPES.CORRECT && 'ring-2 ring-green-400',
@@ -25,4 +26,4 @@ function Word({value, isSelected, selectWord, feedback}) {
   )
 }
 
-export default Word
+export default WordItem
