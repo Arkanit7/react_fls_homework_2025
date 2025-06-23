@@ -9,7 +9,5 @@
         "./src/*"
       ]
     },
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
   }
 }
