@@ -11,11 +11,17 @@ const VARIANTS = {
 }
 
 const SIZES = {
-  sm: 'rounded-sm p-1 text-sm',
+  sm: 'rounded-sm px-2 py-1 text-sm',
   md: 'rounded-md px-2 py-1',
   lg: 'rounded-lg px-4 py-2 text-lg',
 }
 
+/**
+ * Button component with variants for different styles/sizes.
+ * @param {object} props
+ * @param {'primary'|'alert'|'success'|'outline'} [props.variant] - Visual variant of the spoiler
+ * @param {'sm'|'md'|'lg'} [props.size] - Sizes of the spoiler
+ */
 function Button({
   type = 'button',
   variant = 'primary',

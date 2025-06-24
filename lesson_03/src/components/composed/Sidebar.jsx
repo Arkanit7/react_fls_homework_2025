@@ -3,7 +3,7 @@ import Button from '../Button'
 function Sidebar({tasks, currentTaskId, setCurrentTaskId}) {
   return (
     <nav>
-      <ul className="grid gap-1.5">
+      <ul className="flex flex-wrap gap-2">
         {tasks.map((task, i) => (
           <li key={i}>
             <Button

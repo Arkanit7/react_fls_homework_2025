@@ -17,8 +17,8 @@ function FilterList({filter, propertiesToFilter, setSelectedFilters}) {
     <Spoiler
       title={capitalize(filter.title)}
       isOpen={false}
-      type="h3"
-      className="space-y-2"
+      as="h3"
+      variant="compact"
     >
       <ul>
         {propertiesToFilter.map((property, i) => (

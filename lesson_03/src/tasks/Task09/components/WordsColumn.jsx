@@ -1,4 +1,5 @@
-import WordItem from './WordItem'
+import Pill from './Pill'
+import {FEEDBACK_TYPES} from '../constants'
 
 function WordsColumn({
   words,
@@ -19,18 +20,29 @@ function WordsColumn({
     setSelectedId(selectedId === id ? null : id)
   }
 
+  function getPillVariant(id) {
+    if (removedWords.has(id)) return 'hidden'
+    if (id === selectedId) return 'selected'
+
+    const feedbackType = getFeedback(id)?.type
+
+    if (feedbackType === FEEDBACK_TYPES.ERROR) return 'alert'
+    if (feedbackType === FEEDBACK_TYPES.CORRECT) return 'success'
+    return ''
+  }
+
   return (
     <ul className="space-y-2">
       {words.map((word) => {
         return (
-          <WordItem
-            key={word.id}
-            isRemoved={removedWords.has(word.id)}
-            isSelected={word.id === selectedId}
-            feedback={getFeedback(word.id)}
-            value={word[lang]}
-            selectWord={() => selectWord(word.id)}
-          />
+          <li key={word.id}>
+            <Pill
+              onClick={() => selectWord(word.id)}
+              variant={getPillVariant(word.id)}
+            >
+              {word[lang]}
+            </Pill>
+          </li>
         )
       })}
     </ul>
