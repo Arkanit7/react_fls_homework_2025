@@ -1,0 +1,82 @@
+import {useState} from 'react'
+import {SECRET_NUMBER_LENGTH, PLAYERS} from '../constants'
+import Player from './Player'
+import {getUniqueDigitsList} from '@/utils'
+
+function Digit({value}) {
+  return (
+    <div className="flex-none grid place-content-center p-4 text-5xl font-extralight min-w-16 min-h-16 aspect-square">
+      {value}
+    </div>
+  )
+}
+
+function Display({digits}) {
+  return (
+    <div className="flex justify-center overflow-x-auto">
+      <div className="flex rounded border border-cyan-900 divide-x-1 divide-cyan-900">
+        {digits.map((d, i) => (
+          <Digit key={i} value={d} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function GuessGame() {
+  const [usedDigits, setUsedDigits] = useState(() => new Set())
+  const [secretDigits] = useState(
+    () => new Set(getUniqueDigitsList(SECRET_NUMBER_LENGTH)),
+  )
+  const [activePlayer, setActivePlayer] = useState(0)
+
+  const isGameOver = secretDigits.isSubsetOf(usedDigits)
+  const displayDigits = [...secretDigits].map((d) =>
+    usedDigits.has(d) ? d : '?',
+  )
+
+  function cycleNextActivePlayer() {
+    const nextActivePlayer = activePlayer + 1
+
+    if (nextActivePlayer > PLAYERS - 1) setActivePlayer(0)
+    else setActivePlayer(nextActivePlayer)
+  }
+
+  function nextTurn(number) {
+    if (usedDigits.has(number)) return
+    setUsedDigits((d) => {
+      const newUsedDigits = new Set([...d, number])
+
+      // only cycle players if the game will continue
+      if (!newUsedDigits.isSupersetOf(secretDigits)) cycleNextActivePlayer()
+
+      return newUsedDigits
+    })
+  }
+
+  return (
+    <div className="space-y-6">
+      <Display digits={displayDigits} />
+      {isGameOver ? (
+        <div className="text-2xl text-center">
+          Програв гравець №{activePlayer + 1}
+        </div>
+      ) : (
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(var(--container-3xs),1fr))] gap-2 sm:gap-3">
+          {Array.from({length: PLAYERS}).map((_, i) => (
+            <Player
+              key={i}
+              isActive={i === activePlayer}
+              position={i + 1}
+              usedDigits={usedDigits}
+              secretDigits={secretDigits}
+              nextTurn={nextTurn}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default GuessGame
