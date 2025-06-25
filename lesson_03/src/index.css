@@ -12,13 +12,19 @@
     cursor: pointer;
   }
 
-  input:is([type="checkbox"], [type="radio"]):not(:disabled) {
-    cursor: pointer;
+  input:is([type="checkbox"], [type="radio"]) {
+    accent-color: var(--color-cyan-400);
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
   }
 }
 
-@layer components {
-  .button {
-    @apply rounded-lg text-gray-950 bg-cyan-400 max-xs:w-full transition-colors duration-200 px-2 py-4;
-  }
+@utility running {
+  animation-play-state: running;
+}
+
+@utility paused {
+  animation-play-state: paused;
 }

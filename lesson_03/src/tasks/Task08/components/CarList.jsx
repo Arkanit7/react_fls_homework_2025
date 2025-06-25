@@ -7,9 +7,9 @@ function CarList({cars}) {
         <caption className="text-lg font-medium">Машини</caption>
         <thead>
           <tr>
-            <th className="border border-gray-400 p-2">Марка</th>
-            <th className="border border-gray-400 p-2">Рік</th>
-            <th className="border border-gray-400 p-2">Ціна</th>
+            <th className="border border-cyan-900 p-2">Марка</th>
+            <th className="border border-cyan-900 p-2">Рік</th>
+            <th className="border border-cyan-900 p-2">Ціна</th>
           </tr>
         </thead>
         <tbody>

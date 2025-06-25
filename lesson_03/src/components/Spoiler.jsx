@@ -20,21 +20,20 @@ function Spoiler({
   // Variant-based classes
   const variantStyles = {
     compact: {
-      base: 'divide-y-1 divide-gray-400',
-      panel:
-        'grid transition-[grid-template-rows,visibility] duration-500 bg-gray-900',
+      base: 'divide-y-1 divide-cyan-900',
+      panel: 'grid transition-[grid-template-rows,visibility] duration-500',
       icon: 'size-[1.25em] transition-transform duration-500',
       button:
-        'text-start w-full flex gap-2 align-baseline justify-between hover:bg-gray-800 transition-colors p-2',
+        'text-start w-full flex gap-2 align-baseline justify-between hover:bg-cyan-800 transition-colors p-2',
       content: 'p-2',
     },
     default: {
-      base: 'border border-cyan-400 bg-cyan-400/20 space-y-1 p-2 rounded-md',
+      base: 'border border-cyan-900 bg-cyan-900/20 px-3 py-4 rounded-md',
       panel: 'grid transition-[grid-template-rows,visibility] duration-300',
       icon: 'size-[1em] transition-transform duration-300',
       button:
-        'text-start text-xl md:text-2xl w-full flex gap-2 align-baseline justify-between hover:text-cyan-400 transition-[color]',
-      content: '',
+        'text-start text-xl md:text-2xl w-full flex gap-2 align-baseline justify-between hover:text-cyan-300 transition-[color] duration-300',
+      content: 'pt-1.5',
     },
   }
   const styles = variantStyles[variant] || variantStyles.compact

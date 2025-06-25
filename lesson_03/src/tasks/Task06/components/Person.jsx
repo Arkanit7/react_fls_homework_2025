@@ -7,8 +7,8 @@ function Person({name, pickDancer, isActive, disabled}) {
         onClick={pickDancer}
         className={clsx(
           disabled && 'pointer-events-none opacity-25',
-          isActive && 'bg-white text-black',
-          'px-1 py-0.5 rounded border w-full text-start hover:bg-white/25 transition-colors',
+          isActive && 'bg-cyan-300 text-black',
+          'px-1 py-0.5 rounded border border-cyan-900 w-full text-start hover:ring-2 hover:ring-cyan-400 transition-[box-shadow] duration-300',
         )}
         type="button"
         disabled={disabled}

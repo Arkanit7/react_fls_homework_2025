@@ -13,7 +13,7 @@ function SportsmenPicker({list, storageKey}) {
   }
 
   return (
-    <div className="grid md:grid-cols-2 gap-4">
+    <div className="grid sm:grid-cols-2 gap-4">
       <SportsmenColumn
         title="Загальний список"
         list={sportsmen.filter(({isChosen}) => !isChosen)}

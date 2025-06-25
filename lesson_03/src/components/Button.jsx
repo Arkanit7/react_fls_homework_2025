@@ -1,13 +1,15 @@
 import clsx from 'clsx/lite'
 
-const BASE_CLASSES = 'border transition-colors duration-200 disabled:opacity-40'
+const BASE_CLASSES =
+  'border shadow-lg transition-[color,background-color,box-shadow] duration-500 disabled:opacity-50 disabled:pointer-events-none'
 
 const VARIANTS = {
-  primary: 'border-transparent text-black bg-cyan-400 hover:bg-cyan-600',
+  primary:
+    'border-transparent text-black bg-cyan-500 hover:bg-cyan-300 shadow-cyan-400/20 hover:shadow-400/40',
   alert: 'border-transparent bg-red-600 hover:bg-red-800',
-  success: 'border-transparent bg-green-500 hover:bg-green-300 text-black',
+  success: 'border-transparent bg-green-600 hover:bg-green-300 text-black',
   outline:
-    'border-cyan-400 hover:bg-cyan-400 hover:text-gray-950 shadow-lg shadow-cyan-400/20',
+    'border-cyan-700 hover:bg-cyan-300 hover:text-gray-950 shadow-cyan-400/20 hover:shadow-cyan-400/40',
 }
 
 const SIZES = {

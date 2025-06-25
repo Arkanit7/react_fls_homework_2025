@@ -2,7 +2,7 @@ import Person from './Person'
 
 function SingleList({title, list, pickDancerId, activeDancerId, disabled}) {
   return (
-    <section className="border border-gray-700 p-2 rounded-lg space-y-2">
+    <section className="border border-cyan-900 p-2 rounded-lg space-y-2">
       <h2 className="text-lg text-center font-medium">{title}</h2>
       <ul className="grid xs:grid-cols-2 gap-2">
         {list

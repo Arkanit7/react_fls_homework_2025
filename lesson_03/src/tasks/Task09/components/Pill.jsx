@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 const BASE_CLASSES =
-  'w-full px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:pointer-events-none'
+  'w-full px-4 py-2 rounded-lg border border-cyan-900 hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:pointer-events-none'
 
 const VARIANTS = {
   primary: '',
