@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {SECRET_NUMBER_LENGTH, PLAYERS} from '../constants'
+import {SECRET_NUMBER_LENGTH, TOTAL_PLAYERS} from '../constants'
 import Player from './Player'
 import {getUniqueDigitsList} from '@/utils'
 
@@ -38,7 +38,7 @@ function GuessGame() {
   function cycleNextActivePlayer() {
     const nextActivePlayer = activePlayer + 1
 
-    if (nextActivePlayer > PLAYERS - 1) setActivePlayer(0)
+    if (nextActivePlayer > TOTAL_PLAYERS - 1) setActivePlayer(0)
     else setActivePlayer(nextActivePlayer)
   }
 
@@ -63,7 +63,7 @@ function GuessGame() {
         </div>
       ) : (
         <div className="grid grid-cols-[repeat(auto-fit,minmax(var(--container-3xs),1fr))] gap-2 sm:gap-3">
-          {Array.from({length: PLAYERS}).map((_, i) => (
+          {Array.from({length: TOTAL_PLAYERS}, (_, i) => (
             <Player
               key={i}
               isActive={i === activePlayer}

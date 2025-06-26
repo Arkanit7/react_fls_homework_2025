@@ -1,9 +1,9 @@
 import TaskLayout from '@/components/layouts/TaskLayout'
 import {TASKS} from '@/constants'
-import {useLocalStorage} from '@/hooks'
+import {useSessionStorage} from '@/hooks'
 
 function App() {
-  const [currentTaskId, setCurrentTaskId] = useLocalStorage(
+  const [currentTaskId, setCurrentTaskId] = useSessionStorage(
     'currentTaskId',
     TASKS[0].id,
   )

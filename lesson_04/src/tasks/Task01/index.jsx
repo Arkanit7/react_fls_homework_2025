@@ -1,6 +1,1 @@
-import Messenger from './components/Messenger'
-
-function Task01() {
-  return <Messenger />
-}
-export default Task01
+export {default} from './components/Messenger'

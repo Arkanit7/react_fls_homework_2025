@@ -14,6 +14,7 @@ function Player({isActive, position, usedDigits, secretDigits, nextTurn}) {
       !usedDigits.has(Number(userNumber))
     )
   }
+
   function handleSubmit(e) {
     e.preventDefault()
 

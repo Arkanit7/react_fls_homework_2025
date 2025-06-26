@@ -74,7 +74,7 @@ function Messenger() {
 
       return () => clearTimeout(timeoutIdRef.current)
     }, BOT_RESPONSE_DELAY_MS)
-  }, [letters, setLetters])
+  }, [letters])
 
   return (
     <div className="max-w-2xl mx-auto divide-y-1 bg-black divide-gray-800 border border-gray-900 shadow-md shadow-cyan-950/10 rounded-lg">

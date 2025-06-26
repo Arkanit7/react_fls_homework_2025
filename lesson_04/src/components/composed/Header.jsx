@@ -5,7 +5,7 @@ import clsx from 'clsx'
 const BASE_CLASSES = {
   main: 'pt-4',
   panel:
-    'py-3 px-3 rounded-2xl border border-gray-900 shadow-md shadow-cyan-950/10"',
+    'py-3 px-3 rounded-2xl border border-cyan-950 shadow-sm shadow-cyan-950/25',
 }
 
 const VARIANTS = {
