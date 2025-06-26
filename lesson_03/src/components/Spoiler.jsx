@@ -20,11 +20,11 @@ function Spoiler({
   // Variant-based classes
   const variantStyles = {
     compact: {
-      base: 'divide-y-1 divide-cyan-900',
+      base: '',
       panel: 'grid transition-[grid-template-rows,visibility] duration-500',
       icon: 'size-[1.25em] transition-transform duration-500',
       button:
-        'text-start w-full flex gap-2 align-baseline justify-between hover:bg-cyan-800 transition-colors p-2',
+        'text-start w-full flex gap-2 align-baseline justify-between hover:bg-cyan-300 hover:text-black hover:shadow-md hover:shadow-cyan-400/40 transition-[color,background-color,box-shadow] p-2',
       content: 'p-2',
     },
     default: {

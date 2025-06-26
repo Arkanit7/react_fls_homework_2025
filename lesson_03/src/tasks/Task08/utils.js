@@ -3,10 +3,10 @@ import {Car} from './models'
 /**
  * Calculate all possible filter properties, based on specified filters and available values for them
  */
-export function getComputedFilters(cars, filters) {
+export function getComputedFilters(cars, filtersSchema) {
   const computedFilters = new Map()
 
-  for (const filter of filters) {
+  for (const filter of filtersSchema) {
     const properties = new Set()
 
     for (const car of cars) {

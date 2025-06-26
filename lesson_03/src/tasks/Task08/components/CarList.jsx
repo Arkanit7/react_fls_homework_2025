@@ -1,21 +1,30 @@
 import Car from './Car'
 
-function CarList({cars}) {
+function CarList({cars, filtersSchema}) {
   return (
     <div className="overflow-auto">
       <table className="space-y-2 w-full">
-        <caption className="text-lg font-medium">Машини</caption>
+        <caption className="text-xl font-medium">Машини</caption>
         <thead>
-          <tr>
-            <th className="border border-cyan-900 p-2">Марка</th>
-            <th className="border border-cyan-900 p-2">Рік</th>
-            <th className="border border-cyan-900 p-2">Ціна</th>
+          <tr className="capitalize">
+            {/* {use the predefined filter names for the table header} */}
+            {filtersSchema.map(({title}, i) => (
+              <th key={i} className="border border-cyan-900 p-2">
+                {title}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {cars.map((car) => (
-            <Car key={car.id} {...car} />
-          ))}
+          {cars.length === 0 ? (
+            <tr>
+              <td colSpan={filtersSchema.length}>
+                Жодних товарів, які відповідали б обраним фільтрам.
+              </td>
+            </tr>
+          ) : (
+            cars.map((car) => <Car key={car.id} details={car} />)
+          )}
         </tbody>
       </table>
     </div>

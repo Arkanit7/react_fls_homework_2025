@@ -1,9 +1,11 @@
-function Car({brand, year, price}) {
+function Car({details}) {
   return (
     <tr>
-      <td className="border border-cyan-900 p-2">{brand}</td>
-      <td className="border border-cyan-900 p-2">{year}</td>
-      <td className="border border-cyan-900 p-2">{price}</td>
+      {Object.values(details).map((detail, i) => (
+        <td key={i} className="border border-cyan-900 p-2">
+          {detail}
+        </td>
+      ))}
     </tr>
   )
 }

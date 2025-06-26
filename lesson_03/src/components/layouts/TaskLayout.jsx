@@ -27,7 +27,7 @@ function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
         <Container>
           <div className="space-y-4">
             <Spoiler title={title} as="h1">
-              <p>{currentTaskData.description}</p>
+              <p className="max-md:text-sm">{currentTaskData.description}</p>
             </Spoiler>
 
             <div>
