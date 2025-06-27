@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import Button from '@/components/Button'
 import Field from '@/components/Field'
-import clsx from 'clsx'
+import clsx from 'clsx/lite'
 
 function Player({isActive, position, usedDigits, secretDigits, nextTurn}) {
   const [userNumber, setUserNumber] = useState('')
