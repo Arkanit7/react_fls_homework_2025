@@ -34,7 +34,7 @@ function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
                 src="/images/react.svg"
                 alt=""
               />
-              <span className="max-sm:hidden">React HW</span>
+              <span className="max-sm:sr-only">React ДЗ №4</span>
             </a>
 
             <nav>
