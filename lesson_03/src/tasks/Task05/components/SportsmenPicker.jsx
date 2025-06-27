@@ -1,8 +1,10 @@
-import {useLocalStorage} from '@/hooks'
+import {useSessionStorage} from '@/hooks'
 import SportsmenColumn from './SportsmenColumn'
 
 function SportsmenPicker({list, storageKey}) {
-  const [sportsmen, setSportsmen] = useLocalStorage(storageKey, list)
+  const [sportsmen, setSportsmen] = useSessionStorage(storageKey, list)
+  const leftoverSportsmen = sportsmen.filter(({isChosen}) => !isChosen)
+  const chosenSportsmen = sportsmen.filter(({isChosen}) => isChosen)
 
   function toggleChosenById(id) {
     setSportsmen((prevSportsmen) =>
@@ -16,12 +18,12 @@ function SportsmenPicker({list, storageKey}) {
     <div className="grid sm:grid-cols-2 gap-4">
       <SportsmenColumn
         title="Загальний список"
-        list={sportsmen.filter(({isChosen}) => !isChosen)}
+        list={leftoverSportsmen}
         toggleChosenById={toggleChosenById}
       />
       <SportsmenColumn
         title="Обрані для змагання"
-        list={sportsmen.filter(({isChosen}) => isChosen)}
+        list={chosenSportsmen}
         toggleChosenById={toggleChosenById}
       />
     </div>

@@ -1,6 +1,6 @@
 import Pair from './Pair'
 
-function PairList({list, removePairByBoyId}) {
+function PairList({list, removePairById}) {
   return (
     <div className="space-y-2 border border-cyan-900 rounded-lg p-2">
       <h2 className="text-lg text-center font-medium">Пари</h2>
@@ -8,12 +8,12 @@ function PairList({list, removePairByBoyId}) {
         {list.length === 0 ? (
           <li className="text-gray-500">Список порожній</li>
         ) : (
-          list.map(({boy, girl}) => (
+          list.map(({id, boy, girl}) => (
             <Pair
-              key={boy.id}
+              key={id}
               boy={boy}
               girl={girl}
-              removePair={() => removePairByBoyId(boy.id)}
+              removePair={() => removePairById(id)}
             ></Pair>
           ))
         )}

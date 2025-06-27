@@ -1,6 +1,6 @@
 import Container from '../Container'
 import Button from '../Button'
-import clsx from 'clsx'
+import clsx from 'clsx/lite'
 
 const BASE_CLASSES = {
   main: 'pt-4',

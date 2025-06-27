@@ -12,5 +12,3 @@ export const SPORTSMEN = [
   new Sportsman({name: 'Тетяна Поліщук'}),
   new Sportsman({name: 'Юрій Мельник'}),
 ]
-
-export const CHEVRON_CLASSES = 'size-4'

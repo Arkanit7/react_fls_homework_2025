@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import clsx from 'clsx/lite'
 
 const BASE_CLASSES =
   'w-full px-4 py-2 rounded-lg border border-cyan-900 hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:pointer-events-none'

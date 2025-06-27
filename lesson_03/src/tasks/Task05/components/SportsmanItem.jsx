@@ -1,8 +1,10 @@
+import clsx from 'clsx/lite'
 import Button from '@/components/Button'
-import {ChevronRight, ChevronLeft} from 'lucide-react'
-import {CHEVRON_CLASSES} from '../constants'
+import {ChevronRight} from 'lucide-react'
 
 function SportsmanItem({name, isChosen, toggleChosen}) {
+  const chevronClasses = clsx('size-4', isChosen && 'rotate-180')
+
   return (
     <div className="py-2 flex items-start justify-between">
       {name}
@@ -11,11 +13,7 @@ function SportsmanItem({name, isChosen, toggleChosen}) {
         variant={isChosen ? 'alert' : 'success'}
         className="flex-none"
       >
-        {isChosen ? (
-          <ChevronLeft className={CHEVRON_CLASSES} />
-        ) : (
-          <ChevronRight className={CHEVRON_CLASSES} />
-        )}
+        <ChevronRight className={chevronClasses} />
       </Button>
     </div>
   )

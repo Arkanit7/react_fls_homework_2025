@@ -2,14 +2,15 @@ import {useState} from 'react'
 import Button from '@/components/Button'
 import SingleList from './SingleList'
 import PairList from './PairList'
-import {useLocalStorage} from '@/hooks'
+import {useSessionStorage} from '@/hooks'
 
 function DanceClub({boys, girls}) {
   const [activeBoyId, setActiveBoyId] = useState(null)
   const [activeGirlId, setActiveGirlId] = useState(null)
 
-  const [pairs, setPairs] = useLocalStorage('dancePairs', () => [])
-  const pairCollection = pairs.map(({boyId, girlId}) => ({
+  const [pairs, setPairs] = useSessionStorage('dancePairs', () => [])
+  const pairCollection = pairs.map(({id, boyId, girlId}) => ({
+    id,
     boy: boys.find(({id}) => boyId === id),
     girl: girls.find(({id}) => girlId === id),
   }))
@@ -27,7 +28,10 @@ function DanceClub({boys, girls}) {
 
   function makePair() {
     if (!isPairReady) return
-    setPairs((p) => [...p, {boyId: activeBoyId, girlId: activeGirlId}])
+    setPairs((p) => [
+      ...p,
+      {id: crypto.randomUUID(), boyId: activeBoyId, girlId: activeGirlId},
+    ])
 
     // cleanup
     setActiveBoyId(null)
@@ -48,9 +52,8 @@ function DanceClub({boys, girls}) {
     else setActiveGirlId(id)
   }
 
-  function removePairByBoyId(boyId) {
-    // assuming that one boy can only have one girl
-    setPairs((prev) => prev.filter((p) => p.boyId !== boyId))
+  function removePairById(id) {
+    setPairs((prev) => prev.filter((p) => p.id !== id))
   }
 
   return (
@@ -81,7 +84,7 @@ function DanceClub({boys, girls}) {
           Додати
         </Button>
       </div>
-      <PairList list={pairCollection} removePairByBoyId={removePairByBoyId} />
+      <PairList list={pairCollection} removePairById={removePairById} />
     </div>
   )
 }
