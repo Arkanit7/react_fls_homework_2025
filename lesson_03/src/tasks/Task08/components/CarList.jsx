@@ -3,7 +3,7 @@ import Car from './Car'
 function CarList({cars, filtersSchema}) {
   return (
     <div className="overflow-auto">
-      <table className="space-y-2 w-full">
+      <table className="w-full space-y-2">
         <caption className="text-xl font-medium">Машини</caption>
         <thead>
           <tr className="capitalize">

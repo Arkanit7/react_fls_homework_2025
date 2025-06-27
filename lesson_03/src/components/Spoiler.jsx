@@ -62,7 +62,7 @@ function Spoiler({
           aria-expanded={isOpen}
         >
           {title}
-          <span className="h-lh flex items-center flex-none">
+          <span className="flex h-lh flex-none items-center">
             <ChevronDown className={iconClasses} />
           </span>
         </button>

@@ -24,13 +24,13 @@ function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
     <header className={clsx(BASE_CLASSES.main, VARIANTS[variant].main)}>
       <Container>
         <div className={clsx(BASE_CLASSES.panel, VARIANTS[variant].panel)}>
-          <div className="flex gap-4 items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
             <a
-              className="flex-none flex items-center gap-2 group hover:text-cyan-300 transition-[color] duration-300"
+              className="group flex flex-none items-center gap-2 transition-[color] duration-300 hover:text-cyan-300"
               href="/"
             >
               <img
-                className="group-hover:drop-shadow-[0_0_7px] group-hover:drop-shadow-cyan-400 transition-[filter] duration-300 animate-[spin_10s_linear_infinite_both_paused] group-hover:running"
+                className="group-hover:running animate-[spin_10s_linear_infinite_both_paused] transition-[filter] duration-300 group-hover:drop-shadow-[0_0_7px] group-hover:drop-shadow-cyan-400"
                 src="/images/react.svg"
                 alt=""
               />

@@ -15,7 +15,7 @@ function SportsmenPicker({list, storageKey}) {
   }
 
   return (
-    <div className="grid sm:grid-cols-2 gap-4">
+    <div className="grid gap-4 sm:grid-cols-2">
       <SportsmenColumn
         title="Загальний список"
         list={leftoverSportsmen}

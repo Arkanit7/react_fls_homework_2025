@@ -58,7 +58,7 @@ function DanceClub({boys, girls}) {
 
   return (
     <div className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-2">
+      <div className="grid gap-2 md:grid-cols-2">
         <SingleList
           title="Хлопці"
           list={availableBoys}

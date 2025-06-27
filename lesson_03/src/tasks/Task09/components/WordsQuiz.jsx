@@ -27,7 +27,7 @@ function WordsQuiz({words}) {
   }, [selectedIdEn, selectedIdUk])
 
   return (
-    <div className="flex gap-2 justify-center">
+    <div className="flex justify-center gap-2">
       <WordsColumn
         words={wordsEn}
         removedWords={removedWords}

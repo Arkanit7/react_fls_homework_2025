@@ -10,9 +10,9 @@ function CarDisplay({cars, filtersSchema}) {
   const computedFilters = getComputedFilters(cars, filtersSchema)
 
   return (
-    <div className="grid xs:grid-cols-[12rem_1fr] gap-4 items-start">
-      <aside className="border rounded divide-y-1 divide-cyan-900 border-cyan-900">
-        <h3 className="text-lg font-medium p-2 flex gap-2 items-start">
+    <div className="xs:grid-cols-[12rem_1fr] grid items-start gap-4">
+      <aside className="divide-y-1 divide-cyan-900 rounded border border-cyan-900">
+        <h3 className="flex items-start gap-2 p-2 text-lg font-medium">
           <IconFilter className="h-lh flex-none" /> Фільтри
         </h3>
         <div className="divide-y-1 divide-cyan-900">

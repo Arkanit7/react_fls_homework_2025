@@ -3,21 +3,24 @@
  * @type {import("prettier").Config}
  */
 export default {
-  printWidth: 80, // Максимальна довжина рядка
-  tabWidth: 2, // Кількість пробілів для табуляції
-  useTabs: false, // Використовувати пробіли замість табуляцій
-  semi: false, // Не додавати крапки з комою в кінці операторів
-  quoteProps: "as-needed", // Додавати лапки до ключів об'єктів лише за потреби
-  bracketSpacing: false, // Не додавати пробіли всередині фігурних дужок {cat}
-  trailingComma: "all", // Додавати кому після останнього елемента в масивах та об'єктах
-  endOfLine: "lf", // Використовувати LF як символ кінця рядка (Linux, macOS)
-  singleQuote: false, // Використовувати одинарні лапки для рядків
+  plugins: ['prettier-plugin-tailwindcss'], // Format tailwind classes
+  tailwindStylesheet: './src/index.css', // Specify your CSS file entry point
+
+  printWidth: 80, // Maximum line length
+  tabWidth: 2, // Number of spaces for tabulation
+  useTabs: false, // Use spaces instead of tabs
+  semi: false, // Do not add semicolons at the end of statements
+  quoteProps: 'as-needed', // Add quotes to object keys only if necessary
+  bracketSpacing: false, // Do not add spaces inside curly brackets {cat}
+  trailingComma: 'all', // Add a comma after the last element in arrays and objects
+  endOfLine: 'lf', // Use LF as an end-of-line character (Linux, macOS)
+  singleQuote: false, // Use single quotes for strings
 
   overrides: [
     {
-      files: "*.{js,jsx}", // Застосовувати до файлів JavaScript та JSX
+      files: '*.{js,jsx}', // Apply to JavaScript and JSX files
       options: {
-        singleQuote: true, // Завжди використовувати одинарні лапки для рядків у цих файлах
+        singleQuote: true, // Always use single quotes for strings in these files
       },
     },
   ],

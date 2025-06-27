@@ -6,7 +6,7 @@ function SportsmanItem({name, isChosen, toggleChosen}) {
   const chevronClasses = clsx('size-4', isChosen && 'rotate-180')
 
   return (
-    <div className="py-2 flex items-start justify-between">
+    <div className="flex items-start justify-between py-2">
       {name}
       <Button
         onClick={toggleChosen}

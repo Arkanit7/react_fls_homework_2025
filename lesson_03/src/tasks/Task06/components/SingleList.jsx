@@ -2,9 +2,9 @@ import Person from './Person'
 
 function SingleList({title, list, pickDancerId, activeDancerId, disabled}) {
   return (
-    <section className="border border-cyan-900 p-2 rounded-lg space-y-2">
-      <h2 className="text-lg text-center font-medium">{title}</h2>
-      <ul className="grid xs:grid-cols-2 gap-2">
+    <section className="space-y-2 rounded-lg border border-cyan-900 p-2">
+      <h2 className="text-center text-lg font-medium">{title}</h2>
+      <ul className="xs:grid-cols-2 grid gap-2">
         {list.length === 0 ? (
           <li className="text-gray-500">Список порожній</li>
         ) : (
