@@ -17,12 +17,6 @@
   }
 }
 
-@layer components {
-  .button {
-    @apply rounded-lg text-gray-950 bg-cyan-400 max-xs:w-full transition-colors duration-200 px-2 py-4;
-  }
-}
-
 @utility bar-* {
   scrollbar-width: --value("auto", "thin", "none");
 }

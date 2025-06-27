@@ -25,8 +25,8 @@ function handleTextareaKeyDown(e) {
 
 function GreetingsLetter() {
   return (
-    <article className="py-4 space-y-2">
-      <div className="bg-cyan-950 rounded-full size-16 grid place-content-center text-5xl">
+    <article className="space-y-2 py-4">
+      <div className="grid size-16 place-content-center rounded-full bg-cyan-950 text-5xl">
         #
       </div>
       <h3 className="text-2xl font-medium">Ласкаво просимо до чату!</h3>
@@ -77,12 +77,12 @@ function Messenger() {
   }, [letters])
 
   return (
-    <div className="max-w-2xl mx-auto divide-y-1 bg-black divide-gray-800 border border-gray-900 shadow-md shadow-cyan-950/10 rounded-lg">
-      <h2 className="text-center p-1 flex gap-1 items-center justify-center font-medium">
+    <div className="mx-auto max-w-2xl divide-y-1 divide-gray-800 rounded-lg border border-gray-900 bg-black shadow-md shadow-cyan-950/10">
+      <h2 className="flex items-center justify-center gap-1 p-1 text-center font-medium">
         <MessageSquareMore className="size-[1.125em]" /> {APP_NAME}
       </h2>
-      <div className="h-[70dvh] grid grid-rows-[1fr_auto] pb-4">
-        <div className="flex flex-col-reverse overflow-auto divide-y-reverse divide-y-1 divide-gray-800 bar-thin px-3">
+      <div className="grid h-[70dvh] grid-rows-[1fr_auto] pb-4">
+        <div className="flex flex-col-reverse divide-y-1 divide-y-reverse divide-gray-800 overflow-auto px-3 bar-thin">
           {letters.map((letter) => (
             <LetterSection
               key={letter.id}

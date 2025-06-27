@@ -1,7 +1,7 @@
 function Badge({text, count, ...restProps}) {
   return (
     <button
-      className="bg-slate-700 px-1 py-0.5 text-sm rounded-lg ring-cyan-400 hover:ring transition-[box-shadow]"
+      className="rounded-lg bg-slate-700 px-1 py-0.5 text-sm ring-cyan-400 transition-[box-shadow] hover:ring"
       {...restProps}
     >
       {text} {count}

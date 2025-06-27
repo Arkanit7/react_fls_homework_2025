@@ -8,21 +8,21 @@ function Letter({author, time, message, likes, dislikes, increaseCount}) {
 
   return (
     <article className="py-4">
-      <div className="flex gap-2 items-start">
-        <div className="flex-none size-10 bg-cyan-700 rounded-full grid place-items-center">
+      <div className="flex items-start gap-2">
+        <div className="grid size-10 flex-none place-items-center rounded-full bg-cyan-700">
           {getInitials(author)}
         </div>
         <div className="space-y-1">
-          <header className="flex gap-1 items-center">
+          <header className="flex items-center gap-1">
             <h3 className="text-sm font-medium">{author}</h3>
             <time
-              className="text-gray-400 text-xs"
+              className="text-xs text-gray-400"
               dateTime={dateTimeAttribute}
             >
               {displayTime}
             </time>
           </header>
-          <p className="whitespace-pre-wrap text-sm">{message}</p>
+          <p className="text-sm whitespace-pre-wrap">{message}</p>
           <ul className="flex gap-1">
             <li>
               <Badge

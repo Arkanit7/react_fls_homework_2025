@@ -5,7 +5,7 @@ import {getUniqueDigitsList} from '@/utils'
 
 function Digit({value}) {
   return (
-    <div className="flex-none grid place-content-center p-4 text-5xl font-extralight min-w-16 min-h-16 aspect-square">
+    <div className="grid aspect-square min-h-16 min-w-16 flex-none place-content-center p-4 text-5xl font-extralight">
       {value}
     </div>
   )
@@ -14,7 +14,7 @@ function Digit({value}) {
 function Display({digits}) {
   return (
     <div className="flex justify-center overflow-x-auto">
-      <div className="flex rounded border border-cyan-900 divide-x-1 divide-cyan-900">
+      <div className="flex divide-x-1 divide-cyan-900 rounded border border-cyan-900">
         {digits.map((d, i) => (
           <Digit key={i} value={d} />
         ))}
@@ -58,7 +58,7 @@ function GuessGame() {
     <div className="space-y-6">
       <Display digits={displayDigits} />
       {isGameOver ? (
-        <div className="text-2xl text-center">
+        <div className="text-center text-2xl">
           Програв гравець №{activePlayer + 1}
         </div>
       ) : (
