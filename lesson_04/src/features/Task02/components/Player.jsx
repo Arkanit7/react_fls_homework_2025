@@ -3,7 +3,7 @@ import Button from '@/components/Button'
 import Field from '@/components/Field'
 import clsx from 'clsx/lite'
 
-function Player({isActive, position, usedDigits, secretDigits, nextTurn}) {
+function Player({isActive, position, usedDigits, secretDigits, playNextTurn}) {
   const [userNumber, setUserNumber] = useState('')
   const [userGuessedDigits, setUserGuessedDigits] = useState(() => [])
 
@@ -20,7 +20,7 @@ function Player({isActive, position, usedDigits, secretDigits, nextTurn}) {
 
     if (!isAllowedNumber()) return
     const guessedNumber = Number(userNumber)
-    nextTurn(guessedNumber)
+    playNextTurn(guessedNumber)
     setUserNumber('')
 
     if (!secretDigits.has(guessedNumber)) return

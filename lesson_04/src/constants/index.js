@@ -1,7 +1,7 @@
 import {Task} from '@/models'
 
-import Task01 from '@/tasks/Task01'
-import Task02 from '@/tasks/Task02'
+import Task01 from '@/features/Task01'
+import Task02 from '@/features/Task02'
 
 export const TASKS = [
   new Task({

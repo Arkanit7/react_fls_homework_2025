@@ -8,6 +8,7 @@ import {
   BOT_NAME,
   BOT_RESPONSE_DELAY_MS,
   APP_NAME,
+  USER_NAME,
 } from '../constants'
 import {getRandomInteger} from '@/utils'
 
@@ -47,7 +48,7 @@ function Messenger() {
 
     if (!value) return
 
-    const newLetter = new Letter({author: 'Ви', message: value})
+    const newLetter = new Letter({author: USER_NAME, message: value})
 
     setLetters((l) => [newLetter, ...l])
     textEl.value = ''
@@ -61,6 +62,12 @@ function Messenger() {
     )
   }
 
+  function editMessageById(id, newMessage) {
+    setLetters((prevLetters) =>
+      prevLetters.map((l) => (l.id !== id ? l : {...l, message: newMessage})),
+    )
+  }
+
   useEffect(() => {
     if (letters[0]?.author === BOT_NAME) return
 
@@ -71,18 +78,18 @@ function Messenger() {
         BOT_MESSAGES[getRandomInteger(0, BOT_MESSAGES.length - 1)]
       const botLetter = new Letter({author: BOT_NAME, message: botMessage})
       setLetters((l) => [botLetter, ...l])
-
-      return () => clearTimeout(timeoutIdRef.current)
     }, BOT_RESPONSE_DELAY_MS)
+
+    return () => clearTimeout(timeoutIdRef.current)
   }, [letters])
 
   return (
-    <div className="mx-auto max-w-2xl divide-y-1 divide-gray-800 rounded-lg border border-gray-900 bg-black shadow-md shadow-cyan-950/10">
+    <div className="divide-y-1 mx-auto max-w-2xl divide-gray-800 rounded-lg border border-gray-900 bg-black shadow-md shadow-cyan-950/10">
       <h2 className="flex items-center justify-center gap-1 p-1 text-center font-medium">
         <MessageSquareMore className="size-[1.125em]" /> {APP_NAME}
       </h2>
       <div className="grid h-[70dvh] grid-rows-[1fr_auto] pb-4">
-        <div className="flex flex-col-reverse divide-y-1 divide-y-reverse divide-gray-800 overflow-auto px-3 bar-thin">
+        <div className="divide-y-1 bar-thin flex flex-col-reverse divide-y-reverse divide-gray-800 overflow-auto px-3">
           {letters.map((letter) => (
             <LetterSection
               key={letter.id}
@@ -90,6 +97,7 @@ function Messenger() {
               increaseCount={(property) =>
                 increaseCountById(letter.id, property)
               }
+              editMessage={(message) => editMessageById(letter.id, message)}
             />
           ))}
           <GreetingsLetter />

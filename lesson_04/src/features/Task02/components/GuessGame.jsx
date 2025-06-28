@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useMemo} from 'react'
 import {SECRET_NUMBER_LENGTH, TOTAL_PLAYERS} from '../constants'
 import Player from './Player'
 import {getUniqueDigitsList} from '@/utils'
@@ -14,7 +14,7 @@ function Digit({value}) {
 function Display({digits}) {
   return (
     <div className="flex justify-center overflow-x-auto">
-      <div className="flex divide-x-1 divide-cyan-900 rounded border border-cyan-900">
+      <div className="divide-x-1 flex divide-cyan-900 rounded border border-cyan-900">
         {digits.map((d, i) => (
           <Digit key={i} value={d} />
         ))}
@@ -25,8 +25,9 @@ function Display({digits}) {
 
 function GuessGame() {
   const [usedDigits, setUsedDigits] = useState(() => new Set())
-  const [secretDigits] = useState(
+  const secretDigits = useMemo(
     () => new Set(getUniqueDigitsList(SECRET_NUMBER_LENGTH)),
+    [],
   )
   const [activePlayer, setActivePlayer] = useState(0)
 
@@ -42,13 +43,14 @@ function GuessGame() {
     else setActivePlayer(nextActivePlayer)
   }
 
-  function nextTurn(number) {
+  function playNextTurn(number) {
     if (usedDigits.has(number)) return
+
     setUsedDigits((d) => {
       const newUsedDigits = new Set([...d, number])
 
       // only cycle players if the game will continue
-      if (!newUsedDigits.isSupersetOf(secretDigits)) cycleNextActivePlayer()
+      if (!secretDigits.isSubsetOf(newUsedDigits)) cycleNextActivePlayer()
 
       return newUsedDigits
     })
@@ -59,7 +61,7 @@ function GuessGame() {
       <Display digits={displayDigits} />
       {isGameOver ? (
         <div className="text-center text-2xl">
-          Програв гравець №{activePlayer + 1}
+          Гравець №{activePlayer + 1} програв!
         </div>
       ) : (
         <div className="grid grid-cols-[repeat(auto-fit,minmax(var(--container-3xs),1fr))] gap-2 sm:gap-3">
@@ -70,7 +72,7 @@ function GuessGame() {
               position={i + 1}
               usedDigits={usedDigits}
               secretDigits={secretDigits}
-              nextTurn={nextTurn}
+              playNextTurn={playNextTurn}
             />
           ))}
         </div>

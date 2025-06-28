@@ -15,6 +15,11 @@
   input:is([type="checkbox"], [type="radio"]):not(:disabled) {
     cursor: pointer;
   }
+
+  textarea,
+  input:not([type="checkbox"], [type="radio"]) {
+    width: 100%;
+  }
 }
 
 @utility bar-* {

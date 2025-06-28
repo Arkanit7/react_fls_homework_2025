@@ -4,7 +4,7 @@
  */
 export default {
   plugins: ['prettier-plugin-tailwindcss'], // Format tailwind classes
-  tailwindStylesheet: './src/index.css', // Specify your CSS file entry point
+  tailwindStylesheet: './src/styles/index.css', // Specify your CSS file entry point
 
   printWidth: 80, // Maximum line length
   tabWidth: 2, // Number of spaces for tabulation

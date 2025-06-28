@@ -1,6 +1,9 @@
 export const APP_NAME = 'Месенджер'
-export const BOT_NAME = 'Бот Панас'
 
+export const USER_NAME = 'Ви'
+
+export const BOT_NAME = 'Бот Панас'
+export const BOT_RESPONSE_DELAY_MS = 2e3
 export const BOT_MESSAGES = [
   'Біп-буп! Я бот, а не чайник.',
   'А ти пробував вимикати і вмикати його знову?',
@@ -23,5 +26,3 @@ export const BOT_MESSAGES = [
   'Якщо ви це читаєте, подякуйте програмісту!',
   'Я тут цілий тиждень. Спробуйте віртуальну телятину!',
 ]
-
-export const BOT_RESPONSE_DELAY_MS = 2e3
