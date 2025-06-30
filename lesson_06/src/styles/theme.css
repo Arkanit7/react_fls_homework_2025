@@ -1,0 +1,5 @@
+@theme {
+  --font-montserrat: Montserrat, sans-serif;
+  --breakpoint-xs: 32rem;
+  --breakpoint-2xs: 24rem;
+}

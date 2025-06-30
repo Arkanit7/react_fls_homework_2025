@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+@import "./theme";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input:is([type="checkbox"], [type="radio"]):not(:disabled) {
+    cursor: pointer;
+  }
+
+  textarea,
+  input:not([type="checkbox"], [type="radio"]) {
+    width: 100%;
+  }
+}
+
+@utility bar-* {
+  scrollbar-width: --value("auto", "thin", "none");
+}
+
+@utility running {
+  animation-play-state: running;
+}
+
+@utility paused {
+  animation-play-state: paused;
+}
+
+@utility writing-* {
+  writing-mode: --value("horizontal-tb", "vertical-rl", "vertical-lr");
+}
