@@ -1,5 +1,5 @@
 import Container from '../Container'
-import Button from '../Button'
+import Clickable from '../Clickable'
 import clsx from 'clsx/lite'
 
 const BASE_CLASSES = {
@@ -19,7 +19,12 @@ const VARIANTS = {
   },
 }
 
-function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
+function AppHeader({
+  tasks,
+  currentTaskId,
+  setCurrentTaskId,
+  variant = 'static',
+}) {
   return (
     <header className={clsx(BASE_CLASSES.main, VARIANTS[variant].main)}>
       <Container>
@@ -41,7 +46,7 @@ function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
               <ul className="flex flex-wrap gap-2">
                 {tasks.map((task, i) => (
                   <li key={i}>
-                    <Button
+                    <Clickable
                       onClick={() => setCurrentTaskId(task.id)}
                       variant={
                         currentTaskId === task.id ? 'primary' : 'outline'
@@ -51,7 +56,7 @@ function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
                       aria-current={currentTaskId === task.id && 'page'}
                     >
                       {task.title}
-                    </Button>
+                    </Clickable>
                   </li>
                 ))}
               </ul>
@@ -63,4 +68,4 @@ function Header({tasks, currentTaskId, setCurrentTaskId, variant = 'static'}) {
   )
 }
 
-export default Header
+export default AppHeader

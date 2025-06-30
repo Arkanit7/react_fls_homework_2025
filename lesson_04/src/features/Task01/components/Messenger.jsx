@@ -84,12 +84,12 @@ function Messenger() {
   }, [letters])
 
   return (
-    <div className="divide-y-1 mx-auto max-w-2xl divide-gray-800 rounded-lg border border-gray-900 bg-black shadow-md shadow-cyan-950/10">
+    <div className="mx-auto max-w-2xl divide-y-1 divide-gray-800 rounded-lg border border-gray-900 bg-black shadow-md shadow-cyan-950/10">
       <h2 className="flex items-center justify-center gap-1 p-1 text-center font-medium">
         <MessageSquareMore className="size-[1.125em]" /> {APP_NAME}
       </h2>
       <div className="grid h-[70dvh] grid-rows-[1fr_auto] pb-4">
-        <div className="divide-y-1 bar-thin flex flex-col-reverse divide-y-reverse divide-gray-800 overflow-auto px-3">
+        <div className="flex flex-col-reverse divide-y-1 divide-y-reverse divide-gray-800 overflow-auto px-3 bar-thin">
           {letters.map((letter) => (
             <LetterSection
               key={letter.id}

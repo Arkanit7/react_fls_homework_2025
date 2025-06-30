@@ -1,30 +1,25 @@
 import {useState} from 'react'
-import Button from '@/components/Button'
+import Clickable from '@/components/Clickable'
 import Field from '@/components/Field'
 import clsx from 'clsx/lite'
 
-function Player({isActive, position, usedDigits, secretDigits, playNextTurn}) {
-  const [userNumber, setUserNumber] = useState('')
-  const [userGuessedDigits, setUserGuessedDigits] = useState(() => [])
-
-  function isAllowedNumber() {
-    return (
-      userNumber.length === 1 &&
-      isFinite(userNumber) &&
-      !usedDigits.has(Number(userNumber))
-    )
-  }
+function Player({
+  isActive,
+  position,
+  isAllowedDigit,
+  playDigit,
+  guessedDigits,
+}) {
+  const [digit, setDigit] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
 
-    if (!isAllowedNumber()) return
-    const guessedNumber = Number(userNumber)
-    playNextTurn(guessedNumber)
-    setUserNumber('')
+    const normalizedDigit = parseInt(digit)
 
-    if (!secretDigits.has(guessedNumber)) return
-    setUserGuessedDigits((d) => [...d, guessedNumber])
+    if (!isAllowedDigit(normalizedDigit)) return
+    playDigit(normalizedDigit)
+    setDigit('')
   }
 
   const classes = clsx(
@@ -37,28 +32,29 @@ function Player({isActive, position, usedDigits, secretDigits, playNextTurn}) {
       <h3 className="text-xl">Гравець {position}</h3>
       <p>
         <Field
-          value={userNumber}
-          onChange={(e) => setUserNumber(e.target.value)}
+          value={digit}
+          onChange={(e) => setDigit(e.target.value)}
           className="w-full"
           type="number"
           disabled={!isActive}
+          aria-label="Введіть цифру."
         />
       </p>
       <p>
-        <Button
+        <Clickable
           variant="outline"
           type="submit"
-          disabled={!isActive || !isAllowedNumber()}
+          disabled={!isActive || !isAllowedDigit(parseInt(digit))}
           className="w-full"
         >
           Зробити хід
-        </Button>
+        </Clickable>
       </p>
-      {userGuessedDigits.length !== 0 && (
+      {guessedDigits.length !== 0 && (
         <>
           <p>Вгадані числа:</p>
           <ul className="flex flex-wrap gap-1">
-            {userGuessedDigits.map((d) => (
+            {guessedDigits.map((d) => (
               <li key={d}>{d}</li>
             ))}
           </ul>

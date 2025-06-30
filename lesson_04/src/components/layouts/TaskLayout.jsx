@@ -1,5 +1,5 @@
 import Container from '@/components/Container'
-import Header from '@/components/composed/Header'
+import AppHeader from '@/components/composed/AppHeader'
 import Spoiler from '../Spoiler'
 import {Library} from 'lucide-react'
 
@@ -16,7 +16,7 @@ function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
 
   return (
     <div className="min-h-dvh overflow-clip">
-      <Header
+      <AppHeader
         tasks={tasks}
         currentTaskId={currentTaskId}
         setCurrentTaskId={setCurrentTaskId}

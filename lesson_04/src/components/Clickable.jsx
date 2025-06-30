@@ -13,27 +13,32 @@ const VARIANTS = {
 }
 
 const SIZES = {
-  sm: 'rounded-sm px-2 py-1 text-sm',
-  md: 'rounded-md px-2 py-1',
-  lg: 'rounded-lg px-4 py-2 text-lg',
+  sm: 'rounded-sm px-3 py-1 text-sm',
+  md: 'rounded-md px-3 py-1',
+  lg: 'rounded-lg px-6 py-2 text-lg',
+  xl: 'rounded-lg px-9 py-3 text-2xl font-light',
 }
 
 /**
- * Button component with variants for different styles/sizes.
+ * Clickable component with variants for different styles/sizes.
  * @param {object} props
  * @param {'primary'|'alert'|'success'|'outline'} [props.variant] - Visual variant of the spoiler
  * @param {'sm'|'md'|'lg'} [props.size] - Sizes of the spoiler
  */
-function Button({
+function Clickable({
+  as = 'button',
   type = 'button',
   variant = 'primary',
   size = 'md',
   className = '',
   ...restProps
 }) {
+  const Type = as
   const classes = clsx(BASE_CLASSES, VARIANTS[variant], SIZES[size], className)
 
-  return <button className={classes} type={type} {...restProps} />
+  return (
+    <Type className={classes} type={as === 'button' && type} {...restProps} />
+  )
 }
 
-export default Button
+export default Clickable
