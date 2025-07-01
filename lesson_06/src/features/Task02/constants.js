@@ -464,7 +464,7 @@ export const MOVIES = [
   }),
 
   // --- Додаткові унікальні фільми для обсягу ---
-  ...Array.from({length: 1e4}).map((_, i) => {
+  ...Array.from({length: 5e3}).map((_, i) => {
     const genres = ['Драма', 'Комедія', 'Бойовик', 'Пригоди', 'Фантастика']
     const randomGenre = genres[Math.floor(Math.random() * genres.length)]
     const randomYear = 1950 + Math.floor(Math.random() * 75) // 1950-2025
