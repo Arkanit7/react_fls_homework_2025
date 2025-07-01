@@ -1,0 +1,39 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as *;
+
+.benefits-product {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1.25rem 2rem;
+
+  @include rfs(2.375rem, padding-block);
+
+  // .benefits-product__item
+
+  &__item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  // .benefits-product__circle
+
+  &__circle {
+    flex: none;
+    font-size: 1.125rem;
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: $clr-wild-sand;
+  }
+
+  // .benefits-product__title
+
+  &__title {
+    color: $clr-cape-cod;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+}

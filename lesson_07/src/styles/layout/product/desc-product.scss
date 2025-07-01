@@ -1,0 +1,56 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as *;
+
+.desc-product {
+  container-type: inline-size;
+  @include rfs(2.375rem, padding-block);
+
+  & > * + * {
+    @include rfs(2.125rem, margin-block-start);
+  }
+
+  // .desc-product__title
+
+  &__title {
+    color: $clr-cape-cod;
+    font-family: "Core Sans C", sans-serif;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.0425rem;
+
+    @include font-size(2.125rem);
+  }
+
+  // .desc-product__action
+
+  &__action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+
+    @include container-width-from($bp-xs) {
+      gap: 1.5rem;
+    }
+  }
+
+  // .desc-product__price
+
+  &__price {
+    border-radius: 0.5rem;
+    border: 1px solid;
+    padding: 0.75rem 3rem;
+
+    color: $clr-cape-cod;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    @include media-width-to($bp-2xs) {
+      width: 100%;
+    }
+  }
+
+  &__benefits {
+  }
+}

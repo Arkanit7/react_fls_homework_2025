@@ -1,0 +1,47 @@
+@mixin hover {
+  @media (any-hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus {
+  &:focus-visible {
+    @content;
+  }
+
+  @include hover {
+    @content;
+  }
+}
+
+@mixin flow($spacing: 1rem) {
+  & > * + * {
+    margin-block-start: $spacing;
+  }
+}
+
+@mixin media-width-from($width) {
+  @media ($width <= width) {
+    @content;
+  }
+}
+
+@mixin media-width-to($width) {
+  @media (width < $width) {
+    @content;
+  }
+}
+
+@mixin container-width-from($width) {
+  @container (#{$width} <= width) {
+    @content;
+  }
+}
+
+@mixin container-width-to($width) {
+  @container (width < #{$width}) {
+    @content;
+  }
+}

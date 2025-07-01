@@ -1,0 +1,55 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as *;
+
+.header {
+  border-block-end: 1px solid $clr-pale-slate;
+
+  // .header__wrap
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include rfs(0.75rem, padding-block);
+    @include rfs(6.75rem, min-block-size);
+    @include rfs(3rem, gap);
+  }
+
+  // .header__logo
+
+  &__logo {
+    flex: none;
+  }
+
+  // .header__navbar
+
+  &__navbar {
+    @include media-width-to($bp-sm) {
+      display: none;
+    }
+  }
+
+  // .header__search
+
+  &__search {
+    @include media-width-to($bp-md) {
+      display: none;
+    }
+  }
+
+  // .header__actions
+
+  &__actions {
+    flex: none;
+  }
+}
+
+.actions-header {
+  // .actions-header__action
+
+  &__action {
+  }
+}
+
+.header {
+}

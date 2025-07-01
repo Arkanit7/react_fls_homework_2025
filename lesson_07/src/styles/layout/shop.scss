@@ -1,0 +1,33 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as *;
+
+.shop {
+  @include rfs(3.125rem, padding-block);
+  // .shop__header
+
+  &__header {
+    color: $clr-cape-cod;
+    font-weight: 600;
+    @include font-size(1.375rem);
+  }
+
+  // .shop__wrap
+
+  &__wrap {
+    & > * + * {
+      @include rfs(3.125rem, margin-block-start);
+    }
+  }
+
+  // .shop__list
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 1.5rem;
+
+    @include media-width-from($bp-md) {
+      row-gap: 3.125rem;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use "~/abstracts" as *;
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  min-inline-size: 15.625rem;
+  gap: 1ch;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  background-color: $clr-white;
+  color: $clr-black;
+  font-size: 1.25rem;
+
+  @include hover-focus {
+    background-color: $clr-accent-500;
+    color: $clr-white;
+  }
+
+  @include media-width-to($bp-2xs) {
+    min-inline-size: unset;
+    inline-size: 100%;
+  }
+
+  &--accent {
+    color: $clr-white;
+    background-color: $clr-accent-400;
+  }
+
+  // &--size {
+  //   &--lg {
+  //   }
+  // }
+}

@@ -1,0 +1,125 @@
+/* { reset styles } */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: unset;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+
+  &:where([href^="tel:"]) {
+    white-space: nowrap;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+address {
+  font: unset;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  block-size: auto;
+  max-inline-size: 100%;
+}
+
+img {
+  font-style: italic; // Distinguish alt text
+}
+
+// Form
+
+input,
+button,
+textarea,
+select {
+  color: unset;
+  font: unset;
+  background-color: unset;
+}
+
+button,
+select,
+label {
+  cursor: pointer;
+}
+
+input:not([type="radio"], [type="checkbox"]) textarea {
+  appearance: unset;
+}
+
+input:where([type="checkbox"], [type="radio"]) {
+  cursor: pointer;
+}
+
+textarea,
+input:not([type="radio"], [type="checkbox"]) {
+  inline-size: 100%;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+// Remove an X button from search input
+input[type="search"] {
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    display: none;
+  }
+}
+
+// Remove number arrows from number input
+input[type="number"] {
+  appearance: textfield; // Firefox
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+}
+
+summary {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* { end of the reset styles } */

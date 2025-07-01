@@ -1,0 +1,25 @@
+@use "~/abstracts" as *;
+
+body {
+  font-family: Causten, sans-serif;
+  font-weight: 500;
+  color: $clr-gray;
+}
+
+.wrap {
+  min-block-size: 100dvb;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+
+  // .wrap__main
+  &__main {
+    flex: auto;
+  }
+}
+
+.cnt {
+  margin-inline: auto;
+  max-inline-size: $container;
+  padding-inline: $padding;
+}

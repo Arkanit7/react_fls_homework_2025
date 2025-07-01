@@ -1,0 +1,20 @@
+@use "~/abstracts" as *;
+
+.icon-button {
+  border-radius: 0.5em;
+  display: grid;
+  padding: 0.5em;
+  place-items: center;
+  background-color: $clr-wild-sand;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+
+  @include media-width-from($bp-md) {
+    padding: 0.75rem;
+  }
+
+  @include hover-focus {
+    background-color: $clr-accent-400;
+    color: $clr-white;
+  }
+}

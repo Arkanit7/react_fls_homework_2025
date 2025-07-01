@@ -1,0 +1,22 @@
+@use "~/abstracts" as *;
+
+.actions-header {
+  display: flex;
+  gap: 0.5rem;
+
+  @include media-width-from($bp-md) {
+    gap: 0.75rem;
+  }
+
+  // .actions-header__action
+
+  &__action {
+    flex: none;
+
+    &--search {
+      @include media-width-from($bp-md) {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@use "~/abstracts" as *;
+
+.card {
+  // .card__link
+
+  &__link {
+    display: block;
+
+    & > * + * {
+      margin-block-start: 1rem;
+
+      @include media-width-from($bp-md) {
+        margin-block-start: 1.875rem;
+      }
+    }
+  }
+
+  // .card__frame
+
+  &__frame {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    box-shadow:
+      0.125rem 0.125rem 0.5rem $clr-athens-gray,
+      -0.125rem -0.125rem 0.5rem $clr-white;
+    border-radius: 0.75rem;
+  }
+
+  // .card__img
+
+  &__img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  // .card__header
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1ch;
+    color: $clr-cape-cod;
+  }
+
+  // .card__title
+
+  &__title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    transition: color 0.5s;
+  }
+
+  // .card__price
+
+  &__price {
+    flex: none;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    background: $clr-wild-sand;
+    padding-block: 0.625rem;
+    padding-inline: 1.25rem;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.05) rotate(-3deg);
+  }
+
+  &__link:hover &__title {
+    color: $clr-accent-400;
+  }
+}

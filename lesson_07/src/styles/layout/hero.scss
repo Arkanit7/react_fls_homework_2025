@@ -1,0 +1,97 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as *;
+
+.hero {
+  $hero-bg-lines-thickness: 20px;
+
+  color: $clr-white;
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsl(190deg 98% 43%) 0 $hero-bg-lines-thickness,
+    $clr-white $hero-bg-lines-thickness $hero-bg-lines-thickness * 2
+  );
+
+  // .hero__cnt
+
+  &__cnt {
+    position: relative;
+    isolation: isolate;
+    padding-block: 2 * $padding;
+
+    &::before,
+    &::after {
+      content: "";
+      background-color: $clr-white;
+      position: absolute;
+      block-size: 100%;
+      top: 0;
+      inline-size: $hero-bg-lines-thickness;
+    }
+
+    &::before {
+      left: -$hero-bg-lines-thickness;
+    }
+
+    &::after {
+      right: -$hero-bg-lines-thickness;
+    }
+  }
+
+  // .hero__wrap
+
+  &__wrap {
+    display: grid;
+    align-items: center;
+    aspect-ratio: 90/44;
+  }
+
+  // .hero__block
+
+  &__block {
+    max-inline-size: 27.5rem;
+
+    & > * + * {
+      margin-block-start: 1rem;
+
+      @include media-width-from($bp-md) {
+        margin-block-start: 2.5rem;
+      }
+    }
+  }
+
+  // .hero__subtitle
+
+  &__subtitle {
+    font-family: "Core Sans C", sans-serif;
+    line-height: 1.5; /* 147.544% */
+    letter-spacing: 0.01969rem;
+    text-shadow: 0 0 1rem hsl(190deg 98% 43%);
+
+    @include font-size(2rem);
+  }
+
+  // .hero__title
+
+  &__title {
+    font-family: "Core Sans C", sans-serif;
+    font-weight: 800;
+    line-height: 1.2; /* 120.028% */
+    letter-spacing: 0.01969rem;
+    text-shadow: 0 0 1rem hsl(190deg 98% 43%);
+
+    @include font-size(4.875rem);
+  }
+
+  // .hero__ibg
+
+  &__ibg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+}
+.button {
+}

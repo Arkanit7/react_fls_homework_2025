@@ -1,0 +1,29 @@
+@use "~/abstracts" as *;
+@use "rfs/scss" as rfs;
+
+.navbar {
+  // .navbar__list
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+  }
+
+  // .navbar__item
+
+  &__item {
+    @include rfs.font-size(1.35rem);
+    transition: color 0.3s;
+
+    &.active {
+      font-weight: 700;
+      color: $clr-cape-cod;
+    }
+
+    @include hover-focus {
+      color: $clr-accent-400;
+    }
+  }
+}

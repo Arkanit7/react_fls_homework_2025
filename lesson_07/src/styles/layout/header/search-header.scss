@@ -1,0 +1,12 @@
+@use "~/abstracts" as *;
+
+.search-header {
+  // .search-header__input
+
+  &__input {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    background-color: $clr-wild-sand;
+    inline-size: 16.75rem;
+  }
+}
