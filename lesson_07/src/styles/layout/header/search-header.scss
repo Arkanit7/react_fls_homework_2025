@@ -4,9 +4,10 @@
   // .search-header__input
 
   &__input {
-    padding: 0.75rem 1.25rem;
+    inline-size: 16.75rem;
+    padding-inline: 1.25rem;
+    padding-block: 0.75rem;
     border-radius: 0.5rem;
     background-color: $clr-wild-sand;
-    inline-size: 16.75rem;
   }
 }

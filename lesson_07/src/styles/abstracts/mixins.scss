@@ -7,11 +7,11 @@
 }
 
 @mixin hover-focus {
-  &:focus-visible {
+  @include hover {
     @content;
   }
 
-  @include hover {
+  &:focus-visible {
     @content;
   }
 }

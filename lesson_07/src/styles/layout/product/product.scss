@@ -6,9 +6,9 @@
   &__wrap {
     @include media-width-from($bp-md) {
       display: grid;
-      align-items: start;
-      gap: 2rem;
       grid-template-columns: minmax(0, 32.5rem) minmax(0, 33.375rem);
+      gap: 2rem;
+      align-items: start;
     }
   }
 
@@ -25,11 +25,11 @@
     &::before {
       content: "";
       position: absolute;
-      z-index: -1;
-      background-color: $clr-wild-sand;
-      inline-size: 200vi;
-      inset-block: 0;
       inset-inline-end: -50%;
+      inset-block: 0;
+      z-index: -1;
+      inline-size: 200vi;
+      background-color: $clr-wild-sand;
 
       @include media-width-from($bp-md) {
         inset-inline-end: 0;

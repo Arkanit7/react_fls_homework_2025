@@ -4,8 +4,8 @@
   inline-size: 6em;
   aspect-ratio: 1;
   border: 1.125rem solid $clr-accent-400;
-  border-radius: 50%;
   border-block-end-color: transparent;
+  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 

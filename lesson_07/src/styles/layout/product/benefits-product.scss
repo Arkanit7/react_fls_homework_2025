@@ -19,13 +19,13 @@
   // .benefits-product__circle
 
   &__circle {
-    flex: none;
-    font-size: 1.125rem;
     display: grid;
+    flex: none;
     place-items: center;
     inline-size: 2.75rem;
     aspect-ratio: 1;
     border-radius: 50%;
+    font-size: 1.125rem;
     background-color: $clr-wild-sand;
   }
 
@@ -33,7 +33,7 @@
 
   &__title {
     color: $clr-cape-cod;
-    font-size: 1.125rem;
     font-weight: 500;
+    font-size: 1.125rem;
   }
 }

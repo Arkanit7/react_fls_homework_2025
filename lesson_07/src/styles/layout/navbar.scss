@@ -14,16 +14,17 @@
   // .navbar__item
 
   &__item {
-    @include rfs.font-size(1.35rem);
     transition: color 0.3s;
 
-    &.active {
-      font-weight: 700;
-      color: $clr-cape-cod;
-    }
+    @include rfs.font-size(1.35rem);
 
     @include hover-focus {
       color: $clr-accent-400;
+    }
+
+    &.active {
+      color: $clr-cape-cod;
+      font-weight: 700;
     }
   }
 }

@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     @include rfs(0.75rem, padding-block);
     @include rfs(6.75rem, min-block-size);
     @include rfs(3rem, gap);
@@ -42,14 +43,4 @@
   &__actions {
     flex: none;
   }
-}
-
-.actions-header {
-  // .actions-header__action
-
-  &__action {
-  }
-}
-
-.header {
 }

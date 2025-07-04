@@ -3,6 +3,7 @@
 
 .desc-product {
   container-type: inline-size;
+
   @include rfs(2.375rem, padding-block);
 
   & > * + * {
@@ -13,8 +14,8 @@
 
   &__title {
     color: $clr-cape-cod;
-    font-family: "Core Sans C", sans-serif;
     font-weight: 600;
+    font-family: "Core Sans C", sans-serif;
     line-height: 1.4;
     letter-spacing: 0.0425rem;
 
@@ -37,17 +38,17 @@
   // .desc-product__price
 
   &__price {
-    border-radius: 0.5rem;
+    padding-inline: 3rem;
+    padding-block: 0.75rem;
     border: 1px solid;
-    padding: 0.75rem 3rem;
-
+    border-radius: 0.5rem;
     color: $clr-cape-cod;
-    text-align: center;
-    font-size: 1.125rem;
     font-weight: 700;
+    font-size: 1.125rem;
+    text-align: center;
 
     @include media-width-to($bp-2xs) {
-      width: 100%;
+      inline-size: 100%;
     }
   }
 

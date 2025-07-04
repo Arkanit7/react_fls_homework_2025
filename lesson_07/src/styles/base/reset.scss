@@ -42,8 +42,8 @@ video,
 canvas,
 svg {
   display: block;
-  block-size: auto;
   max-inline-size: 100%;
+  block-size: auto;
 }
 
 img {
@@ -67,8 +67,9 @@ label {
   cursor: pointer;
 }
 
-input:not([type="radio"], [type="checkbox"]) textarea {
-  appearance: unset;
+textarea {
+  overflow: auto;
+  resize: vertical;
 }
 
 input:where([type="checkbox"], [type="radio"]) {
@@ -77,12 +78,8 @@ input:where([type="checkbox"], [type="radio"]) {
 
 textarea,
 input:not([type="radio"], [type="checkbox"]) {
+  appearance: unset;
   inline-size: 100%;
-}
-
-textarea {
-  overflow: auto;
-  resize: vertical;
 }
 
 // Remove an X button from search input

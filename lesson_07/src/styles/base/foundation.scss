@@ -1,16 +1,16 @@
 @use "~/abstracts" as *;
 
 body {
-  font-family: Causten, sans-serif;
-  font-weight: 500;
   color: $clr-gray;
+  font-weight: 500;
+  font-family: Causten, sans-serif;
 }
 
 .wrap {
-  min-block-size: 100dvb;
-  overflow: clip;
   display: flex;
   flex-direction: column;
+  overflow: clip;
+  min-block-size: 100dvb;
 
   // .wrap__main
   &__main {
@@ -19,7 +19,7 @@ body {
 }
 
 .cnt {
-  margin-inline: auto;
   max-inline-size: $container;
+  margin-inline: auto;
   padding-inline: $padding;
 }

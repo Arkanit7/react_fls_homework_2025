@@ -2,6 +2,7 @@
 
 .not-found {
   padding-block: 6.25rem;
+
   // .not-found__wrap
 
   &__wrap {
@@ -13,17 +14,17 @@
   // .not-found__title
 
   &__block {
-    text-align: center;
     max-inline-size: 25.875rem;
+    text-align: center;
   }
 
   // .not-found__title
 
   &__title {
     color: $clr-black;
-    font-family: "Core Sans C", sans-serif;
-    font-size: 2.125rem;
     font-weight: 600;
+    font-size: 2.125rem;
+    font-family: "Core Sans C", sans-serif;
   }
 
   // .not-found__desc

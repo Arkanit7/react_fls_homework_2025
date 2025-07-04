@@ -18,20 +18,20 @@
   // .card__frame
 
   &__frame {
-    aspect-ratio: 3/4;
     overflow: hidden;
+    aspect-ratio: 3/4;
+    border-radius: 0.75rem;
     box-shadow:
       0.125rem 0.125rem 0.5rem $clr-athens-gray,
       -0.125rem -0.125rem 0.5rem $clr-white;
-    border-radius: 0.75rem;
   }
 
   // .card__img
 
   &__img {
+    object-fit: cover;
     inline-size: 100%;
     block-size: 100%;
-    object-fit: cover;
     transition: transform 0.5s;
   }
 
@@ -39,9 +39,9 @@
 
   &__header {
     display: flex;
+    gap: 1ch;
     justify-content: space-between;
     align-items: center;
-    gap: 1ch;
     color: $clr-cape-cod;
   }
 
@@ -49,9 +49,9 @@
 
   &__title {
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     transition: color 0.5s;
   }
 
@@ -59,13 +59,13 @@
 
   &__price {
     flex: none;
-    text-align: center;
-    font-size: 0.875rem;
-    font-weight: 700;
-    border-radius: 0.5rem;
-    background: $clr-wild-sand;
-    padding-block: 0.625rem;
     padding-inline: 1.25rem;
+    padding-block: 0.625rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-align: center;
+    background: $clr-wild-sand;
   }
 
   &__link:hover &__img {

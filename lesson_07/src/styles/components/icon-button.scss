@@ -1,10 +1,10 @@
 @use "~/abstracts" as *;
 
 .icon-button {
-  border-radius: 0.5em;
   display: grid;
-  padding: 0.5em;
   place-items: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
   background-color: $clr-wild-sand;
   transition-property: background-color, color;
   transition-duration: 0.3s;
@@ -14,7 +14,7 @@
   }
 
   @include hover-focus {
-    background-color: $clr-accent-400;
     color: $clr-white;
+    background-color: $clr-accent-400;
   }
 }
