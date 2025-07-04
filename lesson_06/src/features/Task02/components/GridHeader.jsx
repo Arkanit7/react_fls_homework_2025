@@ -2,12 +2,18 @@ import {ChevronsUpDown, ArrowDown, ArrowUp} from 'lucide-react'
 import {SORT_ARIA_DIRECTIONS} from '../constants'
 
 function GridHeader({adjustSort, header, accessorKey, sort}) {
-  const ariaSortDirection = accessorKey === sort.key ? sort.direction : null
+  const isActive = accessorKey === sort.key
+  const isSorted = isActive && sort.direction !== SORT_ARIA_DIRECTIONS.NONE
+  const ariaSortDirection = isSorted ? sort.direction : null
 
   let Icon
-  if (accessorKey !== sort.key) Icon = ChevronsUpDown
-  else if (sort.direction === SORT_ARIA_DIRECTIONS.ASCENDING) Icon = ArrowUp
-  else Icon = ArrowDown
+  if (!isSorted) {
+    Icon = ChevronsUpDown
+  } else if (sort.direction === SORT_ARIA_DIRECTIONS.ASCENDING) {
+    Icon = ArrowUp
+  } else {
+    Icon = ArrowDown
+  }
 
   return (
     <th className="px-2 py-1 text-white" aria-sort={ariaSortDirection}>

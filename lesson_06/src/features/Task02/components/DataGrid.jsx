@@ -1,7 +1,7 @@
 import {useDeferredValue, useState, useMemo, useCallback} from 'react'
 import GridRow from './GridRow'
 import Field from '@/components/Field'
-import {sortData, filterData} from '../utils'
+import {sortData, filterData, getNextSortDirection} from '../utils'
 import {useInput} from '@/hooks'
 import GridHeader from './GridHeader'
 import {SORT_ARIA_DIRECTIONS} from '../constants'
@@ -26,13 +26,10 @@ function DataGrid({data, headers}) {
 
   const adjustSort = useCallback((key) => {
     setSort((prevSort) => {
-      let direction = SORT_ARIA_DIRECTIONS.DESCENDING
-
-      if (
-        prevSort.key === key &&
-        prevSort.direction === SORT_ARIA_DIRECTIONS.DESCENDING
-      )
-        direction = SORT_ARIA_DIRECTIONS.ASCENDING
+      const direction =
+        prevSort.key !== key
+          ? SORT_ARIA_DIRECTIONS.DESCENDING
+          : getNextSortDirection(prevSort.direction)
 
       return {key, direction}
     })
