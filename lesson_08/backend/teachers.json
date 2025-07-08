@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1751892591397,
+    "name": "Світлана Михайлівна",
+    "subject": "Хімія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168721.png"
+  },
+  {
+    "id": 1751892591398,
+    "name": "Анна Петрівна",
+    "subject": "Математика",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168722.png"
+  },
+  {
+    "id": 1751892617785,
+    "name": "Богдан Степанович",
+    "subject": "Філософія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168733.png"
+  },
+  {
+    "id": 1752000000001,
+    "name": "Олена Василівна",
+    "subject": "Англійська мова",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168734.png"
+  },
+  {
+    "id": 1752000000002,
+    "name": "Ігор Миколайович",
+    "subject": "Історія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168731.png"
+  },
+  {
+    "id": 1752000000003,
+    "name": "Марія Сергіївна",
+    "subject": "Біологія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168730.png"
+  },
+  {
+    "id": 1752000000004,
+    "name": "Василина Андріївна",
+    "subject": "Географія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168729.png"
+  }
+]
