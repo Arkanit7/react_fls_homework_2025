@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-primary: Ubuntu, sans-serif;
+
+  --color-*: initial;
+
+  --color-white: white;
+  --color-black: black;
+
+  --color-red-300: hsl(356deg 98% 66%);
+  --color-red-400: hsl(356deg 98% 63%);
+  --color-red-500: hsl(348deg 25% 30%);
+
+  --color-green-300: hsl(156deg 63% 55%);
+  --color-green-400: hsl(156deg 61% 48%);
+  --color-green-500: hsl(166deg 39% 27%);
+
+  --color-blue-300: hsl(215deg 100% 49%);
+  --color-blue-400: hsl(215deg 100% 46%);
+  --color-blue-500: hsl(212deg 67% 26%);
+
+  --color-yellow-300: hsl(42deg 100% 63%);
+  --color-yellow-400: hsl(42deg 100% 57%);
+  --color-yellow-500: hsl(48deg 25% 31%);
+
+  --color-orange-300: hsl(26deg 100% 65%);
+  --color-orange-400: hsl(25deg 100% 60%);
+  --color-orange-500: hsl(28deg 25% 31%);
+
+  --color-purple-300: hsl(250deg 69% 63%);
+  --color-purple-400: hsl(250deg 66% 59%);
+  --color-purple-500: hsl(235deg 30% 32%);
+
+  --color-primary-400: hsl(199deg 23% 25%);
+  --color-primary-450: hsl(198deg 24% 22%);
+  --color-primary-500: hsl(199deg 27% 18%);
+
+  --color-secondary-300: var(--color-white);
+  --color-secondary-400: hsl(198deg 13% 64%);
+
+  --color-accent-300: var(--color-green-300);
+  --color-accent-400: var(--color-green-400);
+  --color-accent-500: var(--color-green-500);
+
+  --font-weight-*: initial;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --breakpoint-3xs: 20rem; /* 320px */
+  --breakpoint-2xs: 23.4375rem; /* 375px */
+  --breakpoint-xs: 30rem; /* 480px */
+  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 62rem; /* 992px */
+  --breakpoint-xl: 75rem; /* 1200px */
+  --breakpoint-2xl: 87.5rem; /* 1400px */
+}
+
+@layer base {
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input:where([type="checkbox"], [type="radio"]):not(:disabled) {
+    cursor: pointer;
+  }
+
+  textarea,
+  input:not([type="checkbox"], [type="radio"]) {
+    width: 100%;
+  }
+}
