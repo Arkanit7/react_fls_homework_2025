@@ -6,24 +6,6 @@
     "photo": "https://cdn-icons-png.flaticon.com/512/168/168721.png"
   },
   {
-    "id": 1751892591398,
-    "name": "Анна Петрівна",
-    "subject": "Математика",
-    "photo": "https://cdn-icons-png.flaticon.com/512/168/168722.png"
-  },
-  {
-    "id": 1751892617785,
-    "name": "Богдан Степанович",
-    "subject": "Філософія",
-    "photo": "https://cdn-icons-png.flaticon.com/512/168/168733.png"
-  },
-  {
-    "id": 1752000000001,
-    "name": "Олена Василівна",
-    "subject": "Англійська мова",
-    "photo": "https://cdn-icons-png.flaticon.com/512/168/168734.png"
-  },
-  {
     "id": 1752000000002,
     "name": "Ігор Миколайович",
     "subject": "Історія",
@@ -40,5 +22,41 @@
     "name": "Василина Андріївна",
     "subject": "Географія",
     "photo": "https://cdn-icons-png.flaticon.com/512/168/168729.png"
+  },
+  {
+    "id": 1752056370558,
+    "name": "12",
+    "subject": "12",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+  },
+  {
+    "id": 1752056376293,
+    "name": "12",
+    "subject": "12",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+  },
+  {
+    "id": 1752056407491,
+    "name": "12",
+    "subject": "12",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+  },
+  {
+    "id": 1752056457419,
+    "name": "12",
+    "subject": "12",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+  },
+  {
+    "id": 1752056520344,
+    "name": "87",
+    "subject": "87",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+  },
+  {
+    "id": 1752056668759,
+    "name": "123",
+    "subject": "23",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
   }
 ]
