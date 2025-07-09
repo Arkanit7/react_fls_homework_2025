@@ -14,7 +14,7 @@ function NavBar({className, closeMenu}) {
   return (
     <nav
       className={twMerge(
-        'max-md:absolute max-md:inset-x-0 max-md:top-full max-md:h-[calc(100dvh_-_100%)] max-md:overflow-y-auto max-md:rounded-t-3xl max-md:bg-accent-400 max-md:px-4 max-md:py-10',
+        'max-md:fixed max-md:inset-0 max-md:overflow-y-auto max-md:rounded-3xl max-md:bg-blue-400 max-md:px-4 max-md:py-20',
         className,
       )}
     >

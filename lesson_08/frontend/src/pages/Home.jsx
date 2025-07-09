@@ -7,7 +7,7 @@ import {Link} from 'react-router'
 function Home() {
   return (
     <Container>
-      <div className="fle space-y-4 rounded-3xl bg-yellow-400 px-4 py-6">
+      <div className="fle text-secondary space-y-4 rounded-3xl bg-purple-400 px-4 py-6">
         <div className="grid gap-6">
           <div className="max-w-sm space-y-4">
             <Typography as="h1" variant={'hero'}>

@@ -8,10 +8,16 @@ import {useState} from 'react'
 import {twMerge} from 'tailwind-merge'
 
 function Header() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [isMenuOpen, setMenuIsOpen] = useState(false)
 
   function closeMenu() {
     setMenuIsOpen(false)
+  }
+
+  function toggleMenu() {
+    setMenuIsOpen((o) => !o)
+
+    document.body.style.overflow = isMenuOpen ? '' : 'hidden'
   }
 
   return (
@@ -19,13 +25,13 @@ function Header() {
       <Container>
         <div className="rounded-b-3xl bg-primary-400 px-4 py-3 shadow-2xl">
           <div className="flex items-center justify-between gap-4">
-            <Link to={frontRoutes.home} className="flex-none">
+            <Link to={frontRoutes.home} className="z-10 flex-none">
               <img src={logo} alt="TeachMeet" />
             </Link>
             <button
-              className="text-3xl transition-[color] hover:text-accent-400 md:hidden"
-              onClick={() => setMenuIsOpen((o) => !o)}
-              aria-expanded={menuIsOpen}
+              className="z-10 text-3xl transition-[color] hover:text-accent-400 md:hidden"
+              onClick={toggleMenu}
+              aria-expanded={isMenuOpen}
               title="Відкрити/закрити меню"
               type="button"
             >
@@ -34,7 +40,7 @@ function Header() {
             <NavBar
               className={twMerge(
                 'max-md:transition-[translate,_visibility] max-md:duration-500',
-                menuIsOpen || 'max-md:invisible max-md:translate-x-full',
+                isMenuOpen || 'max-md:invisible max-md:translate-x-full',
               )}
               closeMenu={closeMenu}
             />

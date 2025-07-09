@@ -12,8 +12,8 @@ function TeacherForm({request, isLoading, teacher = {}, submitLabel}) {
   function handleAction(formData) {
     request(Object.fromEntries([...formData]))
       .then(() => {
-        navigate(frontNavigation.teachers.index)
         toast.success('Дані вчителя збережено')
+        navigate(frontNavigation.teachers.index)
       })
       .catch(() => {
         toast.error('Не вдалося зберегти дані вчителя')

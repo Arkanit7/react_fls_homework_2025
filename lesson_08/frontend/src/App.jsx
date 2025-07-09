@@ -5,8 +5,9 @@ function App() {
   return (
     <>
       <Toaster
-        theme="dark"
+        expand
         richColors
+        theme="dark"
         closeButton
         position="top-right"
         offset={{
