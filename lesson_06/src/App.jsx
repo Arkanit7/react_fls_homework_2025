@@ -13,7 +13,7 @@ function App() {
       <TaskLayout
         tasks={TASKS}
         currentTaskId={currentTaskId}
-        setCurrentTaskId={setCurrentTaskId}
+        setCurrentTaskIdAction={setCurrentTaskId}
       />
     </>
   )

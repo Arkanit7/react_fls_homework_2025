@@ -2,6 +2,7 @@ import Container from '../Container'
 import Clickable from '../Clickable'
 import clsx from 'clsx/lite'
 import {APP_TITLE} from '@/constants'
+import {useTransition} from 'react'
 
 const BASE_CLASSES = {
   main: 'pt-4',
@@ -23,9 +24,11 @@ const VARIANTS = {
 function AppHeader({
   tasks,
   currentTaskId,
-  setCurrentTaskId,
+  setCurrentTaskIdAction,
   variant = 'static',
 }) {
+  const [_, startTransition] = useTransition()
+
   return (
     <header className={clsx(BASE_CLASSES.main, VARIANTS[variant].main)}>
       <Container>
@@ -48,7 +51,13 @@ function AppHeader({
                 {tasks.map((task, i) => (
                   <li key={i}>
                     <Clickable
-                      onClick={() => setCurrentTaskId(task.id)}
+                      onClick={async () => {
+                        startTransition(async () => {
+                          // await the action that's passed in.
+                          // This allows it to be either sync or async.
+                          await setCurrentTaskIdAction(task.id)
+                        })
+                      }}
                       variant={
                         currentTaskId === task.id ? 'primary' : 'outline'
                       }

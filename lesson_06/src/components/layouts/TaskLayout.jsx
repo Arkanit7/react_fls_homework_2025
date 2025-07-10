@@ -3,7 +3,7 @@ import AppHeader from '@/components/composed/AppHeader'
 import Spoiler from '@/components/Spoiler'
 import {Library} from 'lucide-react'
 
-function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
+function TaskLayout({tasks, currentTaskId, setCurrentTaskIdAction}) {
   const currentIndex = tasks.findIndex((task) => task.id === currentTaskId)
   const currentTaskData = tasks[currentIndex]
   const CurrentTaskComponent = currentTaskData?.component
@@ -19,7 +19,7 @@ function TaskLayout({tasks, currentTaskId, setCurrentTaskId}) {
       <AppHeader
         tasks={tasks}
         currentTaskId={currentTaskId}
-        setCurrentTaskId={setCurrentTaskId}
+        setCurrentTaskIdAction={setCurrentTaskIdAction}
         variant="sticky"
       />
 
