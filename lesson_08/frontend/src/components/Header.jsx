@@ -12,6 +12,7 @@ function Header() {
 
   function closeMenu() {
     setMenuIsOpen(false)
+    document.body.style.overflow = ''
   }
 
   function toggleMenu() {
