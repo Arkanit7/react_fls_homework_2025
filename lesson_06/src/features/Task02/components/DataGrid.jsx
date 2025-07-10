@@ -44,7 +44,7 @@ function DataGrid({data, headers}) {
           {...searchInput}
         />
       </div>
-      <div className="overflow-x-auto">
+      <div className="-mx-(--page-padding) overflow-x-auto px-(--page-padding)">
         <table className="w-full divide-y-1 divide-cyan-900 text-sm">
           <thead>
             <tr className="transition-[background-color] hover:bg-cyan-400/10">

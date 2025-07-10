@@ -2,6 +2,13 @@
 @import "tailwindcss";
 @import "./theme";
 
+@layer theme {
+  :root {
+    --page-padding: calc(var(--spacing) * 3);
+    --container-width: var(--container-4xl);
+  }
+}
+
 @layer base {
   :root {
     color-scheme: dark;
