@@ -15,6 +15,7 @@ function TeacherCard({
   name,
   subject,
   photo,
+  isPending,
   deleteTeacher,
   selectTeacher,
   isSelected,
@@ -24,6 +25,7 @@ function TeacherCard({
       className={twMerge(
         'flex items-start gap-4 rounded-xl bg-primary-400 px-4 py-6',
         isSelected && 'ring-3 ring-accent-400',
+        isPending && 'pointer-events-none opacity-50',
       )}
     >
       <img
@@ -56,10 +58,7 @@ function TeacherCard({
           <Clickable
             size="sm"
             onClick={selectTeacher}
-            className={
-              isSelected &&
-              'bg-yellow-400 text-black not-disabled:hover:bg-yellow-500'
-            }
+            variant={isSelected ? 'warning' : undefined}
           >
             {isSelected ? 'Зняти' : 'Обрати'}
           </Clickable>

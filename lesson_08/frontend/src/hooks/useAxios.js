@@ -35,7 +35,7 @@ function useAxios() {
     }
   }, [])
 
-  return {data, isLoading, error, fetchData, sendData}
+  return {data, setData, isLoading, error, fetchData, sendData}
 }
 
 export default useAxios

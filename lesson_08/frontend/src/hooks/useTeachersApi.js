@@ -3,7 +3,7 @@ import {useCallback} from 'react'
 import useAxios from './useAxios'
 
 function useTeachersApi() {
-  const {data, isLoading, error, fetchData, sendData} = useAxios()
+  const {data, setData, isLoading, error, fetchData, sendData} = useAxios()
 
   const createTeacher = useCallback(
     (data) => sendData({method: 'POST', url: apiRoutes.addTeacher, data}),
@@ -33,6 +33,7 @@ function useTeachersApi() {
 
   return {
     data,
+    setData,
     isLoading,
     error,
     createTeacher,

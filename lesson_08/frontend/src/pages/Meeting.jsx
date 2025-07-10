@@ -1,7 +1,9 @@
 import Container from '@/components/Container'
 import Typography from '@/components/Typography'
-import {useLocation} from 'react-router'
+import {Link, useLocation} from 'react-router'
 import TeacherCard from './teachers/components/TeacherCard'
+import frontNavigation from '@/routes/frontNavigation'
+import Clickable from '@/components/Clickable'
 
 function Meeting() {
   const {state} = useLocation()
@@ -27,6 +29,11 @@ function Meeting() {
   return (
     <Container className="space-y-4">
       <Typography as="h1">Збори</Typography>
+      <div>
+        <Clickable as={Link} to={frontNavigation.teachers.index}>
+          Повернутися до переліку усіх вчителів
+        </Clickable>
+      </div>
       {content}
     </Container>
   )

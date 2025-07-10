@@ -1,57 +1,94 @@
-import Container from '@/components/Container'
-import Typography from '@/components/Typography'
-import TeacherCard from './components/TeacherCard'
-import {useEffect, useState} from 'react'
-import {useTeachersApi} from '@/hooks'
 import Clickable from '@/components/Clickable'
-import {Link, useNavigate} from 'react-router'
-import frontNavigation from '@/routes/frontNavigation'
+import Container from '@/components/Container'
 import Loader from '@/components/Loader'
+import Typography from '@/components/Typography'
+import {useTeachersApi} from '@/hooks'
+import frontNavigation from '@/routes/frontNavigation'
+import {useEffect} from 'react'
+import {Link, useNavigate} from 'react-router'
 import {toast} from 'sonner'
+import TeacherCard from './components/TeacherCard'
+import {IS_PENDING_SYMBOL, IS_SELECTED_SYMBOL} from './constants'
 
 function Teachers() {
   const navigate = useNavigate()
 
-  // ---
-
   const {
     data: teacherList = [],
+    setData: setTeacherList,
     isLoading,
     readTeachers,
-    deleteTeacher,
   } = useTeachersApi()
 
+  const selectedTeachersAmount = teacherList.reduce(
+    (amount, teacher) =>
+      teacher[Symbol.for(IS_SELECTED_SYMBOL)] ? amount + 1 : amount,
+    0,
+  )
+
+  const {deleteTeacher} = useTeachersApi()
+
   useEffect(() => {
-    readTeachers().catch(() =>
-      toast.error('Не вдалося завантажити список вчителів'),
-    )
+    async function fetchTeachers() {
+      try {
+        await readTeachers()
+      } catch {
+        toast.error('Не вдалося завантажити список вчителів')
+      }
+    }
+
+    fetchTeachers()
   }, [readTeachers])
 
-  function handleDeleteTeacherById(id) {
-    return () =>
-      deleteTeacher(id)
-        .then(() => toast.success('Успішно видалено вчителя'))
-        .catch(() => toast.error('Не вдалося видалити вчителя'))
-        .then(() => readTeachers())
-        .catch(() => toast.error('Не вдалося завантажити список вчителів'))
+  function addPendingTeacherStateById(id) {
+    setTeacherList((prevTeachersList) =>
+      prevTeachersList.map((t) =>
+        t.id === id ? {...t, [Symbol.for(IS_PENDING_SYMBOL)]: true} : t,
+      ),
+    )
   }
 
-  // ---
+  function removePendingTeacherStateById(id) {
+    setTeacherList((prevTeachersList) =>
+      prevTeachersList.map((t) =>
+        t.id === id ? {...t, [Symbol.for(IS_PENDING_SYMBOL)]: false} : t,
+      ),
+    )
+  }
 
-  const [selectedTeachersId, setSelectedTeachersId] = useState(() => new Set())
+  function removeTeacherById(id) {
+    setTeacherList((prevTeachersList) =>
+      prevTeachersList.filter((t) => t.id !== id),
+    )
+  }
+
+  function handleDeleteTeacherById(id) {
+    return async () => {
+      try {
+        addPendingTeacherStateById(id)
+        await deleteTeacher(id)
+        removeTeacherById(id)
+        toast.success('Успішно видалено вчителя')
+      } catch {
+        removePendingTeacherStateById(id)
+        toast.error('Не вдалося видалити вчителя')
+      }
+    }
+  }
 
   function selectTeacherById(id) {
-    return () => {
-      setSelectedTeachersId((prevSelectedTeachersId) => {
-        const prevSelectedTeachersIdCopy = new Set(prevSelectedTeachersId)
-
-        if (prevSelectedTeachersIdCopy.has(id))
-          prevSelectedTeachersIdCopy.delete(id)
-        else prevSelectedTeachersIdCopy.add(id)
-
-        return prevSelectedTeachersIdCopy
-      })
-    }
+    return () =>
+      setTeacherList((prevTeachersList) =>
+        prevTeachersList.map((t) =>
+          t.id === id
+            ? {
+                ...t,
+                [Symbol.for(IS_SELECTED_SYMBOL)]:
+                  !t[Symbol.for(IS_SELECTED_SYMBOL)],
+              }
+            : t,
+        ),
+      )
   }
 
   return (
@@ -65,15 +102,16 @@ function Teachers() {
           onClick={() =>
             navigate(frontNavigation.meeting, {
               state: {
-                selectedTeachers: teacherList.filter(({id}) =>
-                  selectedTeachersId.has(id),
+                selectedTeachers: teacherList.filter(
+                  ({[Symbol.for(IS_SELECTED_SYMBOL)]: isSelected}) =>
+                    isSelected,
                 ),
               },
             })
           }
-          disabled={!selectedTeachersId.size}
+          disabled={selectedTeachersAmount === 0}
         >
-          Викликати {selectedTeachersId.size} вчителя(ів) на збори
+          Викликати {selectedTeachersAmount} вчителя(ів) на збори
         </Clickable>
       </div>
       <div className="relative min-h-8">
@@ -81,19 +119,29 @@ function Teachers() {
           <Loader />
         ) : (
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(min(100%,_var(--container-sm)),_1fr))] gap-2 md:gap-4">
-            {teacherList.map(({id, name, photo, subject}) => (
-              <TeacherCard
-                variant="dashboard"
-                key={id}
-                isSelected={selectedTeachersId.has(id)}
-                deleteTeacher={handleDeleteTeacherById(id)}
-                selectTeacher={selectTeacherById(id)}
-                id={id}
-                photo={photo}
-                name={name}
-                subject={subject}
-              />
-            ))}
+            {teacherList.map(
+              ({
+                id,
+                name,
+                photo,
+                subject,
+                [Symbol.for(IS_PENDING_SYMBOL)]: isPending = false,
+                [Symbol.for(IS_SELECTED_SYMBOL)]: isSelected = false,
+              }) => (
+                <TeacherCard
+                  variant="dashboard"
+                  key={id}
+                  isSelected={isSelected}
+                  deleteTeacher={handleDeleteTeacherById(id)}
+                  selectTeacher={selectTeacherById(id)}
+                  id={id}
+                  photo={photo}
+                  name={name}
+                  subject={subject}
+                  isPending={isPending}
+                />
+              ),
+            )}
           </div>
         )}
       </div>

@@ -21,30 +21,28 @@ function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-100">
+    <header className="sticky top-0 z-100 rounded-b-3xl bg-primary-400 py-2 shadow-xs shadow-black/25">
       <Container>
-        <div className="rounded-b-3xl bg-primary-400 px-4 py-3 shadow-2xl">
-          <div className="flex items-center justify-between gap-4">
-            <Link to={frontRoutes.home} className="z-10 flex-none">
-              <img src={logo} alt="TeachMeet" />
-            </Link>
-            <button
-              className="z-10 text-3xl transition-[color] hover:text-accent-400 md:hidden"
-              onClick={toggleMenu}
-              aria-expanded={isMenuOpen}
-              title="Відкрити/закрити меню"
-              type="button"
-            >
-              <CgMenu />
-            </button>
-            <NavBar
-              className={twMerge(
-                'max-md:transition-[translate,_visibility] max-md:duration-500',
-                isMenuOpen || 'max-md:invisible max-md:translate-x-full',
-              )}
-              closeMenu={closeMenu}
-            />
-          </div>
+        <div className="flex items-center justify-between gap-4">
+          <Link to={frontRoutes.home} className="z-10 flex-none">
+            <img src={logo} alt="TeachMeet" />
+          </Link>
+          <button
+            className="z-10 text-3xl transition-[color] hover:text-accent-400 md:hidden"
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            title="Відкрити/закрити меню"
+            type="button"
+          >
+            <CgMenu />
+          </button>
+          <NavBar
+            className={twMerge(
+              'max-md:transition-[translate,_visibility] max-md:duration-500',
+              isMenuOpen || 'max-md:invisible max-md:translate-x-full',
+            )}
+            closeMenu={closeMenu}
+          />
         </div>
       </Container>
     </header>

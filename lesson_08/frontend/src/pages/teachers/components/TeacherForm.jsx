@@ -2,7 +2,7 @@ import Clickable from '@/components/Clickable'
 import FieldGroup from '@/components/FieldGroup'
 import Loader from '@/components/Loader'
 import frontNavigation from '@/routes/frontNavigation'
-import {useNavigate} from 'react-router'
+import {Link, useNavigate} from 'react-router'
 import {toast} from 'sonner'
 
 function TeacherForm({request, isLoading, teacher = {}, submitLabel}) {
@@ -54,8 +54,15 @@ function TeacherForm({request, isLoading, teacher = {}, submitLabel}) {
           placeholder="Введіть URL фотографії"
         />
       </p>
-      <p>
+      <p className="flex gap-2">
         <Clickable type="submit">{submitLabel}</Clickable>
+        <Clickable
+          as={Link}
+          to={frontNavigation.teachers.index}
+          variant="alert"
+        >
+          Відмінити
+        </Clickable>
       </p>
     </form>
   )

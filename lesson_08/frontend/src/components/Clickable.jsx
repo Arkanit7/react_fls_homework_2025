@@ -5,6 +5,8 @@ const BASE_CLASSES =
 
 const VARIANTS = {
   primary: 'bg-accent-400 not-disabled:hover:bg-accent-500',
+  alert: 'bg-red-400 not-disabled:hover:bg-red-500',
+  warning: 'bg-yellow-400 text-black not-disabled:hover:bg-yellow-500',
   outline: 'border-1 border-accent-400 not-disabled:hover:bg-accent-500',
 }
 
@@ -32,7 +34,7 @@ function Clickable({
         SIZES[size],
         className,
       )}
-      type={type}
+      type={as === 'button' && type}
       {...restProps}
     />
   )
