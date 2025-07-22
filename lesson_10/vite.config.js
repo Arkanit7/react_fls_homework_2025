@@ -1,8 +1,9 @@
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import {dirname, resolve} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react-swc'
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
+import svgr from 'vite-plugin-svgr'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -16,5 +17,5 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), react(), svgr()],
 })

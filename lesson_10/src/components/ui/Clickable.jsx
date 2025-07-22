@@ -1,14 +1,7 @@
-import {useThemeContext} from '@/context/ThemeContext'
-import {THEMES} from '@/lib/constants'
 import {cn} from '@/lib/utils'
 
-const baseClasses = 'rounded-md text-sm font-medium'
-
-const themeVariants = {
-  [THEMES.LIGHT]: 'bg-neutral-950 text-white shadow-xs hover:bg-neutral-950/90',
-  [THEMES.DARK]: 'bg-neutral-200 text-black shadow-xs hover:bg-neutral-200/60',
-  [THEMES.SOLARIZED]: 'bg-amber-200 text-black shadow-xs hover:bg-amber-200/60',
-}
+const baseClasses =
+  'rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-[background-color]'
 
 const sizes = {
   default: 'py-2 px-4',
@@ -23,13 +16,9 @@ function Clickable({
   ...restProps
 }) {
   const Type = as
-  const {theme} = useThemeContext()
 
   return (
-    <Type
-      className={cn(baseClasses, themeVariants[theme], sizes[size], className)}
-      {...restProps}
-    />
+    <Type className={cn(baseClasses, sizes[size], className)} {...restProps} />
   )
 }
 

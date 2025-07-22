@@ -1,12 +1,8 @@
-import ThemedSection from './components/ThemedSection'
-import Clickable from './components/ui/Clickable'
+import {RouterProvider} from 'react-router'
+import {router} from './routes'
 
 function App() {
-  return (
-    <ThemedSection className="min-h-dvh">
-      <Clickable>Kittens!</Clickable>
-    </ThemedSection>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
