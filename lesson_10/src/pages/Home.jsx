@@ -1,6 +1,6 @@
 import Container from '@/components/Container'
 import Typography from '@/components/ui/Typography'
-import {useThemeContext} from '@/context/ThemeContext'
+import {useThemeContext} from '@/contexts/ThemeContext'
 import {THEMES} from '@/lib/constants'
 
 const themeBackgrounds = {

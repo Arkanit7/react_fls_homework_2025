@@ -3,7 +3,7 @@ import Typography from '@/components/ui/Typography'
 import Container from '@/components/Container'
 import {Link} from 'react-router'
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <Container className="space-y-4 text-center">
       <h1>
@@ -19,4 +19,4 @@ function NotFound() {
   )
 }
 
-export default NotFound
+export default NotFoundPage

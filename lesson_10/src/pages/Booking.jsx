@@ -2,8 +2,8 @@ import BusCard from '@/components/BusCard'
 import Container from '@/components/Container'
 import HotelCard from '@/components/HotelCard'
 import Typography from '@/components/ui/Typography'
-import {useBusesContext} from '@/context/BusesContext'
-import {useHotelsContext} from '@/context/HotelsContext'
+import {useBusesContext} from '@/contexts/BusesContext'
+import {useHotelsContext} from '@/contexts/HotelsContext'
 
 // eslint-disable-next-line no-unused-vars
 function Section({title, items, Card}) {

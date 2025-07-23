@@ -1,8 +1,8 @@
 import {Outlet} from 'react-router'
 import Header from '@/components/Header'
-import {ThemeProvider} from '@/context/ThemeContext'
-import {BusesProvider} from '@/context/BusesContext'
-import {HotelsProvider} from '@/context/HotelsContext'
+import {ThemeProvider} from '@/contexts/ThemeContext'
+import {BusesProvider} from '@/contexts/BusesContext'
+import {HotelsProvider} from '@/contexts/HotelsContext'
 
 function Layout() {
   return (

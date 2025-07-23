@@ -1,5 +1,5 @@
 import NavClickable from '@/components/ui/NavClickable'
-import {useThemeContext} from '@/context/ThemeContext'
+import {useThemeContext} from '@/contexts/ThemeContext'
 import {THEMES} from '@/lib/constants'
 import {cn} from '@/lib/utils'
 import {Moon, Sun} from 'lucide-react'

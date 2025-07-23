@@ -7,7 +7,7 @@ export const THEMES = {
 
 export const BUSES = [
   {
-    id: 0,
+    id: 'ЛВ04',
     departurePlace: 'Львів',
     departureDate: new Date('2025-07-24 17:53:00'),
     arrivalDate: new Date('2025-07-25 08:33:00'),
@@ -16,7 +16,7 @@ export const BUSES = [
     isSelected: false,
   },
   {
-    id: 1,
+    id: 'КМ89',
     departurePlace: 'Львів',
     departureDate: new Date('2025-07-22 17:53:00'),
     arrivalDate: new Date('2025-07-22 20:33:00'),
@@ -25,10 +25,10 @@ export const BUSES = [
     isSelected: false,
   },
   {
-    id: 2,
+    id: 'ВІ78',
     departurePlace: 'Дніпро',
     departureDate: new Date('2025-07-23 17:53:00'),
-    arrivalDate: new Date('2025-07-24 00:33:00'),
+    arrivalDate: new Date('2025-07-23 19:33:00'),
     arrivalPlace: 'Херсон',
     priceUah: '332',
     isSelected: false,

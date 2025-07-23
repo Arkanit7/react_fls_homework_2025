@@ -1,11 +1,18 @@
 import Container from '@/components/Container'
 import Typography from '@/components/ui/Typography'
 import HotelCard from '@/components/HotelCard'
-import {useHotelsContext} from '@/context/HotelsContext'
+import {useHotelsContext} from '@/contexts/HotelsContext'
+import {HOTELS_ACTIONS} from '@/lib/constants'
+import Clickable from '@/components/ui/Clickable'
 
 function Hotels() {
-  const {hotels} = useHotelsContext()
+  const {hotels, hotelsDispatch} = useHotelsContext()
   const isEmpty = hotels.length === 0
+  const hasSelection = hotels.some((hotel) => hotel.isSelected)
+
+  function clearSelection() {
+    hotelsDispatch({type: HOTELS_ACTIONS.CLEAR_SELECTION})
+  }
 
   return (
     <Container className="space-y-4">
@@ -15,11 +22,22 @@ function Hotels() {
       {isEmpty ? (
         <div className="text-muted-foreground">Тут поки порожньо...</div>
       ) : (
-        <div className="space-y-2 sm:space-y-4">
-          {hotels.map((hotel) => (
-            <HotelCard key={hotel.id} {...hotel} />
-          ))}
-        </div>
+        <>
+          <div className="space-y-2 sm:space-y-4">
+            {hotels.map((hotel) => (
+              <HotelCard key={hotel.id} {...hotel} />
+            ))}
+          </div>
+          <div className="flex justify-center">
+            <Clickable
+              onClick={clearSelection}
+              disabled={!hasSelection}
+              size="lg"
+            >
+              Скинути
+            </Clickable>
+          </div>
+        </>
       )}
     </Container>
   )

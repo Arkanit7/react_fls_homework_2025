@@ -1,14 +1,9 @@
 import Clickable from '@/components/ui/Clickable'
-import Typography from '@/components/ui/Typography'
-import {useBusesContext} from '@/context/BusesContext'
+import {useBusesContext} from '@/contexts/BusesContext'
 import {BUSES_ACTIONS} from '@/lib/constants'
 import {calcTimePassed, cn} from '@/lib/utils'
+import PlaceInfo from './PlaceInfo'
 
-const dateFormatter = new Intl.DateTimeFormat('uk-UA', {
-  day: 'numeric',
-  month: 'long',
-})
-const timeFormatter = new Intl.DateTimeFormat('uk-UA', {timeStyle: 'short'})
 const currencyFormatter = new Intl.NumberFormat('uk-UA', {
   currency: 'UAH',
   style: 'currency',
@@ -16,19 +11,7 @@ const currencyFormatter = new Intl.NumberFormat('uk-UA', {
 })
 const durationFormatter = new Intl.DurationFormat('uk-UA', {style: 'narrow'})
 
-function PlaceInfo({place, date}) {
-  return (
-    <div className="fex-none sm:space-y-1">
-      <div className="font-medium sm:text-lg">{timeFormatter.format(date)}</div>
-      <div className="text-muted-foreground max-sm:text-sm">
-        {dateFormatter.format(date)}
-      </div>
-      <div className="font-medium max-sm:text-sm">{place}</div>
-    </div>
-  )
-}
-
-function BussCard({
+function BusCard({
   id,
   isSelected,
   departureDate,
@@ -93,4 +76,4 @@ function BussCard({
   )
 }
 
-export default BussCard
+export default BusCard

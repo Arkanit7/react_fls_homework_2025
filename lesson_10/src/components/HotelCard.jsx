@@ -1,6 +1,6 @@
 import Clickable from '@/components/ui/Clickable'
 import Typography from '@/components/ui/Typography'
-import {useHotelsContext} from '@/context/HotelsContext'
+import {useHotelsContext} from '@/contexts/HotelsContext'
 import {HOTELS_ACTIONS} from '@/lib/constants'
 import {cn} from '@/lib/utils'
 import {Star} from 'lucide-react'
@@ -65,13 +65,13 @@ function HotelCard({
             <p className="font-medium text-muted-foreground">{place}</p>
 
             <p className="max-sm:text-sm">
-              <span className="font-medium">Заїзд</span>:{' '}
+              <span className="font-medium">Заселення</span>:{' '}
               {dateFormatter.format(checkInDate)}{' '}
               {timeFormatter.format(checkInDate)}
             </p>
 
             <p className="max-sm:text-sm">
-              <span className="font-medium">Виїзд</span>:{' '}
+              <span className="font-medium">Виселення</span>:{' '}
               {dateFormatter.format(checkOutDate)}{' '}
               {timeFormatter.format(checkOutDate)}
             </p>
