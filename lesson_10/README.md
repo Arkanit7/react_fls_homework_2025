@@ -1,12 +1,19 @@
-# React + Vite
+# Lesson 10: React + Vite + Bun
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React router website with a custom theme switch, hotels & buses booking.
 
-Currently, two official plugins are available:
+This project demonstrates a React application setup using Vite and Bun as the runtime and package manager. Bun provides fast installs, efficient builds, and native TypeScript support. The project showcases modern React development with hot module replacement (HMR), ESLint integration, and minimal configuration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Explore the code to see how Bun and Vite can streamline your workflow for rapid React prototyping and development.
 
-## Expanding the ESLint configuration
+## Common Bun Commands
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Command                | Description                            |
+| ---------------------- | -------------------------------------- |
+| `bun add <package>`    | Install a package                      |
+| `bun install`          | Install dependencies from package.json |
+| `bun run <script>`     | Run a script from package.json         |
+| `bun dev`              | Start the development server           |
+| `bun build`            | Build the project                      |
+| `bun remove <package>` | Remove a package                       |
+| `bun upgrade`          | Upgrade Bun and dependencies           |
