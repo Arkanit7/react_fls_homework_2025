@@ -4,11 +4,11 @@ import Loader from '@/components/Loader'
 import Typography from '@/components/Typography'
 import {useTeachersApi} from '@/hooks'
 import frontNavigation from '@/routes/frontNavigation'
-import {useEffect} from 'react'
+import {startTransition, useEffect, useOptimistic} from 'react'
 import {Link, useNavigate} from 'react-router'
 import {toast} from 'sonner'
 import TeacherCard from './components/TeacherCard'
-import {IS_PENDING_SYMBOL, IS_SELECTED_SYMBOL} from './constants'
+import {IS_PENDING_KEY, IS_SELECTED_KEY} from './constants'
 
 function Teachers() {
   const navigate = useNavigate()
@@ -21,9 +21,18 @@ function Teachers() {
   } = useTeachersApi()
 
   const selectedTeachersAmount = teacherList.reduce(
-    (amount, teacher) =>
-      teacher[Symbol.for(IS_SELECTED_SYMBOL)] ? amount + 1 : amount,
+    (amount, teacher) => (teacher[IS_SELECTED_KEY] ? amount + 1 : amount),
     0,
+  )
+
+  const [optimisticTeachersList, setTeacherPendingById] = useOptimistic(
+    teacherList,
+    (optimisticTeachersList, teacherId) =>
+      optimisticTeachersList.map((teacher) =>
+        teacher.id === teacherId
+          ? {...teacher, [IS_PENDING_KEY]: true}
+          : teacher,
+      ),
   )
 
   const {deleteTeacher} = useTeachersApi()
@@ -40,22 +49,6 @@ function Teachers() {
     fetchTeachers()
   }, [readTeachers])
 
-  function addPendingTeacherStateById(id) {
-    setTeacherList((prevTeachersList) =>
-      prevTeachersList.map((t) =>
-        t.id === id ? {...t, [Symbol.for(IS_PENDING_SYMBOL)]: true} : t,
-      ),
-    )
-  }
-
-  function removePendingTeacherStateById(id) {
-    setTeacherList((prevTeachersList) =>
-      prevTeachersList.map((t) =>
-        t.id === id ? {...t, [Symbol.for(IS_PENDING_SYMBOL)]: false} : t,
-      ),
-    )
-  }
-
   function removeTeacherById(id) {
     setTeacherList((prevTeachersList) =>
       prevTeachersList.filter((t) => t.id !== id),
@@ -63,17 +56,18 @@ function Teachers() {
   }
 
   function handleDeleteTeacherById(id) {
-    return async () => {
-      try {
-        addPendingTeacherStateById(id)
-        await deleteTeacher(id)
-        removeTeacherById(id)
-        toast.success('Успішно видалено вчителя')
-      } catch {
-        removePendingTeacherStateById(id)
-        toast.error('Не вдалося видалити вчителя')
-      }
-    }
+    return () =>
+      startTransition(async () => {
+        try {
+          setTeacherPendingById(id)
+          await deleteTeacher(id)
+          removeTeacherById(id)
+          toast.success('Успішно видалено вчителя')
+        } catch {
+          toast.error('Не вдалося видалити вчителя')
+          // In case of a rejection, thanks to the optimistic state, the isPending key would clean itself.
+        }
+      })
   }
 
   function selectTeacherById(id) {
@@ -83,8 +77,7 @@ function Teachers() {
           t.id === id
             ? {
                 ...t,
-                [Symbol.for(IS_SELECTED_SYMBOL)]:
-                  !t[Symbol.for(IS_SELECTED_SYMBOL)],
+                [IS_SELECTED_KEY]: !t[IS_SELECTED_KEY],
               }
             : t,
         ),
@@ -103,8 +96,7 @@ function Teachers() {
             navigate(frontNavigation.meeting, {
               state: {
                 selectedTeachers: teacherList.filter(
-                  ({[Symbol.for(IS_SELECTED_SYMBOL)]: isSelected}) =>
-                    isSelected,
+                  ({[IS_SELECTED_KEY]: isSelected}) => isSelected,
                 ),
               },
             })
@@ -119,14 +111,14 @@ function Teachers() {
           <Loader />
         ) : (
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(min(100%,_var(--container-sm)),_1fr))] gap-2 md:gap-4">
-            {teacherList.map(
+            {optimisticTeachersList.map(
               ({
                 id,
                 name,
                 photo,
                 subject,
-                [Symbol.for(IS_PENDING_SYMBOL)]: isPending = false,
-                [Symbol.for(IS_SELECTED_SYMBOL)]: isSelected = false,
+                [IS_PENDING_KEY]: isPending = false,
+                [IS_SELECTED_KEY]: isSelected = false,
               }) => (
                 <TeacherCard
                   variant="dashboard"

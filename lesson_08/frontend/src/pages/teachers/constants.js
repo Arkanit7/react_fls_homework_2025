@@ -1,2 +1,2 @@
-export const IS_PENDING_SYMBOL = 'isPending'
-export const IS_SELECTED_SYMBOL = 'isSelected'
+export const IS_PENDING_KEY = Symbol('isPending')
+export const IS_SELECTED_KEY = Symbol('isSelected')
