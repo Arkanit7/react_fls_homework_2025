@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "name": "Black Sweatshirt with White Floral Print",
+    "price": 35.99,
+    "imageUrl": "/images/product-0.webp"
+  },
+  {
+    "id": 1,
+    "name": "White T-shirt",
+    "price": 14.99,
+    "imageUrl": "/images/product-1.webp"
+  },
+  {
+    "id": 2,
+    "name": "Lavender Hoodie with Minimalist Design",
+    "price": 39.99,
+    "imageUrl": "/images/product-2.webp"
+  },
+  {
+    "id": 3,
+    "name": "Leaves Pattern White T-shirt",
+    "price": 18.99,
+    "imageUrl": "/images/product-3.webp"
+  },
+  {
+    "id": 4,
+    "name": "White Graphic Crop Top",
+    "price": 21.99,
+    "imageUrl": "/images/product-4.webp"
+  },
+  {
+    "id": 5,
+    "name": "Black Shorts",
+    "price": 19.99,
+    "imageUrl": "/images/product-5.webp"
+  },
+  {
+    "id": 6,
+    "name": "Barboreal Gray Sweats...",
+    "price": 29.99,
+    "imageUrl": "/images/product-6.webp"
+  },
+  {
+    "id": 7,
+    "name": "Yellow Sweatshirt",
+    "price": 24.99,
+    "imageUrl": "/images/product-7.webp"
+  },
+  {
+    "id": 8,
+    "name": "Flower Pattern Black Crop Top",
+    "price": 27.99,
+    "imageUrl": "/images/product-8.webp"
+  },
+  {
+    "id": 9,
+    "name": "I Don’t Graphic T-shirt ",
+    "price": 16.99,
+    "imageUrl": "/images/product-9.webp"
+  },
+  {
+    "id": 10,
+    "name": "Blue Flower Print Crop Top",
+    "price": 22.99,
+    "imageUrl": "/images/product-10.webp"
+  },
+  {
+    "id": 11,
+    "name": "Line Pattern Black Hoodie",
+    "price": 44.99,
+    "imageUrl": "/images/product-11.webp"
+  }
+]
