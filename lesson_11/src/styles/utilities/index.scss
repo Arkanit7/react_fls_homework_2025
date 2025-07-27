@@ -1,0 +1,17 @@
+.icon {
+  inline-size: 1em;
+  block-size: 1em;
+  stroke: currentcolor;
+}
+
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border-width: 0;
+  white-space: nowrap;
+}

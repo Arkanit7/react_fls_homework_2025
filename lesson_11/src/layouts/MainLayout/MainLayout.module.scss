@@ -1,0 +1,12 @@
+@use "~/abstracts" as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  min-block-size: 100dvb;
+}
+
+.main {
+  flex: auto;
+}
