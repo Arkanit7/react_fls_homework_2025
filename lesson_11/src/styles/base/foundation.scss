@@ -17,8 +17,6 @@
   --clr-foreground: oklch(98.5% 0 0deg);
   --clr-card: oklch(20.5% 0 0deg);
   --clr-card-foreground: oklch(98.5% 0 0deg);
-  --clr-popover: oklch(20.5% 0 0deg);
-  --clr-popover-foreground: oklch(98.5% 0 0deg);
   --clr-primary: oklch(92.2% 0 0deg);
   --clr-primary-foreground: oklch(20.5% 0 0deg);
   --clr-secondary: oklch(26.9% 0 0deg);
@@ -32,22 +30,11 @@
   --clr-border: oklch(100% 0 0deg / 10%);
   --clr-input: oklch(100% 0 0deg / 15%);
   --clr-ring: oklch(55.6% 0 0deg);
-  --clr-sidebar: oklch(20.5% 0 0deg);
-  --clr-sidebar-foreground: oklch(98.5% 0 0deg);
-  --clr-sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --clr-sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --clr-sidebar-accent: oklch(26.9% 0 0deg);
-  --clr-sidebar-accent-foreground: oklch(98.5% 0 0deg);
-  --clr-sidebar-border: oklch(100% 0 0deg / 10%);
-  --clr-sidebar-ring: oklch(55.6% 0 0deg);
 }
 
-// html {
-//   scrollbar-gutter: stable;
-// }
-
 body {
-  color: var(--clr-foreground);
-  font-family: var(--ff-primary);
-  background-color: var(--clr-background);
+  color: $clr-foreground;
+  font-family: $ff-primary;
+  background-color: $clr-background;
+  line-height: 1.4;
 }

@@ -11,10 +11,11 @@ function Header({className = '', ...restProps}) {
         <div className={styles.wrap}>
           <div className={styles.box}>
             <Link>
+              <span className="sr-only">Home page</span>
               <img
                 className={styles.brand}
                 src="/images/logo.svg"
-                alt="brand"
+                alt="React"
               />
             </Link>
             <NavBar />

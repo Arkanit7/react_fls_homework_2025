@@ -3,7 +3,10 @@
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, rem(200px)), 1fr));
-  gap: 0.5rem;
+
+  @include media-width-from($bp-2xs) {
+    gap: 0.5rem;
+  }
 
   @include media-width-from($bp-sm) {
     gap: 1rem;
@@ -12,4 +15,9 @@
 
 .search {
   max-inline-size: 16rem;
+}
+
+.empty {
+  color: $clr-muted-foreground;
+  text-align: center;
 }

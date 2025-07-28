@@ -1,7 +1,7 @@
 @use "~/abstracts" as *;
 
 .list {
-  @include flow(1rem);
+  @include flow(0.75rem);
 
   @include media-width-from($bp-sm) {
     gap: 1rem;

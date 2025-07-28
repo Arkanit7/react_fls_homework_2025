@@ -5,11 +5,19 @@
   flex-direction: column;
   gap: 0.25rem;
   padding: 1rem;
-  border: 1px solid $clr-border;
-  border-radius: $radius;
   color: $clr-card-foreground;
   font-family: $ff-secondary;
   background-color: $clr-card;
+  border-block: 1px solid $clr-border;
+
+  @include media-width-to($bp-2xs) {
+    margin-inline: calc(-1 * $container-padding);
+  }
+
+  @include media-width-from($bp-2xs) {
+    border-radius: $radius;
+    border: 1px solid $clr-border;
+  }
 
   @include media-width-from($bp-sm) {
     gap: 0.5rem;

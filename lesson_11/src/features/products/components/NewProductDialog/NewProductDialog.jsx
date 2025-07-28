@@ -3,6 +3,7 @@ import Clickable from '@/components/Clickable'
 import NewProductForm from '../NewProductForm'
 import {useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
+import {Plus} from 'lucide-react'
 
 function NewProductDialog() {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,8 +26,8 @@ function NewProductDialog() {
 
   return (
     <>
-      <Clickable onClick={openDialog} variant="outline">
-        Add a product
+      <Clickable onClick={openDialog}>
+        <Plus /> Add a product
       </Clickable>
       {isOpen &&
         createPortal(

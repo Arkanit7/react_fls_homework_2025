@@ -25,10 +25,10 @@
   @return convert-units($value, 16px, 1rem);
 }
 
-@function em($unit-px) {
-  @return convert-units($value, 16px, 1em, 16);
+@function em($value) {
+  @return convert-units($value, 16px, 1em);
 }
 
-@function opaque-color($opacity, $color: currentColor) {
-  @return color-mix(in oklab, $color, transparent (100% - $opacity));
+@function transparentize($opacity, $color: currentColor) {
+  @return color-mix(in oklab, $color $opacity, transparent);
 }

@@ -4,6 +4,6 @@
   transition: color 0.2s;
 
   @include hover-focus {
-    color: opaque-color(60%);
+    color: transparentize(60%);
   }
 }

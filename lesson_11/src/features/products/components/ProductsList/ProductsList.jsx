@@ -27,11 +27,15 @@ function ProductsList() {
           placeholder="Search products..."
         />
       </div>
-      <div className={styles.list}>
-        {filteredProductList.toReversed().map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {filteredProductList.length === 0 ? (
+        <p className={styles.empty}>Search came with no results...</p>
+      ) : (
+        <div className={styles.list}>
+          {filteredProductList.toReversed().map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

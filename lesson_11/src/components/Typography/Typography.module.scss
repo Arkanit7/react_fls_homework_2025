@@ -7,21 +7,21 @@
 
 .h1 {
   font-weight: 500;
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vi, 3rem);
   font-family: $ff-secondary;
   line-height: 1.125;
 }
 
 .h2 {
   font-weight: 500;
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 5vi, 2rem);
   font-family: $ff-secondary;
   line-height: 1.25;
 }
 
 .h3 {
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: clamp(1.375rem, 5vi, 1.5rem);
   font-family: $ff-secondary;
   line-height: 1.375;
 }

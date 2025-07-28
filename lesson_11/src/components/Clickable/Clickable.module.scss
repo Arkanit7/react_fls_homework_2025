@@ -1,6 +1,7 @@
 @use "~/abstracts" as *;
 
 .clickable {
+  display: inline-block;
   padding-inline: 1em;
   padding-block: 0.5em;
   border-radius: 0.5em;
@@ -12,13 +13,24 @@
   transition-property: background-color, color, box-shadow;
   transition-duration: 0.2s;
 
+  svg {
+    flex: none;
+    block-size: 1lh;
+  }
+
+  &:has(svg) {
+    display: inline-flex;
+    gap: 1ch;
+    align-items: center;
+  }
+
   @include hover {
-    background-color: opaque-color(60%, $clr-primary);
+    background-color: transparentize(60%, $clr-primary);
   }
 
   &:focus-visible {
     border-color: $clr-ring;
-    box-shadow: 0 0 0 3px opaque-color(50%, $clr-ring);
+    box-shadow: 0 0 0 3px transparentize(50%, $clr-ring);
   }
 
   &:disabled {
@@ -30,5 +42,9 @@
 .outline {
   border: 1px solid $clr-input;
   color: $clr-foreground;
-  background-color: opaque-color(70%, $clr-input);
+  background-color: transparentize(30%, $clr-input);
+
+  @include hover {
+    background-color: transparentize(50%, $clr-input);
+  }
 }

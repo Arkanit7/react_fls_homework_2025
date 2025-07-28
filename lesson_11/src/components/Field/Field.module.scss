@@ -7,13 +7,13 @@
   border-radius: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  background-color: opaque-color(30%, $clr-input);
+  background-color: transparentize(30%, $clr-input);
   outline: none;
   transition-property: color, box-shadow;
   transition-duration: 0.2s;
 
   &:focus-visible {
     border-color: $clr-ring;
-    box-shadow: 0 0 0 3px opaque-color(50%, $clr-ring);
+    box-shadow: 0 0 0 3px transparentize(50%, $clr-ring);
   }
 }
