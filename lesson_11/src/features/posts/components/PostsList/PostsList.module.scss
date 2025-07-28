@@ -1,0 +1,10 @@
+@use "~/abstracts" as *;
+
+.list {
+  @include flow(1rem);
+
+  @include media-width-from($bp-sm) {
+    gap: 1rem;
+    column-count: 2;
+  }
+}

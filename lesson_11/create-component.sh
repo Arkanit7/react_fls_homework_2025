@@ -20,10 +20,11 @@ fi
 # Create JSX file if it doesn't exist
 if [ ! -f "$COMPONENT_DIR/$COMPONENT_NAME.jsx" ]; then
   cat > "$COMPONENT_DIR/$COMPONENT_NAME.jsx" <<EOF
+import clsx from 'clsx/lite'
 import styles from './$COMPONENT_NAME.module.scss'
 
-function $COMPONENT_NAME() {
-  return <div className={styles.$COMPONENT_NAME}></div>
+function $COMPONENT_NAME({className = '', ...restProps}) {
+  return <div className={clsx(styles.$COMPONENT_NAME, className)} {...restProps} />
 }
 
 export default $COMPONENT_NAME

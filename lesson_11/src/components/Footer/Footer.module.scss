@@ -1,0 +1,13 @@
+@use "~/abstracts" as *;
+
+.wrap {
+  display: grid;
+  align-items: center;
+  min-block-size: rem(100px);
+  padding-block: 0.75rem;
+}
+
+.copyright {
+  color: $clr-muted-foreground;
+  text-align: center;
+}

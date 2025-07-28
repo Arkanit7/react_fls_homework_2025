@@ -1,0 +1,36 @@
+@use "~/abstracts" as *;
+
+.card {
+  break-inside: avoid-column;
+
+  @include flow(0.75rem);
+}
+
+.body {
+  @include flow(0.5rem);
+}
+
+.title,
+.line {
+  border-radius: $radius;
+  background-color: $clr-accent;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.title {
+  block-size: 2rem;
+}
+
+.line {
+  block-size: 1rem;
+
+  &:last-child {
+    inline-size: 60%;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

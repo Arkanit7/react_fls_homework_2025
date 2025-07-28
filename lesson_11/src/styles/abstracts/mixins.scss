@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 @mixin hover {
   @media (any-hover) {
     &:hover {
@@ -19,6 +21,23 @@
 @mixin flow($spacing: 1rem) {
   & > * + * {
     margin-block-start: $spacing;
+  }
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+
+  @if meta.type-of($lines) != "number" {
+    @error "Expected a number, but got #{lines}.";
   }
 }
 

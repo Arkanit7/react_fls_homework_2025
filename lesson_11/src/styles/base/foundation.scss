@@ -2,7 +2,11 @@
 @use "~/abstracts" as *;
 
 :root {
+  // miscellaneous
+  --spacing: 0.25rem;
   --radius: 0.65rem;
+  --container: 62rem;
+  --container-padding: 0.75rem;
 
   // fonts
   --ff-primary: Roboto, sans-serif;
@@ -24,6 +28,7 @@
   --clr-accent: oklch(26.9% 0 0deg);
   --clr-accent-foreground: oklch(98.5% 0 0deg);
   --clr-destructive: oklch(70.4% 0.191 22.216deg);
+  --clr-positive: oklch(64.8% 0.2 131.684deg);
   --clr-border: oklch(100% 0 0deg / 10%);
   --clr-input: oklch(100% 0 0deg / 15%);
   --clr-ring: oklch(55.6% 0 0deg);
@@ -36,6 +41,10 @@
   --clr-sidebar-border: oklch(100% 0 0deg / 10%);
   --clr-sidebar-ring: oklch(55.6% 0 0deg);
 }
+
+// html {
+//   scrollbar-gutter: stable;
+// }
 
 body {
   color: var(--clr-foreground);

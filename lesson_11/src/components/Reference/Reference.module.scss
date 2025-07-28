@@ -1,0 +1,9 @@
+@use "~/abstracts" as *;
+
+.reference {
+  transition: color 0.2s;
+
+  @include hover-focus {
+    color: opaque-color(60%);
+  }
+}

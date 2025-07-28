@@ -1,0 +1,23 @@
+@use "~/abstracts" as *;
+
+.card {
+  break-inside: avoid-column;
+
+  @include flow(0.375rem);
+}
+
+.title {
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.body {
+  color: $clr-muted-foreground;
+
+  @include line-clamp(2);
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

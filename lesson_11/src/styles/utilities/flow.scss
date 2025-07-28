@@ -1,0 +1,7 @@
+@use "~/abstracts" as *;
+
+@for $i from 1 through 12 {
+  .flow-#{$i} > * + * {
+    margin-block-start: calc($spacing * $i);
+  }
+}

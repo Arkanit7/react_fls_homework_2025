@@ -1,7 +1,10 @@
+@forward "./flow";
+@use "~/abstracts" as *;
+
 .icon {
   inline-size: 1em;
   block-size: 1em;
-  stroke: currentcolor;
+  stroke: currentColor;
 }
 
 .sr-only {
@@ -15,3 +18,27 @@
   border-width: 0;
   white-space: nowrap;
 }
+
+.scroll-locked {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// @for $i from 1 through 4 {
+//   .line-clamp-#{$i} {
+//     display: -webkit-box;
+//     overflow: hidden;
+//     -webkit-line-clamp: $i;
+//     -webkit-box-orient: vertical;
+//   }
+// }

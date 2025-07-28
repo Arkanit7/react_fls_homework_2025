@@ -1,6 +1,10 @@
-/* stylelint-disable value-keyword-case */
-$padding: 0.75rem;
-$container: 77.5rem;
+// miscellaneous
+$spacing: var(--spacing);
+$radius: var(--radius);
+$container: var(--container);
+$container-padding: var(--container-padding);
+
+// breakpoints
 $bp-3xs: 20em; // 320px
 $bp-2xs: 23.4375em; // 375px
 $bp-xs: 30em; // 480px
@@ -10,5 +14,35 @@ $bp-lg: 62em; // 992px
 $bp-xl: 75em; // 1200px
 $bp-2xl: 87.5em; // 1400px
 
-$ff-primary: Roboto, sans-serif;
-$ff-secondary: Oswald, sans-serif;
+// fonts
+$ff-primary: var(--ff-primary);
+$ff-secondary: var(--ff-secondary);
+
+// colors
+$clr-background: var(--clr-background);
+$clr-foreground: var(--clr-foreground);
+$clr-card: var(--clr-card);
+$clr-card-foreground: var(--clr-card-foreground);
+$clr-popover: var(--clr-popover);
+$clr-popover-foreground: var(--clr-popover-foreground);
+$clr-primary: var(--clr-primary);
+$clr-primary-foreground: var(--clr-primary-foreground);
+$clr-secondary: var(--clr-secondary);
+$clr-secondary-foreground: var(--clr-secondary-foreground);
+$clr-muted: var(--clr-muted);
+$clr-muted-foreground: var(--clr-muted-foreground);
+$clr-accent: var(--clr-accent);
+$clr-accent-foreground: var(--clr-accent-foreground);
+$clr-destructive: var(--clr-destructive);
+$clr-positive: var(--clr-positive);
+$clr-border: var(--clr-border);
+$clr-input: var(--clr-input);
+$clr-ring: var(--clr-ring);
+$clr-sidebar: var(--clr-sidebar);
+$clr-sidebar-foreground: var(--clr-sidebar-foreground);
+$clr-sidebar-primary: var(--clr-sidebar-primary);
+$clr-sidebar-primary-foreground: var(--clr-sidebar-primary-foreground);
+$clr-sidebar-accent: var(--clr-sidebar-accent);
+$clr-sidebar-accent-foreground: var(--clr-sidebar-accent-foreground);
+$clr-sidebar-border: var(--clr-sidebar-border);
+$clr-sidebar-ring: var(--clr-sidebar-ring);

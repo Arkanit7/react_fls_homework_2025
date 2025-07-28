@@ -1,0 +1,61 @@
+@use "~/abstracts" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid $clr-border;
+  border-radius: $radius;
+  color: $clr-card-foreground;
+  font-family: $ff-secondary;
+  background-color: $clr-card;
+
+  @include media-width-from($bp-sm) {
+    gap: 0.5rem;
+  }
+}
+
+.header {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  gap: inherit;
+}
+
+.title {
+  flex: auto;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.375;
+}
+
+.availability {
+  color: $clr-positive;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.frame {
+  position: relative;
+  order: -1;
+  aspect-ratio: 16/9;
+
+  @include hover-focus {
+    .image {
+      scale: 1.025;
+    }
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  object-fit: contain;
+  inline-size: 100%;
+  block-size: 100%;
+  transition: scale 0.2s;
+}

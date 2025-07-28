@@ -1,0 +1,34 @@
+@use "~/abstracts" as *;
+
+.clickable {
+  padding-inline: 1em;
+  padding-block: 0.5em;
+  border-radius: 0.5em;
+  color: $clr-primary-foreground;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background-color: $clr-primary;
+  outline: none;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 0.2s;
+
+  @include hover {
+    background-color: opaque-color(60%, $clr-primary);
+  }
+
+  &:focus-visible {
+    border-color: $clr-ring;
+    box-shadow: 0 0 0 3px opaque-color(50%, $clr-ring);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.outline {
+  border: 1px solid $clr-input;
+  color: $clr-foreground;
+  background-color: opaque-color(70%, $clr-input);
+}

@@ -28,3 +28,7 @@
 @function em($unit-px) {
   @return convert-units($value, 16px, 1em, 16);
 }
+
+@function opaque-color($opacity, $color: currentColor) {
+  @return color-mix(in oklab, $color, transparent (100% - $opacity));
+}

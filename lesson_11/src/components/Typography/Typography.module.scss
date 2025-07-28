@@ -1,0 +1,31 @@
+@use "~/abstracts" as *;
+
+.base {
+  font-family: $ff-primary;
+  line-height: 1.5;
+}
+
+.h1 {
+  font-weight: 500;
+  font-size: 3rem;
+  font-family: $ff-secondary;
+  line-height: 1.125;
+}
+
+.h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  font-family: $ff-secondary;
+  line-height: 1.25;
+}
+
+.h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: $ff-secondary;
+  line-height: 1.375;
+}
+
+.code {
+  font-family: monospace;
+}

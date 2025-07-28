@@ -1,0 +1,19 @@
+@use "~/abstracts" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background-color: opaque-color(50%, $clr-background);
+}
+
+.dialog {
+  inline-size: min(calc(100% - 2 * $container-padding), rem(425px));
+  padding: 1.5rem;
+  border: 1px solid $clr-border;
+  border-radius: $radius;
+  color: $clr-foreground;
+  background-color: $clr-background;
+}
