@@ -1,12 +1,54 @@
-# React + Vite
+# React SWC Template Homework Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern React application template using Vite, SWC, Redux Toolkit, and SCSS modules. It is designed for educational purposes and as a starting point for scalable, maintainable React projects.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ Fast development with Vite and SWC
+- 🧩 Modular file structure for components, layouts, and pages
+- 🗂️ State management with Redux Toolkit
+- 🎨 SCSS modules for styling
+- 🧪 Linting with ESLint and Prettier
+- 🖼️ Skeleton loaders and error handling for async data
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies:**
+
+   ```bash
+   bun i
+   ```
+
+2. **Run the development server:**
+
+   ```bash
+   bun run dev
+   ```
+
+3. **Build for production:**
+
+   ```bash
+   bun run build
+   ```
+
+4. **Preview production build:**
+   ```bash
+   bun run preview
+   ```
+
+## Linting & Formatting
+
+- Run ESLint:
+  ```bash
+  bun run lint
+  ```
+- Prettier is included for code formatting.
+
+## Main Technologies
+
+- React 19
+- Redux Toolkit
+- React Router 7
+- SCSS Modules
+- Vite
+- ESLint & Prettier
