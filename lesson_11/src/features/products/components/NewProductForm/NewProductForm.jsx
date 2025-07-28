@@ -9,8 +9,11 @@ function NewProductForm({closeDialog}) {
   const dispatch = useDispatch()
 
   function handleFormSubmission(formData) {
-    const payload = Object.fromEntries(formData)
-    dispatch(addProduct(payload))
+    const name = formData.get('name')
+    const price = parseFloat(formData.get('price'))
+    const thumbnail = formData.get('thumbnail')
+
+    dispatch(addProduct({name, price, thumbnail}))
     closeDialog()
   }
 
@@ -29,6 +32,7 @@ function NewProductForm({closeDialog}) {
               name="price"
               label="Price"
               required
+              min="0.01"
               type="number"
               step="0.01"
             />

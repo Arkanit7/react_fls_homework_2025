@@ -10,6 +10,11 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     addProduct(state, {payload}) {
+      if (typeof payload.price !== 'number')
+        throw new TypeError('Product price must be a number.')
+      if (payload.price <= 0)
+        throw new RangeError('Product price must be positive.')
+
       state.productsList.push({...payload, id: crypto.randomUUID()})
     },
     removeProduct(state, {payload}) {

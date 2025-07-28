@@ -2,7 +2,7 @@ import {Link} from 'react-router'
 import styles from './ProductCard.module.scss'
 import Reference from '@/components/Reference'
 
-const PRODUCT_PLACEHOLDER = 'images/product_placeholder.webp'
+const PRODUCT_PLACEHOLDER = 'images/products/product_placeholder.webp'
 
 const priceFormatter = Intl.NumberFormat('en-US', {
   currency: 'USD',
@@ -12,7 +12,12 @@ const priceFormatter = Intl.NumberFormat('en-US', {
 })
 
 function handleImageError(e) {
-  e.currentTarget.src = PRODUCT_PLACEHOLDER
+  const imgEl = e.currentTarget
+
+  if (imgEl.dataset.fallback) return
+
+  imgEl.src = PRODUCT_PLACEHOLDER
+  imgEl.dataset.fallback = 'true'
 }
 
 function ProductCard({product}) {
