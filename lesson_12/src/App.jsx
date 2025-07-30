@@ -14,7 +14,7 @@ function App() {
         offset={{top: '4rem', right: '0.75rem'}}
         theme="dark"
       />
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </Provider>
   )
 }
