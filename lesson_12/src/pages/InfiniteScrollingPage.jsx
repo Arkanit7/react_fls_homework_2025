@@ -1,5 +1,5 @@
 import Container from '@/components/ui/Container'
-import InfinitePosts from '@/components/InfinitePosts'
+import InfinitePosts from '@/features/posts/components/InfinitePosts'
 import Typography from '@/components/ui/Typography'
 
 function PaginationPage() {

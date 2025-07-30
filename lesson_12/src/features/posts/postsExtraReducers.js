@@ -1,5 +1,5 @@
 import {POSTS_STATUS} from '@/lib/constants'
-import {addPost, getPagePosts, removePost} from './postsThunk'
+import {addPost, getPagePosts, removePost} from './postsThunks'
 
 function getPagePostsReducer(builder) {
   return builder
@@ -10,11 +10,11 @@ function getPagePostsReducer(builder) {
       state.status = POSTS_STATUS.ERROR
     })
     .addCase(getPagePosts.fulfilled, (state, {payload}) => {
-      state.status = POSTS_STATUS.IDLE
+      state.status = POSTS_STATUS.SUCCESS
       state.totalPages = payload.pagination.totalPages
       state.totalPosts = payload.pagination.totalItems
 
-      const shouldAppendPosts = state.loadedPagesNumbers.length > 1
+      const shouldAppendPosts = state.chosenPages.length > 1
 
       state.posts = shouldAppendPosts
         ? state.posts.concat(payload.items)
@@ -23,65 +23,50 @@ function getPagePostsReducer(builder) {
 }
 
 function removePostReducer(builder) {
-  builder
+  return builder
     .addCase(removePost.pending, (state, {meta}) => {
       const postToRemove = state.posts.find((post) => post.id === meta.arg)
+
+      if (!postToRemove) return
+
       postToRemove.isPending = true
     })
     .addCase(removePost.rejected, (state, {meta}) => {
       const postToRemove = state.posts.find((post) => post.id === meta.arg)
+
+      if (!postToRemove) return
+
       postToRemove.isPending = false
     })
     .addCase(removePost.fulfilled, (state, {meta}) => {
       const removedPostIndex = state.posts.findIndex(
         (post) => post.id === meta.arg,
       )
-      state.posts.splice(removedPostIndex, 1)
+      if (removedPostIndex !== -1) state.posts.splice(removedPostIndex, 1)
       state.totalPosts--
 
       // In case of an empty page, automatically switch to a first no-empty page
-      const firstLoadedPage = state.loadedPagesNumbers[0]
+      const firstLoadedPage = state.chosenPages[0]
 
       if (
         state.posts.length === 0 &&
         firstLoadedPage > 1 &&
         state.totalPages > 1
       )
-        state.loadedPagesNumbers = [firstLoadedPage - 1]
+        state.chosenPages = [firstLoadedPage - 1]
     })
 }
 
 function addPostReducer(builder) {
   return builder
-    .addCase(addPost.pending, (state, {meta}) => {
-      const creationDate = new Date()
-      const id = creationDate.getTime().toString()
-      const createdAt = creationDate.toISOString()
-
-      const optimisticPost = {
-        id,
-        createdAt,
-        likesNumber: 0,
-        dislikesNumber: 0,
-        isOptimistic: true,
-        ...meta.arg,
-      }
-
-      state.posts.push(optimisticPost)
+    .addCase(addPost.pending, (state) => {
+      state.status = POSTS_STATUS.LOADING
     })
     .addCase(addPost.rejected, (state) => {
-      const optimisticPostIndex = state.posts.findIndex(
-        (post) => post.isOptimistic,
-      )
-
-      state.posts.splice(optimisticPostIndex, 1)
+      state.status = POSTS_STATUS.ERROR
     })
-    .addCase(addPost.fulfilled, (state, {payload}) => {
-      const optimisticPostIndex = state.posts.findIndex(
-        (post) => post.isOptimistic,
-      )
-
-      state.posts.splice(optimisticPostIndex, 1, payload)
+    .addCase(addPost.fulfilled, (state) => {
+      state.status = POSTS_STATUS.SUCCESS
       state.totalPosts++
     })
 }

@@ -1,25 +1,28 @@
 import {useDispatch} from 'react-redux'
-import Clickable from './ui/Clickable'
-import {addPost} from '@/app/postsThunk'
-import FieldWithLabel from './ui/FieldWithLabel'
-import TextareaWithLabel from './ui/TextareaWithLabel'
+import Clickable from '../../../components/ui/Clickable'
+import {addPost} from '@/features/posts/postsThunks'
+import FieldWithLabel from '../../../components/ui/FieldWithLabel'
+import TextareaWithLabel from '../../../components/ui/TextareaWithLabel'
 import {BookPlusIcon} from 'lucide-react'
-import Typography from './ui/Typography'
+import Typography from '../../../components/ui/Typography'
 import {toast} from 'sonner'
+import Modal from '@/components/ui/Modal'
 
-function NewPostForm() {
+function NewPostFormModal({closeModal}) {
   const dispatch = useDispatch()
 
-  function handleFormAction(formData) {
-    dispatch(addPost(Object.fromEntries(formData))).then(({meta, payload}) => {
-      if (meta.requestStatus === 'fulfilled')
-        toast.success('Успішно додано новий пост.')
-      else if (meta.requestStatus === 'rejected') toast.error(payload)
-    })
+  async function handleFormAction(formData) {
+    const {meta, payload} = await dispatch(
+      addPost(Object.fromEntries(formData)),
+    )
+    if (meta.requestStatus === 'fulfilled') {
+      toast.success('Успішно додано новий пост.')
+      closeModal()
+    } else if (meta.requestStatus === 'rejected') toast.error(payload)
   }
 
   return (
-    <>
+    <Modal closeModal={closeModal}>
       <form className="flow-4" action={handleFormAction} autoComplete="off">
         <Typography as="p" variant="h3">
           Новий пост
@@ -35,6 +38,9 @@ function NewPostForm() {
             <FieldWithLabel name="authorId" label="Автор" required />
           </li>
           <li className="actions">
+            <Clickable onClick={closeModal} type="reset" variant="outline">
+              Скасувати
+            </Clickable>
             <Clickable type="submit">
               <BookPlusIcon /> Створити
             </Clickable>
@@ -49,8 +55,8 @@ function NewPostForm() {
           flex-wrap: wrap;
         }
       `}</style>
-    </>
+    </Modal>
   )
 }
 
-export default NewPostForm
+export default NewPostFormModal

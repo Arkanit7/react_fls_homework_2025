@@ -22,7 +22,7 @@ function Clickable({
         {...restProps}
       />
       <style jsx global>{`
-        .button:is(svg, img) {
+        .button :is(svg, img) {
           flex: none;
           block-size: 100%;
         }

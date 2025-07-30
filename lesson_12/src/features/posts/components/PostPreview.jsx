@@ -1,7 +1,7 @@
-import {removePost} from '@/app/postsThunk'
+import {removePost} from '@/features/posts/postsThunks'
 import clsx from 'clsx'
 import {useDispatch} from 'react-redux'
-import Clickable from './ui/Clickable'
+import Clickable from '../../../components/ui/Clickable'
 import {toast} from 'sonner'
 
 const dateFormatter = new Intl.DateTimeFormat('uk-UA', {

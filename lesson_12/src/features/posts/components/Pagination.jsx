@@ -1,19 +1,17 @@
-import {setLoadedPagesNumbers} from '@/app/postsSlice'
+import {choosePageNumber} from '@/features/posts/postsSlice'
 import {useDispatch, useSelector} from 'react-redux'
-import Clickable from './ui/Clickable'
+import Clickable from '../../../components/ui/Clickable'
 import {ChevronLeft, ChevronRight} from 'lucide-react'
 import {POSTS_STATUS} from '@/lib/constants'
 
 function Pagination() {
-  const {loadedPagesNumbers, totalPages, status} = useSelector(
-    (state) => state.posts,
-  )
+  const {chosenPages, totalPages, status} = useSelector((state) => state.posts)
   const dispatch = useDispatch()
   const isLoading = status === POSTS_STATUS.LOADING
-  const lastLoadedPage = loadedPagesNumbers.at(-1)
+  const lastLoadedPage = chosenPages.at(-1)
 
   function handlePageNumberChange(pageNumber) {
-    return () => dispatch(setLoadedPagesNumbers(pageNumber))
+    return () => dispatch(choosePageNumber(pageNumber))
   }
 
   return (
@@ -23,7 +21,7 @@ function Pagination() {
           <Clickable
             variant="icon"
             size="sm"
-            disabled={isLoading || loadedPagesNumbers.includes(1)}
+            disabled={isLoading || chosenPages.includes(1)}
             onClick={handlePageNumberChange(lastLoadedPage - 1)}
             type="button"
           >
@@ -34,7 +32,7 @@ function Pagination() {
           {Array.from({length: totalPages}, (_, i) => (
             <li key={i}>
               <Clickable
-                disabled={isLoading || loadedPagesNumbers.includes(i + 1)}
+                disabled={isLoading || chosenPages.includes(i + 1)}
                 size="sm"
                 onClick={handlePageNumberChange(i + 1)}
                 type="button"
@@ -49,9 +47,7 @@ function Pagination() {
             variant="icon"
             size="sm"
             disabled={
-              isLoading ||
-              totalPages <= 0 ||
-              loadedPagesNumbers.includes(totalPages)
+              isLoading || totalPages <= 0 || chosenPages.includes(totalPages)
             }
             onClick={handlePageNumberChange(lastLoadedPage + 1)}
             type="button"
@@ -100,10 +96,6 @@ function Pagination() {
 
         .list > * {
           scroll-snap-align: start;
-        }
-
-        .active {
-          background-color: #666;
         }
       `}</style>
     </>

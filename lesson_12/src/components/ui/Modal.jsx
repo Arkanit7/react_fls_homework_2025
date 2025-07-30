@@ -2,14 +2,15 @@ import {createPortal} from 'react-dom'
 import Clickable from './Clickable'
 import {X} from 'lucide-react'
 
-function Modal({children, onClose}) {
+function Modal({children, closeModal}) {
+  function handleClickOutside(e) {
+    if (e.target.classList.contains('overlay')) closeModal()
+  }
+
   return createPortal(
     <>
-      <div className="overlay">
+      <div className="overlay" onClick={handleClickOutside}>
         <div className="dialog" role="dialog">
-          <Clickable variant="icon" onClick={onClose}>
-            <X />
-          </Clickable>
           {children}
         </div>
       </div>

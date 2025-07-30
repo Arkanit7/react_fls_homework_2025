@@ -1,5 +1,5 @@
 import Container from '@/components/ui/Container'
-import PostsManager from '@/components/PostsManager'
+import PostsManager from '@/features/posts/components/PostsManager'
 import Typography from '@/components/ui/Typography'
 
 function PaginationPage() {

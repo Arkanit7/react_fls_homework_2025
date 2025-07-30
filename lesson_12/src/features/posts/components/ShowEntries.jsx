@@ -1,4 +1,4 @@
-import {setLoadedPagesNumbers, setPostsPerPage} from '@/app/postsSlice'
+import {choosePageNumber, setPostsPerPage} from '@/features/posts/postsSlice'
 import {
   INITIAL_PAGE,
   INITIAL_POSTS_PER_PAGE,
@@ -22,7 +22,7 @@ function ShowEntries() {
     const newAmount = parseInt(e.currentTarget.value)
     setAmount(newAmount)
     dispatch(setPostsPerPage(newAmount))
-    dispatch(setLoadedPagesNumbers(INITIAL_PAGE))
+    dispatch(choosePageNumber(INITIAL_PAGE))
   }
 
   return (

@@ -3,7 +3,7 @@ import {
   INITIAL_PAGE,
   INITIAL_POSTS_PER_PAGE,
   POSTS_STATUS,
-} from '../lib/constants'
+} from '../../lib/constants'
 import {
   addPostReducer,
   getPagePostsReducer,
@@ -13,31 +13,34 @@ import {
 const initialState = {
   posts: [],
   postsPerPage: INITIAL_POSTS_PER_PAGE,
-  loadedPagesNumbers: [INITIAL_PAGE],
+  chosenPages: [INITIAL_PAGE],
+  status: POSTS_STATUS.IDLE,
   totalPages: 0,
   totalPosts: 0,
-  status: POSTS_STATUS.IDLE,
 }
 
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    setLoadedPagesNumbers(state, {payload: pageNumber}) {
-      if (typeof pageNumber !== 'number')
-        throw new TypeError('PageNumber must be a number')
-      if (pageNumber < 0)
-        throw new RangeError("PageNumber can't be lesser than 0.")
-
-      state.loadedPagesNumbers = [pageNumber]
+    resetPostsState() {
+      return initialState
     },
-    addLoadedPagesNumbers(state, {payload: pageNumber}) {
+    choosePageNumber(state, {payload: pageNumber}) {
       if (typeof pageNumber !== 'number')
         throw new TypeError('PageNumber must be a number')
       if (pageNumber < 0)
         throw new RangeError("PageNumber can't be lesser than 0.")
 
-      state.loadedPagesNumbers.push(pageNumber)
+      state.chosenPages = [pageNumber]
+    },
+    chooseMorePages(state, {payload: pageNumber}) {
+      if (typeof pageNumber !== 'number')
+        throw new TypeError('PageNumber must be a number')
+      if (pageNumber < 0)
+        throw new RangeError("PageNumber can't be lesser than 0.")
+
+      state.chosenPages.push(pageNumber)
     },
     setPostsPerPage(state, {payload: amount}) {
       if (typeof amount !== 'number')
@@ -54,6 +57,10 @@ const postsSlice = createSlice({
   },
 })
 
-export const {setPostsPerPage, setLoadedPagesNumbers, addLoadedPagesNumbers} =
-  postsSlice.actions
+export const {
+  resetPostsState,
+  setPostsPerPage,
+  choosePageNumber,
+  chooseMorePages,
+} = postsSlice.actions
 export const postsReducer = postsSlice.reducer

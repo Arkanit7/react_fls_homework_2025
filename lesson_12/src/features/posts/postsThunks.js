@@ -2,7 +2,7 @@ import apiClient from '@/api/apiClient'
 import initialPosts from '@/lib/initialPosts'
 import {createAsyncThunk} from '@reduxjs/toolkit'
 
-const postsApi = apiClient('posts', 500, initialPosts, 0.25)
+const postsApi = apiClient('posts', 500, initialPosts)
 
 const getPagePosts = createAsyncThunk(
   'posts/getPagePosts',
