@@ -1,0 +1,113 @@
+import {setLoadedPagesNumbers} from '@/app/postsSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import Clickable from './ui/Clickable'
+import {ChevronLeft, ChevronRight} from 'lucide-react'
+import {POSTS_STATUS} from '@/lib/constants'
+
+function Pagination() {
+  const {loadedPagesNumbers, totalPages, status} = useSelector(
+    (state) => state.posts,
+  )
+  const dispatch = useDispatch()
+  const isLoading = status === POSTS_STATUS.LOADING
+  const lastLoadedPage = loadedPagesNumbers.at(-1)
+
+  function handlePageNumberChange(pageNumber) {
+    return () => dispatch(setLoadedPagesNumbers(pageNumber))
+  }
+
+  return (
+    <>
+      <div className="actions">
+        <div className="column">
+          <Clickable
+            variant="icon"
+            size="sm"
+            disabled={isLoading || loadedPagesNumbers.includes(1)}
+            onClick={handlePageNumberChange(lastLoadedPage - 1)}
+            type="button"
+          >
+            <ChevronLeft />
+          </Clickable>
+        </div>
+        <ol className="list">
+          {Array.from({length: totalPages}, (_, i) => (
+            <li key={i}>
+              <Clickable
+                disabled={isLoading || loadedPagesNumbers.includes(i + 1)}
+                size="sm"
+                onClick={handlePageNumberChange(i + 1)}
+                type="button"
+              >
+                {i + 1}
+              </Clickable>
+            </li>
+          ))}
+        </ol>
+        <div className="column">
+          <Clickable
+            variant="icon"
+            size="sm"
+            disabled={
+              isLoading ||
+              totalPages <= 0 ||
+              loadedPagesNumbers.includes(totalPages)
+            }
+            onClick={handlePageNumberChange(lastLoadedPage + 1)}
+            type="button"
+          >
+            <ChevronRight />
+          </Clickable>
+        </div>
+      </div>
+      <style jsx>{`
+        .actions {
+          display: flex;
+          align-items: start;
+          justify-content: center;
+        }
+
+        .column {
+          flex: none;
+        }
+
+        .list {
+          --fade-out-padding: 0.375rem;
+
+          display: flex;
+          gap: var(--fade-out-padding);
+          list-style-type: none;
+          align-items: start;
+
+          overflow-x: auto;
+          scroll-snap-type: inline proximity;
+          scrollbar-width: thin;
+          padding-inline: var(--fade-out-padding);
+          scroll-padding-inline: var(--fade-out-padding);
+          mask:
+            linear-gradient(
+                to right,
+                transparent,
+                white var(--fade-out-padding)
+              )
+              intersect,
+            linear-gradient(
+              to left,
+              transparent,
+              white var(--fade-out-padding)
+            );
+        }
+
+        .list > * {
+          scroll-snap-align: start;
+        }
+
+        .active {
+          background-color: #666;
+        }
+      `}</style>
+    </>
+  )
+}
+
+export default Pagination
