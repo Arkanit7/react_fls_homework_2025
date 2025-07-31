@@ -1,28 +1,29 @@
+import {chooseMorePages, resetPostsState} from '@/features/posts/postsSlice'
+import {getPagePosts} from '@/features/posts/postsThunks'
+import {POSTS_STATUS} from '@/lib/constants'
+import {RotateCw} from 'lucide-react'
+import {useEffect, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import PostsList from './PostsList'
-import {POSTS_STATUS} from '@/lib/constants'
-import {chooseMorePages, resetPostsState} from '@/features/posts/postsSlice'
-import {useEffect, useRef} from 'react'
-import {getPagePosts} from '@/features/posts/postsThunks'
-import {RotateCw} from 'lucide-react'
 
 function InfinitePosts() {
   const {posts, status, chosenPages, totalPages, postsPerPage} = useSelector(
     (state) => state.posts,
   )
   const isLoading = status === POSTS_STATUS.LOADING
-  const lastLoadedPage = chosenPages.at(-1)
+  const lastChosenPage = chosenPages.at(-1)
   const dispatch = useDispatch()
-  const observableEndOfListRef = useRef()
+
+  const observableEndListRef = useRef()
 
   useEffect(() => {
     dispatch(
       getPagePosts({
-        pageNumber: lastLoadedPage,
+        pageNumber: lastChosenPage,
         postsPerPage,
       }),
     )
-  }, [dispatch, lastLoadedPage, postsPerPage])
+  }, [dispatch, lastChosenPage, postsPerPage])
 
   useEffect(() => {
     // Cleanup function to reset state when component unmounts
@@ -30,28 +31,24 @@ function InfinitePosts() {
   }, [dispatch])
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) =>
       entries.forEach((entry) => {
-        if (isLoading || !entry.isIntersecting || lastLoadedPage >= totalPages)
-          return
+        if (isLoading || !entry.isIntersecting) return
 
-        dispatch(chooseMorePages(lastLoadedPage + 1))
-      })
-    })
+        if (lastChosenPage >= totalPages) observer.disconnect()
+        else dispatch(chooseMorePages(lastChosenPage + 1))
+      }),
+    )
 
-    const node = observableEndOfListRef.current
-    observer.observe(node)
+    observer.observe(observableEndListRef.current)
 
-    return () => observer.unobserve(node)
-  }, [dispatch, isLoading, lastLoadedPage, totalPages])
+    return () => observer.disconnect()
+  }, [dispatch, isLoading, lastChosenPage, totalPages])
 
   return (
     <>
       <PostsList posts={posts} />
-      <span
-        className="js-observable-end-of-the-list"
-        ref={observableEndOfListRef}
-      ></span>
+      <span ref={observableEndListRef}></span>
       {isLoading && (
         <div className="loader">
           <span>

@@ -7,10 +7,10 @@
   --container: 56rem;
   --container-padding: 0.75rem;
 
-  --background: black;
+  --background: oklch(14.5% 0 0);
   --foreground: #fafafa;
   --primary: #fafafa;
-  --primary-foreground: black;
+  --primary-foreground: oklch(14.5% 0 0);
   --secondary: #262626;
   --secondary-foreground: #fafafa;
   --card: #111;
@@ -18,9 +18,7 @@
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --border: #333;
-  --popover: #111;
-  --popover-foreground: #eee;
-  --ring: #777;
+  --ring: oklch(55.6% 0 0);
   --input: oklch(1 0 0 / 15%);
 
   color-scheme: dark;

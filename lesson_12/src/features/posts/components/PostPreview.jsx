@@ -13,10 +13,10 @@ function PostPreview({post}) {
   const dispatch = useDispatch()
 
   async function handlePostRemoval() {
-    dispatch(removePost(post.id)).then(({meta, payload}) => {
-      if (meta.requestStatus === 'fulfilled') toast.success(payload.message)
-      else if (meta.requestStatus === 'rejected') toast.error(payload)
-    })
+    const {meta, payload} = await dispatch(removePost(post.id))
+
+    if (meta.requestStatus === 'fulfilled') toast.success(payload.message)
+    else if (meta.requestStatus === 'rejected') toast.error(payload)
   }
 
   return (
@@ -54,10 +54,9 @@ function PostPreview({post}) {
           background-color: var(--card);
           color: var(--card-foreground);
           padding: 1.7rem 0.75rem 1.2rem;
-          border-radius: 1rem;
+          border-radius: 0.75rem;
           border: 1px solid var(--border);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-          transition: box-shadow 0.2s;
         }
 
         .post > * + * {

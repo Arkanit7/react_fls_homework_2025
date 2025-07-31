@@ -1,9 +1,29 @@
+import Clickable from '@/components/ui/Clickable'
+import Container from '@/components/ui/Container'
+import Typography from '@/components/ui/Typography'
+import {Link} from 'react-router'
+
 function NotFoundPage() {
   return (
-    <Container>
-      <h1>404, not found</h1>
-    </Container>
-  );
+    <>
+      <Container className="flow-6">
+        <Typography as="h1" className="text-center">
+          404, не знайдено
+        </Typography>
+        <div>
+          <Clickable as={Link} to="/" size="lg">
+            На головну
+          </Clickable>
+        </div>
+      </Container>
+      <style jsx>{`
+        div {
+          display: flex;
+          justify-content: center;
+        }
+      `}</style>
+    </>
+  )
 }
 
-export default NotFoundPage;
+export default NotFoundPage

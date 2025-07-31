@@ -1,14 +1,15 @@
 import {choosePageNumber} from '@/features/posts/postsSlice'
 import {useDispatch, useSelector} from 'react-redux'
-import Clickable from '../../../components/ui/Clickable'
+import Clickable from '@/components/ui/Clickable'
 import {ChevronLeft, ChevronRight} from 'lucide-react'
 import {POSTS_STATUS} from '@/lib/constants'
 
 function Pagination() {
   const {chosenPages, totalPages, status} = useSelector((state) => state.posts)
-  const dispatch = useDispatch()
   const isLoading = status === POSTS_STATUS.LOADING
-  const lastLoadedPage = chosenPages.at(-1)
+  const lastChosenPage = chosenPages.at(-1)
+
+  const dispatch = useDispatch()
 
   function handlePageNumberChange(pageNumber) {
     return () => dispatch(choosePageNumber(pageNumber))
@@ -22,10 +23,10 @@ function Pagination() {
             variant="icon"
             size="sm"
             disabled={isLoading || chosenPages.includes(1)}
-            onClick={handlePageNumberChange(lastLoadedPage - 1)}
-            type="button"
+            onClick={handlePageNumberChange(lastChosenPage - 1)}
           >
             <ChevronLeft />
+            <div className="sr-only">Назад</div>
           </Clickable>
         </div>
         <ol className="list">
@@ -35,7 +36,6 @@ function Pagination() {
                 disabled={isLoading || chosenPages.includes(i + 1)}
                 size="sm"
                 onClick={handlePageNumberChange(i + 1)}
-                type="button"
               >
                 {i + 1}
               </Clickable>
@@ -49,10 +49,10 @@ function Pagination() {
             disabled={
               isLoading || totalPages <= 0 || chosenPages.includes(totalPages)
             }
-            onClick={handlePageNumberChange(lastLoadedPage + 1)}
-            type="button"
+            onClick={handlePageNumberChange(lastChosenPage + 1)}
           >
             <ChevronRight />
+            <div className="sr-only">Уперед</div>
           </Clickable>
         </div>
       </div>
@@ -72,7 +72,6 @@ function Pagination() {
 
           display: flex;
           gap: var(--fade-out-padding);
-          list-style-type: none;
           align-items: start;
 
           overflow-x: auto;

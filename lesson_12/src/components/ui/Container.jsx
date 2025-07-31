@@ -1,9 +1,9 @@
 import clsx from 'clsx/lite'
 
-function Container({className, children}) {
+function Container({className, ...restProps}) {
   return (
     <>
-      <div className={clsx('container', className)}>{children}</div>
+      <div className={clsx('container', className)} {...restProps} />
       <style jsx>{`
         .container {
           max-inline-size: var(--container);

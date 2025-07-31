@@ -1,7 +1,7 @@
 import {POSTS_STATUS} from '@/lib/constants'
 import PostsList from './PostsList'
 import {getPagePosts} from '@/features/posts/postsThunks'
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Pagination from './Pagination'
 import NewPostFormModal from './NewPostFormModal'
@@ -16,41 +16,28 @@ function PostsManager() {
   const dispatch = useDispatch()
 
   const isLoading = status === POSTS_STATUS.LOADING
-  const lastLoadedPage = chosenPages.at(-1)
+  const lastChosenPage = chosenPages.at(-1)
 
   useEffect(() => {
     dispatch(
       getPagePosts({
-        pageNumber: lastLoadedPage,
+        pageNumber: lastChosenPage,
         postsPerPage,
       }),
     )
-  }, [dispatch, lastLoadedPage, postsPerPage, totalPosts])
+  }, [dispatch, lastChosenPage, postsPerPage, totalPosts])
 
   useEffect(() => {
     // Cleanup function to reset state when component unmounts
     return () => dispatch(resetPostsState())
   }, [dispatch])
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  function toggleModal(shouldOpen = false) {
-    setIsModalOpen(shouldOpen)
-    document.body.classList.toggle('scroll-locked', shouldOpen)
-  }
-
   return (
     <>
       <div className="flow-4">
-        {isModalOpen && (
-          <NewPostFormModal closeModal={() => toggleModal(false)} />
-        )}
-
         <div className="actions">
           <ShowEntries />
-          <Clickable onClick={() => toggleModal(true)}>
-            <BookPlusIcon /> Створити
-          </Clickable>
+          <NewPostFormModal />
         </div>
 
         <Pagination />
@@ -59,10 +46,10 @@ function PostsManager() {
 
         <div className="load-more">
           <Clickable
-            onClick={() => dispatch(chooseMorePages(lastLoadedPage + 1))}
+            onClick={() => dispatch(chooseMorePages(lastChosenPage + 1))}
             variant="ghost"
             size="lg"
-            disabled={isLoading || lastLoadedPage >= totalPages}
+            disabled={isLoading || lastChosenPage >= totalPages}
           >
             <RotateCw />
             {isLoading ? 'Завантаження...' : 'Завантажити ще'}

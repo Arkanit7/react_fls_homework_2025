@@ -29,8 +29,10 @@ function Clickable({
       `}</style>
       <style jsx>{`
         .button {
+          flex: none;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 0.625em;
 
           block-size: 2.5em;
@@ -39,6 +41,7 @@ function Clickable({
           border-radius: 0.375rem;
           color: var(--primary-foreground);
           background-color: var(--primary);
+          outline: none;
           transition-property: color, background-color, box-shadow;
           transition-duration: 0.3s;
 
@@ -46,6 +49,12 @@ function Clickable({
           font-weight: 500;
           line-height: 1.375;
           white-space: nowrap;
+        }
+
+        .button:focus-visible {
+          box-shadow:
+            0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent),
+            rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
         }
 
         .button--size--sm {

@@ -27,26 +27,12 @@ const postsSlice = createSlice({
       return initialState
     },
     choosePageNumber(state, {payload: pageNumber}) {
-      if (typeof pageNumber !== 'number')
-        throw new TypeError('PageNumber must be a number')
-      if (pageNumber < 0)
-        throw new RangeError("PageNumber can't be lesser than 0.")
-
       state.chosenPages = [pageNumber]
     },
     chooseMorePages(state, {payload: pageNumber}) {
-      if (typeof pageNumber !== 'number')
-        throw new TypeError('PageNumber must be a number')
-      if (pageNumber < 0)
-        throw new RangeError("PageNumber can't be lesser than 0.")
-
       state.chosenPages.push(pageNumber)
     },
-    setPostsPerPage(state, {payload: amount}) {
-      if (typeof amount !== 'number')
-        throw new TypeError('Amount must be a number')
-      if (amount < 1) throw new RangeError("Amount can't be lesser than 1.")
-
+    chosePostsPerPage(state, {payload: amount}) {
       state.postsPerPage = amount
     },
   },
@@ -59,7 +45,7 @@ const postsSlice = createSlice({
 
 export const {
   resetPostsState,
-  setPostsPerPage,
+  chosePostsPerPage,
   choosePageNumber,
   chooseMorePages,
 } = postsSlice.actions

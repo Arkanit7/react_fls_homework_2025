@@ -1,4 +1,4 @@
-import {choosePageNumber, setPostsPerPage} from '@/features/posts/postsSlice'
+import {choosePageNumber, chosePostsPerPage} from '@/features/posts/postsSlice'
 import {
   INITIAL_PAGE,
   INITIAL_POSTS_PER_PAGE,

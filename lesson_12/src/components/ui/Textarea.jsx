@@ -1,9 +1,9 @@
 function Textarea({...props}) {
   return (
     <>
-      <textarea className="textarea" {...props} />
+      <textarea {...props} />
       <style jsx>{`
-        .textarea {
+        textarea {
           padding-inline: 0.75rem;
           padding-block: 0.25rem;
           border: 1px solid var(--border);
@@ -22,7 +22,7 @@ function Textarea({...props}) {
           field-sizing: content;
         }
 
-        .textarea:focus-visible {
+        textarea:focus-visible {
           border-color: var(--ring);
           box-shadow: 0 0 0 3px
             color-mix(in oklab, var(--ring) 50%, transparent);

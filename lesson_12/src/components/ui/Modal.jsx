@@ -1,21 +1,40 @@
+import clsx from 'clsx/lite'
+import {useEffect, useState} from 'react'
 import {createPortal} from 'react-dom'
-import Clickable from './Clickable'
-import {X} from 'lucide-react'
 
-function Modal({children, closeModal}) {
+function Modal({children, isOpen: shouldOpen, onOpenChange}) {
+  const [isOpen, setIsOpen] = useState(shouldOpen)
+
   function handleClickOutside(e) {
-    if (e.target.classList.contains('overlay')) closeModal()
+    if (e.target.classList.contains('overlay')) onOpenChange(false)
   }
+
+  function closeAfterAnimation() {
+    if (!shouldOpen) setIsOpen(false)
+  }
+
+  useEffect(() => {
+    if (shouldOpen) setIsOpen(true)
+  }, [shouldOpen])
+
+  if (!isOpen) return null
 
   return createPortal(
     <>
-      <div className="overlay" onClick={handleClickOutside}>
-        <div className="dialog" role="dialog">
+      <div
+        className={clsx('overlay', shouldOpen || 'is-closed')}
+        onClick={handleClickOutside}
+        onAnimationEnd={closeAfterAnimation}
+      >
+        <div className={clsx('modal', shouldOpen || 'is-closed')} role="dialog">
           {children}
         </div>
       </div>
+
       <style jsx>{`
         .overlay {
+          --enter-scale: 1;
+
           position: fixed;
           inset: 0;
           z-index: 10000;
@@ -26,15 +45,43 @@ function Modal({children, closeModal}) {
             var(--background) 50%,
             transparent
           );
+          animation: enter 0.2s backwards;
         }
 
-        .dialog {
+        .overlay.is-closed {
+          animation: exit 0.2s forwards;
+        }
+
+        .modal {
+          --enter-scale: 0.95;
+
           inline-size: min(calc(100% - 2 * var(--container-padding)), 26.5rem);
           padding: 1.5rem;
           border: 1px solid var(--border);
           border-radius: 0.5rem;
           color: var(--foreground);
           background-color: var(--background);
+          animation: enter 0.2s backwards;
+        }
+
+        .modal.is-closed {
+          --exit-scale: 0.95;
+
+          animation: exit 0.2s forwards;
+        }
+
+        @keyframes enter {
+          from {
+            scale: var(--enter-scale, 1);
+            opacity: 1;
+          }
+        }
+
+        @keyframes exit {
+          to {
+            scale: var(--exit-scale, 1);
+            opacity: 0;
+          }
         }
       `}</style>
     </>,

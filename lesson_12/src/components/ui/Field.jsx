@@ -1,13 +1,13 @@
 function Field({type = 'text', ...restProps}) {
   return (
     <>
-      <input className="field" type={type} {...restProps} />
+      <input type={type} {...restProps} />
       <style jsx>{`
-        .field {
+        input {
           padding-inline: 0.75rem;
-          padding-block: 0.25rem;
+          padding-block: 0.375rem;
           border: 1px solid var(--border);
-          border-radius: 0.25rem;
+          border-radius: 0.5rem;
           font-size: 0.875rem;
           line-height: 1.5;
           background-color: color-mix(in oklab, var(--input) 30%, transparent);
@@ -16,7 +16,7 @@ function Field({type = 'text', ...restProps}) {
           transition-duration: 0.3s;
         }
 
-        .field:focus-visible {
+        input:focus-visible {
           border-color: var(--ring);
           box-shadow: 0 0 0 3px
             color-mix(in oklab, var(--ring) 50%, transparent);

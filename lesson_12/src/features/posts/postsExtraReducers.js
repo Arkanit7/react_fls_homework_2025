@@ -46,14 +46,14 @@ function removePostReducer(builder) {
       state.totalPosts--
 
       // In case of an empty page, automatically switch to a first no-empty page
-      const firstLoadedPage = state.chosenPages[0]
+      const firstChosenPage = state.chosenPages[0]
 
       if (
         state.posts.length === 0 &&
-        firstLoadedPage > 1 &&
+        firstChosenPage > 1 &&
         state.totalPages > 1
       )
-        state.chosenPages = [firstLoadedPage - 1]
+        state.chosenPages = [firstChosenPage - 1]
     })
 }
 
