@@ -17,6 +17,10 @@ function Modal({children, isOpen: shouldOpen, onOpenChange}) {
     if (shouldOpen) setIsOpen(true)
   }, [shouldOpen])
 
+  useEffect(() => {
+    document.body.classList.toggle('scroll-locked', isOpen)
+  }, [isOpen])
+
   if (!isOpen) return null
 
   return createPortal(
@@ -30,7 +34,11 @@ function Modal({children, isOpen: shouldOpen, onOpenChange}) {
           {children}
         </div>
       </div>
-
+      <style jsx global>{`
+        .scroll-locked {
+          overflow: hidden;
+        }
+      `}</style>
       <style jsx>{`
         .overlay {
           --enter-scale: 1;
@@ -54,6 +62,7 @@ function Modal({children, isOpen: shouldOpen, onOpenChange}) {
 
         .modal {
           --enter-scale: 0.95;
+          --exit-scale: 0.95;
 
           inline-size: min(calc(100% - 2 * var(--container-padding)), 26.5rem);
           padding: 1.5rem;
@@ -65,8 +74,6 @@ function Modal({children, isOpen: shouldOpen, onOpenChange}) {
         }
 
         .modal.is-closed {
-          --exit-scale: 0.95;
-
           animation: exit 0.2s forwards;
         }
 
