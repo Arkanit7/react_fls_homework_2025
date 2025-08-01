@@ -1,4 +1,3 @@
-import clsx from 'clsx/lite'
 import {getNavRoutesHandles} from '@/lib/utils'
 import routes from '@/app/routes'
 import {NavLink} from 'react-router'
@@ -12,15 +11,11 @@ function NavBar({...props}) {
       <nav className="nav" {...props}>
         <ul className="list">
           {navHandles.map(({title, absolutePath}, i) => (
-            <Clickable
-              className={({isActive}) => clsx(isActive && 'is-active')}
-              variant="ghost"
-              as={NavLink}
-              key={i}
-              to={absolutePath}
-            >
-              {title}
-            </Clickable>
+            <li key={i}>
+              <Clickable variant="ghost" as={NavLink} to={absolutePath}>
+                {title}
+              </Clickable>
+            </li>
           ))}
         </ul>
       </nav>
@@ -31,6 +26,10 @@ function NavBar({...props}) {
           flex-wrap: wrap;
           align-items: start;
           justify-content: end;
+        }
+
+        .list :global(.active) {
+          text-decoration: underline;
         }
       `}</style>
     </>

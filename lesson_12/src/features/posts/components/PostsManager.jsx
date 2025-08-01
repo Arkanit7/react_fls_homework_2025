@@ -68,10 +68,17 @@ function PostsManager() {
       <style jsx>{`
         .actions {
           display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          gap: 1ch;
+          flex-direction: column;
+          gap: 0.5rem;
           flex-wrap: wrap;
+        }
+
+        @media (width >= 30rem) {
+          .actions {
+            flex-direction: row;
+            justify-content: end;
+            gap: 0.375rem;
+          }
         }
 
         .load-more {

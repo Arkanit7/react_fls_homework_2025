@@ -64,9 +64,17 @@ function NewPostFormModal() {
       <style jsx>{`
         .actions {
           display: flex;
-          justify-content: end;
-          gap: 0.375rem;
+          flex-direction: column;
+          gap: 0.5rem;
           flex-wrap: wrap;
+        }
+
+        @media (width >= 30rem) {
+          .actions {
+            flex-direction: row;
+            justify-content: end;
+            gap: 0.375rem;
+          }
         }
       `}</style>
     </>
