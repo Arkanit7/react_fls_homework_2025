@@ -131,15 +131,30 @@ function PostPreview({post}) {
 
         .post-footer {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
+          flex-direction: column;
           border-block-start: 1px solid var(--border);
           padding-block-start: 0.85rem;
+          gap: 1rem;
         }
 
         .post-reactions {
           display: flex;
           gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+
+        @media (width < 30rem) {
+          .post-reactions {
+            justify-content: center;
+          }
+        }
+
+        @media (width >= 30rem) {
+          .post-footer {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
         }
 
         .post-likes,

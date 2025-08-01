@@ -73,17 +73,24 @@ function PostsManager() {
           flex-wrap: wrap;
         }
 
-        @media (width >= 30rem) {
-          .actions {
-            flex-direction: row;
-            justify-content: end;
-            gap: 0.375rem;
-          }
-        }
-
         .load-more {
           display: flex;
           justify-content: center;
+        }
+
+        @media (width < 30rem) {
+          .load-more :global(button) {
+            inline-size: 100%;
+          }
+        }
+
+        @media (width >= 30rem) {
+          .actions {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.375rem;
+          }
         }
       `}</style>
     </>

@@ -5,6 +5,8 @@ import {RotateCw} from 'lucide-react'
 import {useEffect, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import PostsList from './PostsList'
+import ShowEntries from './ShowEntries'
+import NewPostFormModal from './NewPostFormModal'
 
 function InfinitePosts() {
   const {posts, status, chosenPages, totalPages, postsPerPage} = useSelector(
@@ -47,6 +49,11 @@ function InfinitePosts() {
 
   return (
     <>
+      <div className="actions">
+        <ShowEntries />
+        <NewPostFormModal />
+      </div>
+
       <PostsList posts={posts} />
       <span ref={observableEndListRef}></span>
       {isLoading && (
@@ -62,6 +69,22 @@ function InfinitePosts() {
           display: flex;
           justify-content: center;
           gap: 1rem;
+        }
+
+        .actions {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        @media (width >= 30rem) {
+          .actions {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.375rem;
+          }
         }
 
         span {

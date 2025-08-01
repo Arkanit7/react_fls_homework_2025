@@ -21,7 +21,7 @@ function ShowEntries() {
   function handleSelection(e) {
     const newAmount = parseInt(e.currentTarget.value)
     setAmount(newAmount)
-    dispatch(setPostsPerPage(newAmount))
+    dispatch(chosePostsPerPage(newAmount))
     dispatch(choosePageNumber(INITIAL_PAGE))
   }
 
