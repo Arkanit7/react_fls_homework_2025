@@ -20,6 +20,8 @@
   --border: #333;
   --ring: oklch(55.6% 0 0);
   --input: oklch(1 0 0 / 15%);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
 
   color-scheme: dark;
 }
@@ -27,7 +29,6 @@
 body {
   line-height: 1.5;
   font-family: var(--ff-primary);
-  /* color: color-mix(in oklab, var(--foreground) 87%, var(--background)); */
   color: var(--foreground);
   background-color: var(--background);
 }
