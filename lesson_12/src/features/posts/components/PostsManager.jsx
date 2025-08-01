@@ -11,8 +11,9 @@ import Clickable from '../../../components/ui/Clickable'
 import {BookPlusIcon, RotateCw} from 'lucide-react'
 
 function PostsManager() {
-  const {posts, postsPerPage, chosenPages, status, totalPages, totalPosts} =
-    useSelector((state) => state.posts)
+  const {posts, postsPerPage, chosenPages, status, totalPages} = useSelector(
+    (state) => state.posts,
+  )
   const dispatch = useDispatch()
 
   const isLoading = status === POSTS_STATUS.LOADING
@@ -25,7 +26,7 @@ function PostsManager() {
         postsPerPage,
       }),
     )
-  }, [dispatch, lastChosenPage, postsPerPage, totalPosts])
+  }, [dispatch, lastChosenPage, postsPerPage])
 
   useEffect(() => {
     // Cleanup function to reset state when component unmounts
