@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "divlo.vscode-styled-jsx-languageserver",
+    "divlo.vscode-styled-jsx-syntax"
+  ]
+}
