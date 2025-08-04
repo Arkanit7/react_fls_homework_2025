@@ -6,9 +6,14 @@ import {navigation} from '@/lib/constants'
 
 function PostAddAndDetails({selectedId, setSelectedId}) {
   return (
-    <div className="flow-10">
-      <div className="flow-6">
-        <Clickable as={Link} to={navigation.posts.create.index}>
+    <>
+      <div className="flow-6 group">
+        <Clickable
+          className="cta"
+          as={Link}
+          to={navigation.posts.create.index}
+          size="lg"
+        >
           <BookPlusIcon />
           Новий пост
         </Clickable>
@@ -16,7 +21,14 @@ function PostAddAndDetails({selectedId, setSelectedId}) {
           <PostDetails id={selectedId} setId={setSelectedId} />
         )}
       </div>
-    </div>
+      <style jsx>{`
+        @media (width < 30rem) {
+          .group > :global(.cta) {
+            inline-size: 100%;
+          }
+        }
+      `}</style>
+    </>
   )
 }
 

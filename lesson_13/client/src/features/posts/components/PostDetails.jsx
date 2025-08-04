@@ -10,6 +10,7 @@ import {navigation} from '@/lib/constants'
 import {toast} from 'sonner'
 import {POST_REACTION} from '../constants'
 import Loader from '@/components/ui/Loader'
+import {Pencil, Shredder, ThumbsDown, ThumbsUp} from 'lucide-react'
 
 const dateFormatter = new Intl.DateTimeFormat('uk-UA', {
   dateStyle: 'full',
@@ -52,54 +53,52 @@ function PostDetails({id, setId}) {
         </header>
         <Typography>{post.body ?? 'Немає опису.'}</Typography>
         <footer>
-          <Clickable onClick={likePost} disabled={isReacting} variant="ghost">
-            👍 {post.likesNumber}
-          </Clickable>
-          <Clickable
-            onClick={dislikePost}
-            disabled={isReacting}
-            variant="ghost"
-          >
-            👎 {post.dislikesNumber}
-          </Clickable>
-          <Clickable as={Link} to={navigation.posts.getEdit(post.id)}>
-            Редагувати
-          </Clickable>
-          <Clickable onClick={deletePost} variant="destructive">
-            Видалити
-          </Clickable>
+          <div className="actions">
+            <Clickable onClick={likePost} disabled={isReacting} variant="ghost">
+              <ThumbsUp /> {post.likesNumber}
+            </Clickable>
+            <Clickable
+              onClick={dislikePost}
+              disabled={isReacting}
+              variant="ghost"
+            >
+              <ThumbsDown /> {post.dislikesNumber}
+            </Clickable>
+          </div>
+          <div className="actions">
+            <Clickable
+              as={Link}
+              to={navigation.posts.getEdit(post.id)}
+              variant="icon"
+            >
+              <Pencil />
+              <span className="sr-only">Редагувати</span>
+            </Clickable>
+            <Clickable
+              onClick={deletePost}
+              variant="icon"
+              style={{
+                backgroundColor: `color-mix(
+                  in oklab,
+                  var(--destructive) 60%,
+                  transparent)
+                `,
+                color: 'var(--foreground)',
+              }}
+            >
+              <Shredder />
+            </Clickable>
+          </div>
         </footer>
       </article>
       <style jsx>{`
-        article {
-          background: var(--card);
-          color: var(--card-foreground);
-          border-radius: 1.25rem;
-          box-shadow:
-            0 8px 32px 0 rgba(79, 140, 255, 0.1),
-            0 2px 8px 0 rgba(0, 0, 0, 0.08);
-          margin: 2rem auto;
-          max-width: 700px;
-        }
-
-        header {
-          border-bottom: 1.5px solid var(--border);
-          padding-bottom: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
         article > :global(* + *) {
           margin-block-start: 1.25rem;
         }
 
-        footer {
-          display: flex;
-          gap: 0.5rem 1rem;
-          flex-wrap: wrap;
-          border-top: 1.5px solid var(--border);
-          margin-top: 2rem;
-          padding-top: 1.25rem;
-          justify-content: end;
+        header {
+          border-bottom: 1px solid var(--border);
+          padding-bottom: 1rem;
         }
 
         time {
@@ -107,6 +106,25 @@ function PostDetails({id, setId}) {
           color: var(--muted-foreground, #6c757d);
           font-size: 1rem;
           margin-top: 0.5rem;
+        }
+
+        footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          gap: 0.5rem 1rem;
+          border-top: 1px solid var(--border);
+          padding-top: 1.25rem;
+        }
+
+        .actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .actions:last-child {
+          justify-content: end;
         }
       `}</style>
     </>

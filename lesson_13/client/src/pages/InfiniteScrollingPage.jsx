@@ -13,11 +13,13 @@ function InfiniteScrollingPage() {
         <Typography as="h1" className="text-center">
           Нескінченна прокрутка
         </Typography>
-        <PostAddAndDetails
-          selectedId={selectedId}
-          setSelectedId={setSelectedId}
-        />
-        <InfiniteList selectedId={selectedId} setSelectedId={setSelectedId} />
+        <div className="flow-10">
+          <PostAddAndDetails
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+          />
+          <InfiniteList selectedId={selectedId} setSelectedId={setSelectedId} />
+        </div>
       </Container>
     </>
   )

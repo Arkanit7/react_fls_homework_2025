@@ -3,7 +3,7 @@ import {RotateCw} from 'lucide-react'
 function Loader(params) {
   return (
     <>
-      <div {...params}>
+      <div {...params} role="status">
         <RotateCw />
         Завантаження...
       </div>

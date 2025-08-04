@@ -6,7 +6,7 @@ function Modal({children, isOpen: shouldOpen, onOpenChange}) {
   const [isOpen, setIsOpen] = useState(shouldOpen)
 
   function handleClickOutside(e) {
-    if (e.target.classList.contains('overlay')) onOpenChange(false)
+    if (e.target === e.currentTarget) onOpenChange(false)
   }
 
   function closeAfterAnimation() {

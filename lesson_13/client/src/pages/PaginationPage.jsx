@@ -13,11 +13,16 @@ function PaginationPage() {
         <Typography as="h1" className="text-center">
           Пагінація
         </Typography>
-        <PostAddAndDetails
-          selectedId={selectedId}
-          setSelectedId={setSelectedId}
-        />
-        <PaginatedList selectedId={selectedId} setSelectedId={setSelectedId} />
+        <div className="flow-10">
+          <PostAddAndDetails
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+          />
+          <PaginatedList
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+          />
+        </div>
       </Container>
     </>
   )

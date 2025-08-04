@@ -89,3 +89,9 @@ body {
   white-space: nowrap;
   border-width: 0;
 }
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

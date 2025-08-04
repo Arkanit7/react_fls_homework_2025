@@ -37,6 +37,7 @@ function Clickable({
 
           block-size: 2.5em;
           padding-inline: 1em;
+          padding-block: 0.5em;
           text-align: center;
           border-radius: 0.375rem;
           color: var(--primary-foreground);
@@ -72,7 +73,7 @@ function Clickable({
         }
 
         .button--variant--icon {
-          padding: 0.375em;
+          padding: 0.5em;
           aspect-ratio: 1;
           color: var(--secondary-foreground);
           background-color: var(--secondary);

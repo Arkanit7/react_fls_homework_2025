@@ -8,6 +8,7 @@ import {POST_REACTION} from '../constants'
 import {Link} from 'react-router'
 import {navigation} from '@/lib/constants'
 import {toast} from 'sonner'
+import {Info, Pencil, Shredder, ThumbsDown, ThumbsUp} from 'lucide-react'
 
 const dateFormatter = new Intl.DateTimeFormat('uk-UA', {
   dateStyle: 'medium',
@@ -46,31 +47,68 @@ function PostPreview({post, setSelectedId}) {
     <>
       <article>
         <header>
-          <Typography as="h2" variant="h3">
+          <Typography className="truncate" as="h2" variant="h3">
             {post.title}
           </Typography>
-          <time dateTime={post.publicationDate}>{prettyDate}</time>
+          <Typography as="time" variant="p" dateTime={post.publicationDate}>
+            {prettyDate}
+          </Typography>
         </header>
         <footer>
-          <Clickable onClick={likePost} disabled={isReacting} variant="ghost">
-            👍 {post.likesNumber}
-          </Clickable>
-          <Clickable
-            onClick={dislikePost}
-            disabled={isReacting}
-            variant="ghost"
-          >
-            👎 {post.dislikesNumber}
-          </Clickable>
-          {setSelectedId && (
-            <Clickable onClick={() => setSelectedId(post.id)}>Деталі</Clickable>
-          )}
-          <Clickable as={Link} to={navigation.posts.getEdit(post.id)}>
-            Редагувати
-          </Clickable>
-          <Clickable onClick={deletePost} variant="destructive">
-            Видалити
-          </Clickable>
+          <div className="actions">
+            <Clickable
+              size="sm"
+              onClick={likePost}
+              disabled={isReacting}
+              variant="ghost"
+            >
+              <ThumbsUp /> {post.likesNumber}
+            </Clickable>
+            <Clickable
+              size="sm"
+              onClick={dislikePost}
+              disabled={isReacting}
+              variant="ghost"
+            >
+              <ThumbsDown /> {post.dislikesNumber}
+            </Clickable>
+          </div>
+
+          <div className="actions">
+            <Clickable
+              size="sm"
+              onClick={() => setSelectedId(post.id)}
+              variant="icon"
+            >
+              <Info />
+              <span className="sr-only">Деталі</span>
+            </Clickable>
+            <Clickable
+              size="sm"
+              as={Link}
+              to={navigation.posts.getEdit(post.id)}
+              variant="icon"
+            >
+              <Pencil />
+              <span className="sr-only">Редагувати</span>
+            </Clickable>
+            <Clickable
+              size="sm"
+              onClick={deletePost}
+              variant="icon"
+              style={{
+                backgroundColor: `color-mix(
+                  in oklab,
+                  var(--destructive) 60%,
+                  transparent)
+                `,
+                color: 'var(--foreground)',
+              }}
+            >
+              <Shredder />
+              <span className="sr-only">Видалити</span>
+            </Clickable>
+          </div>
         </footer>
       </article>
       <style jsx>{`
@@ -89,8 +127,18 @@ function PostPreview({post, setSelectedId}) {
 
         footer {
           display: flex;
-          gap: 0.5rem;
+          justify-content: space-between;
+          align-items: start;
+          gap: 1rem;
+        }
+
+        .actions {
+          display: flex;
           flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .actions:last-child {
           justify-content: end;
         }
       `}</style>
