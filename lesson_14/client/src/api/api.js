@@ -21,6 +21,7 @@ export {api}
 export const {
   // patients
   useGetPatientByIdQuery,
+  useGetAllPatientsQuery,
   useGetPaginatedPatientsQuery,
   useDeletePatientMutation,
   useEditPatientMutation,
@@ -28,6 +29,7 @@ export const {
 
   // doctors
   useGetDoctorByIdQuery,
+  useGetAllDoctorsQuery,
   useGetPaginatedDoctorsQuery,
   useDeleteDoctorMutation,
   useEditDoctorMutation,
@@ -35,6 +37,7 @@ export const {
 
   // appointments
   useGetAppointmentByIdQuery,
+  useGetAllAppointmentsQuery,
   useGetPaginatedAppointmentsQuery,
   useDeleteAppointmentMutation,
   useEditAppointmentMutation,

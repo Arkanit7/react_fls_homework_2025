@@ -2,15 +2,18 @@ import {Link} from 'react-router'
 import NavBar from './NavBar'
 import {Container} from './ui'
 import {navigationRoutes} from '@/router/navigation'
+import ThemeController from './ThemeController'
+import Logo from '@/assets/logo.svg?react'
 
 function Header() {
   return (
-    <header className="border-b border-base-300 py-2">
+    <header className="border-b border-base-300 bg-base-100 py-1.5">
       <Container className="flex items-center justify-between gap-3">
         <Link className="flex-none" to={navigationRoutes.dashboard}>
-          <img className="size-8" src="/logo.svg" alt="" />
+          <Logo className="size-7" />
         </Link>
         <NavBar />
+        <ThemeController />
       </Container>
     </header>
   )

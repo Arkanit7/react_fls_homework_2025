@@ -1,10 +1,12 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: "pastel";
+  themes:
+    pastel --default,
+    synthwave --prefersdark;
 }
 @plugin "daisyui/theme" {
   name: "pastel";
-  default: true;
+  /* default: true; */
 
   --color-base-content: rgba(40, 25, 80);
   --color-primary: rgb(124, 58, 237);

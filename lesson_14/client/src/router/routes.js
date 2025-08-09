@@ -9,6 +9,9 @@ import TypographyPage from '@/pages/TypographyPage'
 import DoctorsPage from '@/pages/doctors/DoctorsPage'
 import DoctorDetailsPage from '@/pages/doctors/DoctorDetailsPage'
 import DoctorFormPage from '@/pages/doctors/DoctorFormPage'
+import AppointmentsPage from '@/pages/appointments/AppointmentsPage'
+import AppointmentDetailsPage from '@/pages/appointments/AppointmentDetailsPage'
+import AppointmentFormPage from '@/pages/appointments/AppointmentFormPage'
 
 /** @type {import('react-router').RouteObject[]} */
 export default [
@@ -61,6 +64,33 @@ export default [
               {
                 Component: DoctorFormPage,
                 path: ROUTES.DOCTORS.DETAILS.EDIT,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: ROUTES.APPOINTMENTS.INDEX,
+        children: [
+          {
+            Component: AppointmentsPage,
+            index: true,
+            handle: {title: 'Зустрічі'},
+          },
+          {
+            Component: AppointmentFormPage,
+            path: ROUTES.APPOINTMENTS.NEW,
+          },
+          {
+            path: ROUTES.APPOINTMENTS.DETAILS.INDEX,
+            children: [
+              {
+                Component: AppointmentDetailsPage,
+                index: true,
+              },
+              {
+                Component: AppointmentFormPage,
+                path: ROUTES.APPOINTMENTS.DETAILS.EDIT,
               },
             ],
           },

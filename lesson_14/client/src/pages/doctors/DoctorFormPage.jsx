@@ -5,7 +5,7 @@ import {
 } from '@/api/api'
 import {Container, Typography} from '@/components/ui'
 import InputWithLabel from '@/components/ui/InputWithLabel'
-import getDoctorFormFields from './getDoctorFormFields'
+import {getDoctorFormFields} from './utils'
 import {navigationRoutes} from '@/router/navigation'
 import Loader from '@/components/ui/Loader'
 import {useNavigate, useParams} from 'react-router'

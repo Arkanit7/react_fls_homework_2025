@@ -1,18 +1,23 @@
-import {useGetPaginatedPatientsQuery} from '@/api/api'
+import {
+  useGetAllDoctorsQuery,
+  useGetAllPatientsQuery,
+  useGetPaginatedAppointmentsQuery,
+} from '@/api/api'
 import {Container, Loader, Typography} from '@/components/ui'
 import {navigationRoutes} from '@/router/navigation'
 import {Plus, RefreshCw} from 'lucide-react'
-import {useState} from 'react'
+import {useMemo, useState} from 'react'
 import {Link} from 'react-router'
-import PatientTableRow from './components/PatientTableRow'
+import AppointmentTableRow from './components/AppointmentTableRow'
 import Pagination from '@/components/Pagination'
 import {
   PAGINATION_DEFAULT_PAGE,
   PAGINATION_DEFAULT_ROWS_PER_PAGE,
 } from '@/lib/constants'
 import useDebounce from '@/hooks/useDebounce'
+import {getAppointmentsWithNames} from './utils'
 
-function PatientsPage() {
+function AppointmentsPage() {
   const [currentPage, setCurrentPage] = useState(PAGINATION_DEFAULT_PAGE)
   const [rowsPerPage, setRowsPerPage] = useState(
     PAGINATION_DEFAULT_ROWS_PER_PAGE,
@@ -21,20 +26,36 @@ function PatientsPage() {
   const debounceSearchQuery = useDebounce(searchQuery)
 
   const {
-    data = {},
+    data: paginatedAppointmentData = {},
     isFetching,
-    isLoading,
+    isLoading: isAppointmentsLoading,
     isError,
-    refetch: refetchPatients,
-  } = useGetPaginatedPatientsQuery({
+    refetch: refetchAppointments,
+  } = useGetPaginatedAppointmentsQuery({
     page: currentPage,
     size: rowsPerPage,
     name: debounceSearchQuery,
   })
+  /** @type {import('@/types').AppointmentsPagination} */
+  const {items: appointmentsList = [], totalPages} = paginatedAppointmentData
 
-  /** @type {import('@/types').PatientsPagination} */
-  const patientsPagination = data
-  const {items: patientsList = [], totalPages} = patientsPagination
+  const {data: patientsData = [], isLoading: isPatientsLoading} =
+    useGetAllPatientsQuery()
+  /** @type {import('@/types').Patient[]} */
+  const patientsList = patientsData
+
+  const {data: doctorsData = [], isLoading: isDoctorsLoading} =
+    useGetAllDoctorsQuery()
+  /** @type {import('@/types').Doctor[]} */
+  const doctorsList = doctorsData
+
+  const appointmentsListWithNames = useMemo(
+    () => getAppointmentsWithNames(appointmentsList, patientsList, doctorsList),
+    [appointmentsList, patientsList, doctorsList],
+  )
+
+  const isLoading =
+    isAppointmentsLoading || isPatientsLoading || isDoctorsLoading
 
   if (isError)
     return (
@@ -48,12 +69,12 @@ function PatientsPage() {
     setCurrentPage(PAGINATION_DEFAULT_PAGE)
   }
 
-  const isEmpty = patientsList.length === 0
+  const isEmpty = appointmentsList.length === 0
 
   return (
     <Container className="space-y-4">
       <Typography variant="h2" component="h1" className="self-center">
-        Пацієнти
+        Зустрічі{' '}
       </Typography>
       <div className="flex justify-between gap-4 max-xs:flex-col">
         <div>
@@ -70,7 +91,7 @@ function PatientsPage() {
           <button
             className="btn join-item btn-outline btn-primary"
             type="button"
-            onClick={refetchPatients}
+            onClick={refetchAppointments}
           >
             <RefreshCw />
             <span className="sr-only">Оновити</span>
@@ -78,7 +99,7 @@ function PatientsPage() {
 
           <Link
             className="btn join-item btn-primary max-xs:flex-auto"
-            to={navigationRoutes.patients.new}
+            to={navigationRoutes.appointments.new}
           >
             <Plus /> Створити
           </Link>
@@ -93,21 +114,19 @@ function PatientsPage() {
             <table className="table table-zebra table-sm">
               <thead>
                 <tr>
-                  {[
-                    'ПІБ',
-                    'Рік народження',
-                    'Телефон',
-                    'Адреса',
-                    'Нотатка',
-                    'Дії',
-                  ].map((title, i) => (
-                    <th key={i}>{title}</th>
-                  ))}
+                  {['Пацієнт', 'Лікар', 'Час', 'Причина', 'Статус', 'Дії'].map(
+                    (title, i) => (
+                      <th key={i}>{title}</th>
+                    ),
+                  )}
                 </tr>
               </thead>
               <tbody>
-                {patientsList.map((patient) => (
-                  <PatientTableRow key={patient.id} patient={patient} />
+                {appointmentsListWithNames.map((appointment) => (
+                  <AppointmentTableRow
+                    key={appointment.id}
+                    appointment={appointment}
+                  />
                 ))}
               </tbody>
             </table>
@@ -126,4 +145,4 @@ function PatientsPage() {
   )
 }
 
-export default PatientsPage
+export default AppointmentsPage

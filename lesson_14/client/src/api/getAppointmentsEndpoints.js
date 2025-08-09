@@ -10,11 +10,21 @@ export default function (build) {
       providesTags: (_, __, id) => [{type: TAGS.APPOINTMENT, id}],
     }),
 
+    getAllAppointments: build.query({
+      query: () => '/appointments?all=true',
+
+      /** @param {import('@/types').Appointment[]} result */
+      providesTags: (result) =>
+        result.map(({id}) => ({type: TAGS.APPOINTMENT, id})),
+    }),
+
     getPaginatedAppointments: build.query({
       query: ({page = 1, size = 10, name} = {}) => {
         const endUrl = `/appointments?page=${page}&size=${size}`
 
-        return name == null || name === '' ? endUrl : endUrl + `&name=${name}`
+        return name == null || name === ''
+          ? endUrl
+          : endUrl + `&patientName=${name}`
       },
 
       /** @param {import('@/types').AppointmentsPagination} result */

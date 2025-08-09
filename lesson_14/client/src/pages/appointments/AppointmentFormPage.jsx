@@ -1,52 +1,75 @@
 import {
-  useCreatePatientMutation,
-  useEditPatientMutation,
-  useGetPatientByIdQuery,
+  useCreateAppointmentMutation,
+  useEditAppointmentMutation,
+  useGetAllDoctorsQuery,
+  useGetAllPatientsQuery,
+  useGetAppointmentByIdQuery,
 } from '@/api/api'
 import {Container, Typography} from '@/components/ui'
 import InputWithLabel from '@/components/ui/InputWithLabel'
-import {getPatientFormFields} from './utils'
+import {getAppointmentFormFields} from './utils'
 import {navigationRoutes} from '@/router/navigation'
 import Loader from '@/components/ui/Loader'
 import {useNavigate, useParams} from 'react-router'
 import {useId} from 'react'
 
-function PatientFormPage() {
+function AppointmentFormPage() {
   const bindingId = useId()
   const {id} = useParams()
   const shouldEditMode = id != null
-  const title = `${shouldEditMode ? 'Редагувати' : 'Додати'} пацієнта`
+  const title = `${shouldEditMode ? 'Редагувати' : 'Створити'} зустріч`
 
   const {
-    data: patient,
+    data: appointment,
     isFetching,
     isError: isGetError,
-  } = useGetPatientByIdQuery(id, {
+  } = useGetAppointmentByIdQuery(id, {
     skip: !shouldEditMode,
   })
 
   const navigate = useNavigate()
 
-  const [createPatient, {isLoading: isCreateLoading, isError: isCreateError}] =
-    useCreatePatientMutation()
-  const [editPatient, {isLoading: isEditLoading, isError: isEditError}] =
-    useEditPatientMutation()
+  const [
+    createAppointment,
+    {isLoading: isCreateLoading, isError: isCreateError},
+  ] = useCreateAppointmentMutation()
+  const [editAppointment, {isLoading: isEditLoading, isError: isEditError}] =
+    useEditAppointmentMutation()
 
-  const isLoading = isFetching || isCreateLoading || isEditLoading
-  const isError = isGetError || isCreateError || isEditError
-
-  async function handlePatientAction(formData) {
+  async function handleAppointmentAction(formData) {
     const action = shouldEditMode
-      ? (body) => editPatient({id, body})
-      : createPatient
+      ? (body) => editAppointment({id, body})
+      : createAppointment
 
     action(Object.fromEntries(formData))
       .unwrap()
-      .then(({id}) => navigate(navigationRoutes.patients.getDetails(id)))
+      .then(({id}) => navigate(navigationRoutes.appointments.getDetails(id)))
       .catch(() => null)
   }
 
-  const fields = getPatientFormFields(patient)
+  const {data: patientsData = [], isLoading: isPatientsLoading} =
+    useGetAllPatientsQuery()
+  /** @type {import('@/types').Patient[]} */
+  const patientsList = patientsData
+
+  const {data: doctorsData = [], isLoading: isDoctorsLoading} =
+    useGetAllDoctorsQuery()
+  /** @type {import('@/types').Doctor[]} */
+  const doctorsList = doctorsData
+
+  const fields = getAppointmentFormFields(
+    appointment,
+    patientsList,
+    doctorsList,
+  )
+
+  const isLoading =
+    isFetching ||
+    isCreateLoading ||
+    isEditLoading ||
+    isPatientsLoading ||
+    isDoctorsLoading
+  const isError = isGetError || isCreateError || isEditError
 
   return (
     <Container className="space-y-4">
@@ -55,7 +78,7 @@ function PatientFormPage() {
       {isLoading ? (
         <Loader />
       ) : (
-        <form className="space-y-4" action={handlePatientAction}>
+        <form className="space-y-4" action={handleAppointmentAction}>
           <div className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
             {fields.map((field) => {
               switch (field.component) {
@@ -98,4 +121,4 @@ function PatientFormPage() {
   )
 }
 
-export default PatientFormPage
+export default AppointmentFormPage

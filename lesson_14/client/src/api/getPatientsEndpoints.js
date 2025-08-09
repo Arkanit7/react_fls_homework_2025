@@ -10,11 +10,22 @@ export default function (build) {
       providesTags: (_, __, id) => [{type: TAGS.PATIENT, id}],
     }),
 
-    getPaginatedPatients: build.query({
-      query: ({page = 1, size = 10, name} = {}) => {
-        const endUrl = `/patients?page=${page}&size=${size}`
+    getAllPatients: build.query({
+      query: () => '/patients?all=true',
 
-        return name == null || name === '' ? endUrl : endUrl + `&name=${name}`
+      /** @param {import('@/types').Patient[]} result */
+      providesTags: (result) =>
+        result.map(({id}) => ({type: TAGS.PATIENT, id})),
+    }),
+
+    getPaginatedPatients: build.query({
+      query: ({page = 1, size = 10, all, name} = {}) => {
+        let endUrl = `/patients?page=${page}&size=${size}`
+
+        if (name != null) endUrl += `&name=${name}`
+        if (all != null) endUrl += `&all=${all}`
+
+        return endUrl
       },
 
       /** @param {import('@/types').PatientsPagination} result */

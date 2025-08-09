@@ -34,14 +34,8 @@ function DoctorsPage() {
 
   /** @type {import('@/types').DoctorsPagination} */
   const doctorsPagination = data
-  const {items: doctorsList, totalPages} = doctorsPagination
+  const {items: doctorsList = [], totalPages} = doctorsPagination
 
-  if (isLoading)
-    return (
-      <Container>
-        <Loader />
-      </Container>
-    )
   if (isError)
     return (
       <Container>
@@ -91,39 +85,43 @@ function DoctorsPage() {
         </div>
       </div>
 
-      <div className="rounded-box border border-base-content/5 bg-base-100">
-        <div className="overflow-x-auto">
-          <table className="table table-zebra table-sm">
-            <thead>
-              <tr>
-                {[
-                  'ПІБ',
-                  'Спеціальність',
-                  'Телефон',
-                  'Кабінет',
-                  'Нотатка',
-                  'Дії',
-                ].map((title, i) => (
-                  <th key={i}>{title}</th>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="rounded-box border border-base-content/5 bg-base-100">
+          <div className="overflow-x-auto">
+            <table className="table table-zebra table-sm">
+              <thead>
+                <tr>
+                  {[
+                    'ПІБ',
+                    'Спеціальність',
+                    'Телефон',
+                    'Кабінет',
+                    'Нотатка',
+                    'Дії',
+                  ].map((title, i) => (
+                    <th key={i}>{title}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {doctorsList.map((doctor) => (
+                  <DoctorTableRow key={doctor.id} doctor={doctor} />
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {doctorsList.map((doctor) => (
-                <DoctorTableRow key={doctor.id} doctor={doctor} />
-              ))}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            rowsPerPage={rowsPerPage}
+            setRowsPerPage={setRowsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            isEmpty={isEmpty}
+          />
         </div>
-        <Pagination
-          rowsPerPage={rowsPerPage}
-          setRowsPerPage={setRowsPerPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-          isEmpty={isEmpty}
-        />
-      </div>
+      )}
     </Container>
   )
 }

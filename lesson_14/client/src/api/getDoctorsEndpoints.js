@@ -10,6 +10,13 @@ export default function (build) {
       providesTags: (_, __, id) => [{type: TAGS.DOCTOR, id}],
     }),
 
+    getAllDoctors: build.query({
+      query: () => 'admin/doctors?all=true',
+
+      /** @param {import('@/types').Doctor[]} result */
+      providesTags: (result) => result.map(({id}) => ({type: TAGS.DOCTOR, id})),
+    }),
+
     getPaginatedDoctors: build.query({
       query: ({page = 1, size = 10, name} = {}) => {
         const endUrl = `admin/doctors?page=${page}&size=${size}`

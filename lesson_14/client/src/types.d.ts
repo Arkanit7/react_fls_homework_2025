@@ -21,7 +21,7 @@ export interface Appointment {
   doctorId: string
   date: string // ISO string
   reason: string
-  status: "active" | "cancelled" | "completed"
+  status: "active" | "cancelled" | "completed" | "scheduled"
 }
 
 export interface AppointmentsPagination {

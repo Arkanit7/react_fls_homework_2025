@@ -16,7 +16,8 @@ function PatientTableRow({patient}) {
           {patient.fullName}
         </Link>
       </td>
-      {['birthDate', 'phone', 'address', 'notes'].map((key, i) => (
+      <td>{new Date(patient.birthDate).getFullYear()}</td>
+      {['phone', 'address', 'notes'].map((key, i) => (
         <td key={i}>{patient[key]}</td>
       ))}
       <td className="relative flex gap-2">

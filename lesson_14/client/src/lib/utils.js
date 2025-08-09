@@ -29,6 +29,6 @@ export function getRoutesWithTitles(routes, parentPath = '') {
   return result
 }
 
-export function formatInputDate(date) {
+export function formatDateForInput(date) {
   return date.toISOString().split('T')[0]
 }
