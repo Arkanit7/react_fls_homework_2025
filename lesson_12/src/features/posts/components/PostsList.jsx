@@ -1,9 +1,9 @@
 import PostPreview from './PostPreview'
 
-function PostsList({posts}) {
+function PostsList({posts, role}) {
   return (
     <>
-      <div className="flow-4">
+      <div className="flow-4" role={role}>
         {posts.length === 0 ? (
           <p>Тут поки порожньо...</p>
         ) : (

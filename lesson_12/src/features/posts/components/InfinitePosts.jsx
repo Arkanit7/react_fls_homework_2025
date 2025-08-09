@@ -54,7 +54,7 @@ function InfinitePosts() {
         <NewPostFormModal />
       </div>
 
-      <PostsList posts={posts} />
+      <PostsList posts={posts} role="feed" />
       <span ref={observableEndListRef}></span>
       {isLoading && (
         <div className="loader">

@@ -24,7 +24,7 @@ function InfiniteList({setSelectedId}) {
 
   return (
     <>
-      <div className="flow-4">
+      <div className="flow-4" role="feed">
         <div className="flow-2">
           {listPosts.map((post) => (
             <PostPreview
