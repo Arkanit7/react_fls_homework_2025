@@ -16,6 +16,14 @@ export const ROUTES = {
       EDIT: 'edit',
     },
   },
+  APPOINTMENTS: {
+    INDEX: 'appointments',
+    NEW: 'new',
+    DETAILS: {
+      INDEX: ':id',
+      EDIT: 'edit',
+    },
+  },
   TYPOGRAPHY: 'typography',
 }
 
@@ -34,6 +42,16 @@ export const navigationRoutes = {
   doctors: {
     index: `/${ROUTES.DOCTORS.INDEX}`,
     new: `/${ROUTES.DOCTORS.INDEX}/${ROUTES.DOCTORS.NEW}`,
+    getDetails(id) {
+      return `${this.index}/${id}`
+    },
+    getEditDetails(id) {
+      return `${this.getDetails(id)}/edit`
+    },
+  },
+  appointments: {
+    index: `/${ROUTES.APPOINTMENTS.INDEX}`,
+    new: `/${ROUTES.APPOINTMENTS.INDEX}/${ROUTES.APPOINTMENTS.NEW}`,
     getDetails(id) {
       return `${this.index}/${id}`
     },
