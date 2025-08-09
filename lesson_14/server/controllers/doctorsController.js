@@ -5,7 +5,7 @@ const filePath = './data/doctors.json'
 
 exports.getAllDoctors = async (req, res) => {
   const doctors = await readData(filePath)
-  const { name, page = 1, size = 10 } = req.query
+  const { name, page = 1, size = 10, all = false } = req.query
 
   let filteredDoctors = doctors
 
@@ -15,6 +15,10 @@ exports.getAllDoctors = async (req, res) => {
     filteredDoctors = doctors.filter((p) =>
       p.fullName.toLowerCase().includes(normalizedName)
     )
+  }
+
+  if (all === 'true') {
+    return res.json(filteredDoctors)
   }
 
   const normalizedPage = parseInt(page)

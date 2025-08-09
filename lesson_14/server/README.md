@@ -4,8 +4,8 @@
 
 | Метод  | Роут                       | Опис                    |
 | ------ | -------------------------- | ----------------------- |
-| GET    | `/patients`                | Отримати всіх пацієнтів |
-|        | `/patients?page=1&size=10` | Пагінація               |
+| GET    | `/patients?all=true`       | Отримати всіх пацієнтів |
+| GET    | `/patients?page=1&size=10` | Пагінація               |
 | GET    | `/patients/:id`            | Деталі пацієнта         |
 | POST   | `/patients`                | Додати нового пацієнта  |
 | PUT    | `/patients/:id`            | Оновити пацієнта        |
@@ -18,7 +18,8 @@
 
 | Метод  | Роут                             | Опис                   |
 | ------ | -------------------------------- | ---------------------- |
-| GET    | `/appointments`                  | Отримати всі записи    |
+| GET    | `/appointments?all=true`         | Отримати всі записи    |
+| GET    | `/appointments?size=10&page=1`   | Пагінація              |
 | GET    | `/appointments/:id`              | Один запис             |
 | POST   | `/appointments`                  | Створити новий запис   |
 | PUT    | `/appointments/:id`              | Оновити запис          |
@@ -30,10 +31,12 @@
 
 ## Лікарі (`/admin/doctors`)
 
-| Метод  | Роут                 | Опис                    |
-| ------ | -------------------- | ----------------------- |
-| GET    | `/admin/doctors`     | Отримати список лікарів |
-| GET    | `/admin/doctors/:id` | Отримати лікаря за ID   |
-| POST   | `/admin/doctors`     | Додати нового лікаря    |
-| PUT    | `/admin/doctors/:id` | Оновити лікаря          |
-| DELETE | `/admin/doctors/:id` | Видалити лікаря         |
+| Метод  | Роут                             | Опис                    |
+| ------ | -------------------------------- | ----------------------- |
+| GET    | `/admin/doctors?all=true`        | Отримати список лікарів |
+| GET    | `/admin/doctors?size=10&page=1`` | Пагінація               |
+| GET    | `/admin/doctors/:id`             | Отримати лікаря за ID   |
+| POST   | `/admin/doctors`                 | Додати нового лікаря    |
+| PUT    | `/admin/doctors/:id`             | Оновити лікаря          |
+| DELETE | `/admin/doctors/:id`             | Видалити лікаря         |
+| GET    | `/admin/doctors/?name=іван`      | Фільтр за ПІБ           |

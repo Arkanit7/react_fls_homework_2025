@@ -5,16 +5,19 @@ const filePath = './data/patients.json'
 
 exports.getAllPatients = async (req, res) => {
   const patients = await readData(filePath)
-  const { name, page = 1, size = 10 } = req.query
+  const { name, page = 1, size = 10, all = false } = req.query
 
   let filteredPatients = patients
 
   if (name != null) {
     const normalizedName = name.trim().toLowerCase()
-
     filteredPatients = patients.filter((p) =>
       p.fullName.toLowerCase().includes(normalizedName)
     )
+  }
+
+  if (all === 'true') {
+    return res.json(filteredPatients)
   }
 
   const normalizedPage = parseInt(page)
@@ -24,7 +27,7 @@ exports.getAllPatients = async (req, res) => {
     start,
     start + normalizedSize
   )
-  const totalPages = Math.ceil(filteredPatients.length / size)
+  const totalPages = Math.ceil(filteredPatients.length / normalizedSize)
   const remaining = filteredPatients.length - (start + normalizedSize)
 
   res.json({

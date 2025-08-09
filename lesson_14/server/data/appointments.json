@@ -1,17 +1,9 @@
 [
   {
-    "id": "a002",
-    "patientId": "p002",
-    "doctorId": "d003",
-    "date": "2025-07-29T11:37",
-    "reason": "Висип на шкірі",
-    "status": "active"
-  },
-  {
     "id": "a003",
-    "patientId": "p003",
+    "patientId": "p011",
     "doctorId": "d002",
-    "date": "2025-08-02T10:30:00Z",
+    "date": "2025-08-02T10:30",
     "reason": "Біль у серці",
     "status": "completed"
   },
@@ -49,9 +41,9 @@
   },
   {
     "id": "a008",
-    "patientId": "p008",
+    "patientId": "p011",
     "doctorId": "d003",
-    "date": "2025-08-04T12:00:00Z",
+    "date": "2025-08-04T12:01",
     "reason": "Алергія",
     "status": "cancelled"
   },

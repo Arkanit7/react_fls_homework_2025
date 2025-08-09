@@ -7,7 +7,7 @@ const patientsPath = './data/patients.json'
 exports.getAllAppointments = async (req, res) => {
   const appointments = await readData(filePath)
   const patients = await readData(patientsPath)
-  const { date, patientName, page = 1, size = 10 } = req.query
+  const { date, patientName, page = 1, size = 10, all = false } = req.query
 
   let result = appointments
 
@@ -23,6 +23,10 @@ exports.getAllAppointments = async (req, res) => {
         patient.fullName.toLowerCase().includes(patientName.toLowerCase())
       )
     })
+  }
+
+  if (all === 'true') {
+    return res.json(result)
   }
 
   const normalizedPage = parseInt(page)
