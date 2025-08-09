@@ -5,12 +5,12 @@ import {Plus, RefreshCw} from 'lucide-react'
 import {useState} from 'react'
 import {Link} from 'react-router'
 import PatientTableRow from './components/PatientTableRow'
-import Pagination from './components/Pagination'
+import Pagination from '@/components/Pagination'
 import {
   PAGINATION_DEFAULT_PAGE,
   PAGINATION_DEFAULT_ROWS_PER_PAGE,
 } from '@/lib/constants'
-import useDebounce from './useDebounce'
+import useDebounce from '@/hooks/useDebounce'
 
 function PatientsPage() {
   const [currentPage, setCurrentPage] = useState(PAGINATION_DEFAULT_PAGE)
@@ -61,10 +61,10 @@ function PatientsPage() {
       <Typography variant="h2" component="h1" className="self-center">
         Пацієнти
       </Typography>
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-4 max-xs:flex-col">
         <div>
           <input
-            className="input"
+            className="input max-xs:w-full"
             placeholder="Пошук"
             type="search"
             value={searchQuery}
@@ -83,7 +83,7 @@ function PatientsPage() {
           </button>
 
           <Link
-            className="btn join-item btn-primary"
+            className="btn join-item btn-primary max-xs:flex-auto"
             to={navigationRoutes.patients.new}
           >
             <Plus /> Створити

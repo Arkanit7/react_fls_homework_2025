@@ -1,6 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {TAGS} from './settings'
-import getEntityEndpoints from './getEntityEndpoints'
+import getDoctorsEndpoints from './getDoctorsEndpoints'
+import getPatientsEndpoints from './getPatientsEndpoints'
+import getAppointmentsEndpoints from './getAppointmentsEndpoints'
 
 const api = createApi({
   reducerPath: 'api',
@@ -9,9 +11,9 @@ const api = createApi({
   }),
   tagTypes: Object.values(TAGS),
   endpoints: (build) => ({
-    ...getEntityEndpoints(build, 'patient', TAGS.PATIENT),
-    ...getEntityEndpoints(build, 'doctor', TAGS.DOCTOR),
-    ...getEntityEndpoints(build, 'appointment', TAGS.APPOINTMENT),
+    ...getPatientsEndpoints(build),
+    ...getDoctorsEndpoints(build),
+    ...getAppointmentsEndpoints(build),
   }),
 })
 

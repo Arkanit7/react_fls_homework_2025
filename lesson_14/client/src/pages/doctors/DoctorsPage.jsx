@@ -5,12 +5,12 @@ import {Plus, RefreshCw} from 'lucide-react'
 import {useState} from 'react'
 import {Link} from 'react-router'
 import DoctorTableRow from './components/DoctorTableRow'
-import Pagination from './components/Pagination'
+import Pagination from '@/components/Pagination'
 import {
   PAGINATION_DEFAULT_PAGE,
   PAGINATION_DEFAULT_ROWS_PER_PAGE,
 } from '@/lib/constants'
-import useDebounce from './useDebounce'
+import useDebounce from '@/hooks/useDebounce'
 
 function DoctorsPage() {
   const [currentPage, setCurrentPage] = useState(PAGINATION_DEFAULT_PAGE)
@@ -59,12 +59,12 @@ function DoctorsPage() {
   return (
     <Container className="space-y-4">
       <Typography variant="h2" component="h1" className="self-center">
-        Пацієнти
+        Лікарі
       </Typography>
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-4 max-xs:flex-col">
         <div>
           <input
-            className="input"
+            className="input max-xs:w-full"
             placeholder="Пошук"
             type="search"
             value={searchQuery}
@@ -83,7 +83,7 @@ function DoctorsPage() {
           </button>
 
           <Link
-            className="btn join-item btn-primary"
+            className="btn join-item btn-primary max-xs:flex-auto"
             to={navigationRoutes.doctors.new}
           >
             <Plus /> Створити
@@ -98,9 +98,9 @@ function DoctorsPage() {
               <tr>
                 {[
                   'ПІБ',
-                  'Рік народження',
+                  'Спеціальність',
                   'Телефон',
-                  'Адреса',
+                  'Кабінет',
                   'Нотатка',
                   'Дії',
                 ].map((title, i) => (

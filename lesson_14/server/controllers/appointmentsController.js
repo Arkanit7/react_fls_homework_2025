@@ -7,7 +7,7 @@ const patientsPath = './data/patients.json'
 exports.getAllAppointments = async (req, res) => {
   const appointments = await readData(filePath)
   const patients = await readData(patientsPath)
-  const { date, patientName } = req.query
+  const { date, patientName, page = 1, size = 10 } = req.query
 
   let result = appointments
 
@@ -25,7 +25,18 @@ exports.getAllAppointments = async (req, res) => {
     })
   }
 
-  res.json(result)
+  const normalizedPage = parseInt(page)
+  const normalizedSize = parseInt(size)
+  const start = (normalizedPage - 1) * normalizedSize
+  const paginatedAppointments = result.slice(start, start + normalizedSize)
+  const totalPages = Math.ceil(result.length / size)
+  const remaining = result.length - (start + normalizedSize)
+
+  res.json({
+    items: paginatedAppointments,
+    remaining: remaining > 0 ? remaining : 0,
+    totalPages,
+  })
 }
 
 exports.getAppointmentById = async (req, res) => {

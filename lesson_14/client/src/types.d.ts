@@ -24,6 +24,12 @@ export interface Appointment {
   status: "active" | "cancelled" | "completed"
 }
 
+export interface AppointmentsPagination {
+  totalPages: number
+  remaining: number
+  items: Appointment[]
+}
+
 export interface Doctor {
   id: string
   fullName: string

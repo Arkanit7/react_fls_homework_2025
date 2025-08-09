@@ -1,14 +1,5 @@
 [
   {
-    "id": "d001",
-    "fullName": "Олена Ковальчук",
-    "specialty": "Терапевт",
-    "email": "olena.kov@example.com",
-    "phone": "+380501112233",
-    "room": "101",
-    "notes": "Працює з 09:00 до 15:00"
-  },
-  {
     "id": "d002",
     "fullName": "Микола Сидоренко",
     "specialty": "Кардіолог",
@@ -45,12 +36,12 @@
     "notes": ""
   },
   {
-    "id": "d868f062-6d09-43eb-9335-9c8c7f81db77",
-    "fullName": "Баба Галя",
-    "specialty": "широкого профілю",
-    "room": "22",
-    "email": "ivan@example.com",
-    "phone": "333",
-    "notes": "33"
+    "id": "9afcdf2b-ae6d-46e5-a1af-1dc5985e88b0",
+    "fullName": "Світлана Миколаївна",
+    "specialty": "Кардіолог",
+    "phone": "+3902834",
+    "email": "wads@sadsa.com",
+    "room": "101",
+    "notes": "Любить котика"
   }
 ]

@@ -6,7 +6,9 @@ import PatientFormPage from '@/pages/patients/PatientFormPage'
 import PatientsPage from '@/pages/patients/PatientsPage'
 import {ROUTES} from './navigation'
 import TypographyPage from '@/pages/TypographyPage'
-// import DoctorsPage from '@/pages/doctors/DoctorsPage'
+import DoctorsPage from '@/pages/doctors/DoctorsPage'
+import DoctorDetailsPage from '@/pages/doctors/DoctorDetailsPage'
+import DoctorFormPage from '@/pages/doctors/DoctorFormPage'
 
 /** @type {import('react-router').RouteObject[]} */
 export default [
@@ -44,24 +46,24 @@ export default [
       {
         path: ROUTES.DOCTORS.INDEX,
         children: [
-          // {Component: DoctorsPage, index: true, handle: {title: 'Лікарі'}},
-          // {
-          //   Component: PatientFormPage,
-          //   path: ROUTES.DOCTORS.NEW,
-          // },
-          // {
-          //   path: ROUTES.DOCTORS.DETAILS.INDEX,
-          //   children: [
-          //     {
-          //       Component: PatientDetailsPage,
-          //       index: true,
-          //     },
-          //     {
-          //       Component: PatientFormPage,
-          //       path: ROUTES.DOCTORS.DETAILS.EDIT,
-          //     },
-          //   ],
-          // },
+          {Component: DoctorsPage, index: true, handle: {title: 'Лікарі'}},
+          {
+            Component: DoctorFormPage,
+            path: ROUTES.DOCTORS.NEW,
+          },
+          {
+            path: ROUTES.DOCTORS.DETAILS.INDEX,
+            children: [
+              {
+                Component: DoctorDetailsPage,
+                index: true,
+              },
+              {
+                Component: DoctorFormPage,
+                path: ROUTES.DOCTORS.DETAILS.EDIT,
+              },
+            ],
+          },
         ],
       },
       {Component: TypographyPage, path: ROUTES.TYPOGRAPHY},

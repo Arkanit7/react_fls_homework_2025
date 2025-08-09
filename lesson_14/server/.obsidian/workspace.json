@@ -171,6 +171,18 @@
   },
   "active": "756b6b20873f5810",
   "lastOpenFiles": [
+    "node_modules/send/node_modules/ms/readme.md",
+    "node_modules/send/node_modules/ms/package.json",
+    "node_modules/send/node_modules/ms/license.md",
+    "node_modules/send/node_modules/ms/index.js",
+    "node_modules/send/node_modules/ms",
+    "node_modules/debug/src/debug.js",
+    "node_modules/debug/src/inspector-log.js",
+    "node_modules/debug/CHANGELOG.md",
+    "node_modules/debug/Makefile",
+    "node_modules/debug/node.js",
+    "node_modules/debug/component.json",
+    "node_modules/debug/karma.conf.js",
     "routes_info.md",
     "README.md"
   ]
