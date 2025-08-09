@@ -1,0 +1,202 @@
+[
+  {
+    "id": "p001",
+    "fullName": "Іван Петренко11",
+    "birthDate": "1985-03-15",
+    "gender": "male",
+    "phone": "+380501234567",
+    "email": "ivan@example.com",
+    "address": "м. Київ, вул. Шевченка, 12",
+    "notes": "Алергія на пеніцилін"
+  },
+  {
+    "id": "p002",
+    "fullName": "Оксана Шевчук",
+    "birthDate": "1990-06-21",
+    "gender": "female",
+    "phone": "+380931112233",
+    "email": "oksana@gmail.com",
+    "address": "м. Львів, вул. Зеленa, 8",
+    "notes": ""
+  },
+  {
+    "id": "p003",
+    "fullName": "Марія Коваль",
+    "birthDate": "1978-01-12",
+    "gender": "female",
+    "phone": "+380674448899",
+    "email": "m.koval@gmail.com",
+    "address": "м. Харків, пр-т Науки, 22",
+    "notes": "Підвищений тиск"
+  },
+  {
+    "id": "p004",
+    "fullName": "Сергій Іваненко",
+    "birthDate": "1982-08-30",
+    "gender": "male",
+    "phone": "+380631234567",
+    "email": "serg@meta.ua",
+    "address": "м. Одеса, вул. Дерибасівська, 1",
+    "notes": ""
+  },
+  {
+    "id": "p005",
+    "fullName": "Андрій Соловей",
+    "birthDate": "1995-05-05",
+    "gender": "male",
+    "phone": "+380991234567",
+    "email": "a.solovey@mail.com",
+    "address": "м. Дніпро, вул. Грушевського, 14",
+    "notes": ""
+  },
+  {
+    "id": "p006",
+    "fullName": "Тетяна Кравчук",
+    "birthDate": "1988-02-17",
+    "gender": "female",
+    "phone": "+380951234567",
+    "email": "t.kravchuk@ukr.net",
+    "address": "м. Ужгород, вул. Корятовича, 3",
+    "notes": ""
+  },
+  {
+    "id": "p007",
+    "fullName": "Олег Козак",
+    "birthDate": "1975-11-09",
+    "gender": "male",
+    "phone": "+380661234567",
+    "email": "kozak.oleg@gmail.com",
+    "address": "м. Вінниця, вул. Лесі Українки, 9",
+    "notes": "Цукровий діабет"
+  },
+  {
+    "id": "p008",
+    "fullName": "Юлія Зайцева",
+    "birthDate": "1993-03-03",
+    "gender": "female",
+    "phone": "+380671112233",
+    "email": "zaitseva.yul@gmail.com",
+    "address": "м. Луцьк, вул. Словацького, 2",
+    "notes": ""
+  },
+  {
+    "id": "p009",
+    "fullName": "Ірина Білик",
+    "birthDate": "1984-12-01",
+    "gender": "female",
+    "phone": "+380939999999",
+    "email": "ibilyk@gmail.com",
+    "address": "м. Полтава, вул. Пушкіна, 10",
+    "notes": ""
+  },
+  {
+    "id": "p010",
+    "fullName": "Михайло Ворон",
+    "birthDate": "1970-07-19",
+    "gender": "male",
+    "phone": "+380501112233",
+    "email": "voron.mykhailo@ua.fm",
+    "address": "м. Чернівці, вул. Руська, 15",
+    "notes": "Хронічний бронхіт"
+  },
+  {
+    "id": "p011",
+    "fullName": "Леся Сич",
+    "birthDate": "1992-09-14",
+    "gender": "female",
+    "phone": "+380681234567",
+    "email": "lesia.sych@i.ua",
+    "address": "м. Кропивницький, вул. Волкова, 7",
+    "notes": ""
+  },
+  {
+    "id": "p012",
+    "fullName": "Олександр Бойко",
+    "birthDate": "1987-04-25",
+    "gender": "male",
+    "phone": "+380991112233",
+    "email": "sasha.boyko@gmail.com",
+    "address": "м. Суми, вул. Соборна, 20",
+    "notes": ""
+  },
+  {
+    "id": "p013",
+    "fullName": "Наталя Дяченко",
+    "birthDate": "1980-01-01",
+    "gender": "female",
+    "phone": "+380931111111",
+    "email": "dyachenko.n@ukr.net",
+    "address": "м. Житомир, вул. Перемоги, 5",
+    "notes": ""
+  },
+  {
+    "id": "p014",
+    "fullName": "Юрій Мельник",
+    "birthDate": "1969-10-10",
+    "gender": "male",
+    "phone": "+380671111222",
+    "email": "melnyk.yura@gmail.com",
+    "address": "м. Рівне, вул. Київська, 17",
+    "notes": ""
+  },
+  {
+    "id": "p015",
+    "fullName": "Світлана Орел",
+    "birthDate": "1998-12-31",
+    "gender": "female",
+    "phone": "+380503456789",
+    "email": "orel.svitlana@meta.ua",
+    "address": "м. Івано-Франківськ, вул. Незалежності, 99",
+    "notes": ""
+  },
+  {
+    "id": "p016",
+    "fullName": "Василь Мазур",
+    "birthDate": "1972-05-23",
+    "gender": "male",
+    "phone": "+380932223344",
+    "email": "vasyl.mazur@mail.com",
+    "address": "м. Тернопіль, вул. Бандери, 6",
+    "notes": ""
+  },
+  {
+    "id": "p017",
+    "fullName": "Галина Кушнір",
+    "birthDate": "1983-03-11",
+    "gender": "female",
+    "phone": "+380683333444",
+    "email": "g.kushnir@ukr.net",
+    "address": "м. Черкаси, вул. Смілянська, 4",
+    "notes": ""
+  },
+  {
+    "id": "p018",
+    "fullName": "Руслан Демчук",
+    "birthDate": "1994-07-07",
+    "gender": "male",
+    "phone": "+380932112233",
+    "email": "r.demchuk@gmail.com",
+    "address": "м. Миколаїв, вул. Центральна, 11",
+    "notes": ""
+  },
+  {
+    "id": "p019",
+    "fullName": "Інна Ковтун",
+    "birthDate": "1976-06-16",
+    "gender": "female",
+    "phone": "+380671122334",
+    "email": "inna.kovtun@i.ua",
+    "address": "м. Херсон, вул. Перекопська, 8",
+    "notes": ""
+  },
+  {
+    "id": "p020",
+    "fullName": "Артур Ільченко",
+    "birthDate": "1991-11-11",
+    "gender": "male",
+    "phone": "+380951234321",
+    "email": "a.ilchenko@ukr.net",
+    "address": "м. Запоріжжя, вул. Гагаріна, 1",
+    "notes": ""
+  }
+]

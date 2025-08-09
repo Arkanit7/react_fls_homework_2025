@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: "pastel";
+}
+@plugin "daisyui/theme" {
+  name: "pastel";
+  default: true;
+
+  --color-base-content: rgba(40, 25, 80);
+  --color-primary: rgb(124, 58, 237);
+  --color-primary-content: white;
+  --color-secondary: var(--color-pink-300);
+  --color-accent: var(--color-sky-300);
+
+  /* --radius-selector: 0rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem; */
+}
+
+@theme inline {
+  --font-primary: "Golos Text Variable", sans-serif;
+  --font-secondary: "Alegreya Variable", serif;
+
+  --spacing-container: var(--container-5xl);
+  --spacing-padding: calc(var(--spacing) * 3);
+
+  --breakpoint-3xs: 20rem; /* 320px */
+  --breakpoint-2xs: 23.4375rem; /* 375px */
+  --breakpoint-xs: 30rem; /* 480px */
+  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 62rem; /* 992px */
+  --breakpoint-xl: 75rem; /* 1200px */
+  --breakpoint-2xl: 87.5rem; /* 1400px */
+}

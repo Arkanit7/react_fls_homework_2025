@@ -1,0 +1,56 @@
+[
+  {
+    "id": "d001",
+    "fullName": "Олена Ковальчук",
+    "specialty": "Терапевт",
+    "email": "olena.kov@example.com",
+    "phone": "+380501112233",
+    "room": "101",
+    "notes": "Працює з 09:00 до 15:00"
+  },
+  {
+    "id": "d002",
+    "fullName": "Микола Сидоренко",
+    "specialty": "Кардіолог",
+    "email": "mykola.syd@med.com",
+    "phone": "+380631234567",
+    "room": "202",
+    "notes": "Кардіоогляд по понеділках"
+  },
+  {
+    "id": "d003",
+    "fullName": "Анна Дорошенко",
+    "specialty": "Дерматолог",
+    "email": "anna.doro@gmail.com",
+    "phone": "+380673334455",
+    "room": "303",
+    "notes": ""
+  },
+  {
+    "id": "d004",
+    "fullName": "Ігор Лисенко",
+    "specialty": "Ортопед",
+    "email": "lys.igor@hospital.ua",
+    "phone": "+380931122334",
+    "room": "104",
+    "notes": ""
+  },
+  {
+    "id": "d005",
+    "fullName": "Світлана Гончар",
+    "specialty": "Невролог",
+    "email": "svit.gonchar@gmail.com",
+    "phone": "+380682223344",
+    "room": "105",
+    "notes": ""
+  },
+  {
+    "id": "d868f062-6d09-43eb-9335-9c8c7f81db77",
+    "fullName": "Баба Галя",
+    "specialty": "широкого профілю",
+    "room": "22",
+    "email": "ivan@example.com",
+    "phone": "333",
+    "notes": "33"
+  }
+]
