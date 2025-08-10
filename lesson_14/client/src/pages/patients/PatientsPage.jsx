@@ -1,16 +1,16 @@
-import {useGetPaginatedPatientsQuery} from '@/api/api'
+import {useGetPaginatedPatientsQuery} from '@/api'
+import Pagination from '@/components/Pagination'
 import {Container, Loader, Typography} from '@/components/ui'
+import useDebounce from '@/hooks/useDebounce'
+import {
+  PAGINATION_DEFAULT_PAGE,
+  PAGINATION_DEFAULT_ROWS_PER_PAGE,
+} from '@/lib/constants'
 import {navigationRoutes} from '@/router/navigation'
 import {Plus, RefreshCw} from 'lucide-react'
 import {useState} from 'react'
 import {Link} from 'react-router'
 import PatientTableRow from './components/PatientTableRow'
-import Pagination from '@/components/Pagination'
-import {
-  PAGINATION_DEFAULT_PAGE,
-  PAGINATION_DEFAULT_ROWS_PER_PAGE,
-} from '@/lib/constants'
-import useDebounce from '@/hooks/useDebounce'
 
 function PatientsPage() {
   const [currentPage, setCurrentPage] = useState(PAGINATION_DEFAULT_PAGE)
@@ -22,7 +22,6 @@ function PatientsPage() {
 
   const {
     data = {},
-    isFetching,
     isLoading,
     isError,
     refetch: refetchPatients,

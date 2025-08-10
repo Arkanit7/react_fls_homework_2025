@@ -2,14 +2,15 @@ import {
   useCreatePatientMutation,
   useEditPatientMutation,
   useGetPatientByIdQuery,
-} from '@/api/api'
+} from '@/api'
+import FormFooter from '@/components/FormFooter'
 import {Container, Typography} from '@/components/ui'
 import InputWithLabel from '@/components/ui/InputWithLabel'
-import {getPatientFormFields} from './utils'
-import {navigationRoutes} from '@/router/navigation'
 import Loader from '@/components/ui/Loader'
-import {useNavigate, useParams} from 'react-router'
+import {navigationRoutes} from '@/router/navigation'
 import {useId} from 'react'
+import {useNavigate, useParams} from 'react-router'
+import {getPatientFormFields} from './utils'
 
 function PatientFormPage() {
   const bindingId = useId()
@@ -89,9 +90,10 @@ function PatientFormPage() {
               }
             })}
           </div>
-          <button className="btn btn-secondary">
-            {isError ? 'Помилка' : 'Відправити'}
-          </button>
+          <FormFooter
+            to={navigationRoutes.patients.getDetails(id)}
+            isError={isError}
+          />
         </form>
       )}
     </Container>

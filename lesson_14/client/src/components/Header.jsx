@@ -7,7 +7,7 @@ import Logo from '@/assets/logo.svg?react'
 
 function Header() {
   return (
-    <header className="border-b border-base-300 bg-base-100 py-1.5">
+    <header className="sticky top-0 border-b border-base-300 bg-base-100 py-1.5">
       <Container className="flex items-center justify-between gap-3">
         <Link className="flex-none" to={navigationRoutes.dashboard}>
           <Logo className="size-7" />

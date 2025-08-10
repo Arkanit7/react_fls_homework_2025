@@ -27,37 +27,23 @@ export const ROUTES = {
   TYPOGRAPHY: 'typography',
 }
 
+function makeEntityNavigation(index) {
+  return {
+    index: `/${index}`,
+    new: `/${index}/new`,
+    getDetails(id) {
+      return `/${index}/${id}`
+    },
+    getEditDetails(id) {
+      return `/${index}/${id}/edit`
+    },
+  }
+}
+
 export const navigationRoutes = {
   dashboard: `/${ROUTES.DASHBOARD}`,
-  patients: {
-    index: `/${ROUTES.PATIENTS.INDEX}`,
-    new: `/${ROUTES.PATIENTS.INDEX}/${ROUTES.PATIENTS.NEW}`,
-    getDetails(id) {
-      return `${this.index}/${id}`
-    },
-    getEditDetails(id) {
-      return `${this.getDetails(id)}/edit`
-    },
-  },
-  doctors: {
-    index: `/${ROUTES.DOCTORS.INDEX}`,
-    new: `/${ROUTES.DOCTORS.INDEX}/${ROUTES.DOCTORS.NEW}`,
-    getDetails(id) {
-      return `${this.index}/${id}`
-    },
-    getEditDetails(id) {
-      return `${this.getDetails(id)}/edit`
-    },
-  },
-  appointments: {
-    index: `/${ROUTES.APPOINTMENTS.INDEX}`,
-    new: `/${ROUTES.APPOINTMENTS.INDEX}/${ROUTES.APPOINTMENTS.NEW}`,
-    getDetails(id) {
-      return `${this.index}/${id}`
-    },
-    getEditDetails(id) {
-      return `${this.getDetails(id)}/edit`
-    },
-  },
+  patients: makeEntityNavigation(ROUTES.PATIENTS.INDEX),
+  doctors: makeEntityNavigation(ROUTES.DOCTORS.INDEX),
+  appointments: makeEntityNavigation(ROUTES.APPOINTMENTS.INDEX),
   typography: `/${ROUTES.TYPOGRAPHY}`,
 }

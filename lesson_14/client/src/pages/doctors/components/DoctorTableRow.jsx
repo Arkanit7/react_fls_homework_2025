@@ -1,9 +1,9 @@
-import {useDeleteDoctorMutation} from '@/api/api'
+import {useDeleteDoctorMutation} from '@/api'
 import {navigationRoutes} from '@/router/navigation'
 import {Pencil, Trash} from 'lucide-react'
 import {Link} from 'react-router'
 
-function PatientTableRow({doctor}) {
+function DoctorTableRow({doctor}) {
   const [deletePatient] = useDeleteDoctorMutation()
 
   return (
@@ -37,4 +37,4 @@ function PatientTableRow({doctor}) {
   )
 }
 
-export default PatientTableRow
+export default DoctorTableRow

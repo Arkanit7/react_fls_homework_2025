@@ -2,11 +2,11 @@
 @plugin "daisyui" {
   themes:
     pastel --default,
-    synthwave --prefersdark;
+    synthwave;
 }
 @plugin "daisyui/theme" {
   name: "pastel";
-  /* default: true; */
+  default: true;
 
   --color-base-content: rgba(40, 25, 80);
   --color-primary: rgb(124, 58, 237);
@@ -23,7 +23,6 @@
   --font-primary: "Golos Text Variable", sans-serif;
   --font-secondary: "Alegreya Variable", serif;
 
-  --spacing-container: var(--container-5xl);
   --spacing-padding: calc(var(--spacing) * 3);
 
   --breakpoint-3xs: 20rem; /* 320px */
@@ -34,4 +33,8 @@
   --breakpoint-lg: 62rem; /* 992px */
   --breakpoint-xl: 75rem; /* 1200px */
   --breakpoint-2xl: 87.5rem; /* 1400px */
+}
+
+:root {
+  --container: var(--container-5xl);
 }

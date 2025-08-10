@@ -1,14 +1,15 @@
-import {useDeletePatientMutation, useGetPatientByIdQuery} from '@/api/api'
+import {useDeletePatientMutation, useGetPatientByIdQuery} from '@/api'
+import DetailsFooter from '@/components/DetailsFooter'
 import {
   Container,
-  Typography,
   DataCard,
   DataGrid,
   Loader,
+  Typography,
 } from '@/components/ui'
 import {navigationRoutes} from '@/router/navigation'
-import {ArrowLeft, Pencil, RefreshCw, Trash} from 'lucide-react'
-import {Link, useNavigate, useParams} from 'react-router'
+import {RefreshCw} from 'lucide-react'
+import {useNavigate, useParams} from 'react-router'
 import {getPatientDetailsData} from './utils'
 
 function PatientDetailsPage() {
@@ -67,30 +68,11 @@ function PatientDetailsPage() {
 
         <div className="divider"></div>
 
-        <div className="flex justify-between gap-2">
-          <Link
-            className="btn flex-none btn-primary"
-            to={navigationRoutes.patients.index}
-          >
-            <ArrowLeft /> Назад
-          </Link>
-
-          <div className="flex flex-wrap justify-end gap-[inherit]">
-            <Link
-              className="btn btn-primary"
-              to={navigationRoutes.patients.getEditDetails(id)}
-            >
-              <Pencil /> Редагувати
-            </Link>
-            <button
-              className="btn btn-error"
-              onClick={handleDeletePatient}
-              type="button"
-            >
-              <Trash /> Видалити
-            </button>
-          </div>
-        </div>
+        <DetailsFooter
+          back={navigationRoutes.patients.index}
+          edit={navigationRoutes.patients.getEditDetails(id)}
+          onDelete={handleDeletePatient}
+        />
       </div>
     </Container>
   )

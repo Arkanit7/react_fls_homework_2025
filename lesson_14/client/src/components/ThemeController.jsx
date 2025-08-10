@@ -1,30 +1,27 @@
+import {useLocalStorage} from '@/hooks'
+import {THEME_DARK, THEME_DEFAULT, THEME_STORAGE_KEY} from '@/lib/constants'
 import {Moon, Sun} from 'lucide-react'
-
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 
 function ThemeController() {
-  // Check initial theme
-  const isDark =
-    document.documentElement.getAttribute('data-theme') === 'synthwave'
-  const [dark, setDark] = useState(isDark)
+  const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, THEME_DEFAULT)
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      'data-theme',
-      dark ? 'synthwave' : 'pastel',
-    )
-  }, [dark])
+    document.documentElement.dataset.theme = theme
+  }, [theme])
 
-  function handleToggle() {
-    setDark((prev) => !prev)
+  function toggleTheme() {
+    setTheme((prevTheme) =>
+      prevTheme === THEME_DEFAULT ? THEME_DARK : THEME_DEFAULT,
+    )
   }
 
   return (
     <label className="swap swap-rotate cursor-pointer">
       <input
         type="checkbox"
-        checked={dark}
-        onChange={handleToggle}
+        checked={theme === THEME_DARK}
+        onChange={toggleTheme}
         aria-label="Toggle dark mode"
       />
       <Sun className="swap-on" />

@@ -2,19 +2,19 @@ import {
   useGetAllDoctorsQuery,
   useGetAllPatientsQuery,
   useGetPaginatedAppointmentsQuery,
-} from '@/api/api'
+} from '@/api'
+import Pagination from '@/components/Pagination'
 import {Container, Loader, Typography} from '@/components/ui'
+import useDebounce from '@/hooks/useDebounce'
+import {
+  PAGINATION_DEFAULT_PAGE,
+  PAGINATION_DEFAULT_ROWS_PER_PAGE,
+} from '@/lib/constants'
 import {navigationRoutes} from '@/router/navigation'
 import {Plus, RefreshCw} from 'lucide-react'
 import {useMemo, useState} from 'react'
 import {Link} from 'react-router'
 import AppointmentTableRow from './components/AppointmentTableRow'
-import Pagination from '@/components/Pagination'
-import {
-  PAGINATION_DEFAULT_PAGE,
-  PAGINATION_DEFAULT_ROWS_PER_PAGE,
-} from '@/lib/constants'
-import useDebounce from '@/hooks/useDebounce'
 import {getAppointmentsWithNames} from './utils'
 
 function AppointmentsPage() {
@@ -27,7 +27,6 @@ function AppointmentsPage() {
 
   const {
     data: paginatedAppointmentData = {},
-    isFetching,
     isLoading: isAppointmentsLoading,
     isError,
     refetch: refetchAppointments,

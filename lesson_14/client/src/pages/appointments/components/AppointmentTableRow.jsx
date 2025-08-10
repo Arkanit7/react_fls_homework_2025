@@ -1,9 +1,10 @@
-import {useDeleteAppointmentMutation} from '@/api/api'
+import {useDeleteAppointmentMutation} from '@/api'
+import {LOCALE} from '@/lib/constants'
+import {cn} from '@/lib/utils'
 import {navigationRoutes} from '@/router/navigation'
 import {Pencil, Trash} from 'lucide-react'
 import {Link} from 'react-router'
-import {APPOINTMENT_STATUS_NAMES} from '../constants'
-import {LOCALE} from '@/lib/constants'
+import {APPOINTMENT_STATUS_BADGES, APPOINTMENT_STATUS_NAMES} from '../constants'
 
 const dateFormatter = new Intl.DateTimeFormat(LOCALE, {
   dateStyle: 'medium',
@@ -26,7 +27,16 @@ function AppointmentTableRow({appointment}) {
       <td>{appointment.doctorName}</td>
       <td>{dateFormatter.format(Date.parse(appointment.date))}</td>
       <td>{appointment.reason}</td>
-      <td>{APPOINTMENT_STATUS_NAMES[appointment.status]}</td>
+      <td>
+        <div
+          className={cn(
+            'badge badge-sm',
+            APPOINTMENT_STATUS_BADGES[appointment.status],
+          )}
+        >
+          {APPOINTMENT_STATUS_NAMES[appointment.status]}
+        </div>
+      </td>
       <td className="relative flex gap-2">
         <Link
           className="btn btn-square p-1 btn-soft btn-sm btn-primary"

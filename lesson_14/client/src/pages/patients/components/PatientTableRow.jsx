@@ -1,4 +1,4 @@
-import {useDeletePatientMutation} from '@/api/api'
+import {useDeletePatientMutation} from '@/api'
 import {navigationRoutes} from '@/router/navigation'
 import {Pencil, Trash} from 'lucide-react'
 import {Link} from 'react-router'

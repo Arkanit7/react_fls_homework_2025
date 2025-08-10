@@ -1,12 +1,12 @@
-import {Typography, Container, Loader} from '@/components/ui'
-import Stat from '@/components/ui/Stat'
-import Collapse from '@/components/ui/Collapse'
-import {Users, CalendarCheck2, BriefcaseMedical} from 'lucide-react'
 import {
-  useGetAllPatientsQuery,
-  useGetAllDoctorsQuery,
   useGetAllAppointmentsQuery,
-} from '@/api/api'
+  useGetAllDoctorsQuery,
+  useGetAllPatientsQuery,
+} from '@/api'
+import {Container, Loader, Typography} from '@/components/ui'
+import Collapse from '@/components/ui/Collapse'
+import Stat from '@/components/ui/Stat'
+import {BriefcaseMedical, CalendarCheck2, Users} from 'lucide-react'
 
 const collapseName = 'collapse_group'
 
@@ -43,8 +43,9 @@ function DashboardPage() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="stats grid shadow">
+        <div className="stats grid shadow max-lg:stats-vertical">
           <Stat
+            className="text-info-content"
             icon={<Users />}
             title="Пацієнтів"
             value={patientsList.length}
@@ -58,6 +59,7 @@ function DashboardPage() {
             desc="На 5% більше, ніж минулого місяця"
           />
           <Stat
+            className="text-success-content"
             icon={<CalendarCheck2 />}
             title="Зустрічей"
             value={appointmentsList.length}
@@ -68,7 +70,7 @@ function DashboardPage() {
 
       {/* Info Cards Section */}
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        <div className="card bg-primary text-primary-content shadow-lg">
+        <div className="card bg-info text-info-content shadow-lg">
           <div className="card-body">
             <h3 className="card-title">Безпека даних</h3>
             <p>
@@ -77,7 +79,7 @@ function DashboardPage() {
             </p>
           </div>
         </div>
-        <div className="card bg-secondary text-secondary-content shadow-lg">
+        <div className="card bg-warning text-warning-content shadow-lg">
           <div className="card-body">
             <h3 className="card-title">Зручний інтерфейс</h3>
             <p>
@@ -86,7 +88,7 @@ function DashboardPage() {
             </p>
           </div>
         </div>
-        <div className="card bg-accent text-accent-content shadow-lg">
+        <div className="card bg-success text-success-content shadow-lg">
           <div className="card-body">
             <h3 className="card-title">Підтримка 24/7</h3>
             <p>

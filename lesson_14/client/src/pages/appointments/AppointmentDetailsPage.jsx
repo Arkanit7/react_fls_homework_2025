@@ -3,19 +3,20 @@ import {
   useGetAppointmentByIdQuery,
   useGetDoctorByIdQuery,
   useGetPatientByIdQuery,
-} from '@/api/api'
+} from '@/api'
+import DetailsFooter from '@/components/DetailsFooter'
 import {
   Container,
-  Typography,
   DataCard,
   DataGrid,
   Loader,
+  Typography,
 } from '@/components/ui'
 import {navigationRoutes} from '@/router/navigation'
-import {ArrowLeft, Pencil, RefreshCw, Trash} from 'lucide-react'
-import {Link, useNavigate, useParams} from 'react-router'
-import {getAppointmentDetailsData} from './utils'
+import {RefreshCw} from 'lucide-react'
+import {useNavigate, useParams} from 'react-router'
 import {MISSING_DOCTOR_NAME, MISSING_PATIENT_NAME} from './constants'
+import {getAppointmentDetailsData} from './utils'
 
 function AppointmentDetailsPage() {
   const {id} = useParams()
@@ -96,30 +97,11 @@ function AppointmentDetailsPage() {
 
         <div className="divider"></div>
 
-        <div className="flex justify-between gap-2">
-          <Link
-            className="btn flex-none btn-primary"
-            to={navigationRoutes.appointments.index}
-          >
-            <ArrowLeft /> Назад
-          </Link>
-
-          <div className="flex flex-wrap justify-end gap-[inherit]">
-            <Link
-              className="btn btn-primary"
-              to={navigationRoutes.appointments.getEditDetails(id)}
-            >
-              <Pencil /> Редагувати
-            </Link>
-            <button
-              className="btn btn-error"
-              onClick={handleDeleteAppointment}
-              type="button"
-            >
-              <Trash /> Видалити
-            </button>
-          </div>
-        </div>
+        <DetailsFooter
+          back={navigationRoutes.appointments.index}
+          edit={navigationRoutes.appointments.getEditDetails(id)}
+          onDelete={handleDeleteAppointment}
+        />
       </div>
     </Container>
   )

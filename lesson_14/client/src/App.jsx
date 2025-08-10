@@ -1,7 +1,7 @@
 import router from './router'
 import {RouterProvider} from 'react-router'
 import {ApiProvider} from '@reduxjs/toolkit/query/react'
-import {api} from './api/api'
+import {api} from './api'
 
 function App() {
   return (

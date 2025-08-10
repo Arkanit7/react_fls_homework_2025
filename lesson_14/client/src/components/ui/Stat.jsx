@@ -3,7 +3,7 @@ import {cn} from '@/lib/utils'
 function Stat({className, title, value, desc, icon, ...restProps}) {
   return (
     <div
-      className={cn('stat border border-base-300 bg-base-100', className)}
+      className={cn('stat border border-base-300 bg-base-200', className)}
       {...restProps}
     >
       <div className="stat-figure">{icon}</div>

@@ -4,14 +4,15 @@ import {
   useGetAllDoctorsQuery,
   useGetAllPatientsQuery,
   useGetAppointmentByIdQuery,
-} from '@/api/api'
+} from '@/api'
+import FormFooter from '@/components/FormFooter'
 import {Container, Typography} from '@/components/ui'
 import InputWithLabel from '@/components/ui/InputWithLabel'
-import {getAppointmentFormFields} from './utils'
-import {navigationRoutes} from '@/router/navigation'
 import Loader from '@/components/ui/Loader'
-import {useNavigate, useParams} from 'react-router'
+import {navigationRoutes} from '@/router/navigation'
 import {useId} from 'react'
+import {useNavigate, useParams} from 'react-router'
+import {getAppointmentFormFields} from './utils'
 
 function AppointmentFormPage() {
   const bindingId = useId()
@@ -112,9 +113,10 @@ function AppointmentFormPage() {
               }
             })}
           </div>
-          <button className="btn btn-secondary">
-            {isError ? 'Помилка' : 'Відправити'}
-          </button>
+          <FormFooter
+            to={navigationRoutes.appointments.getDetails(id)}
+            isError={isError}
+          />
         </form>
       )}
     </Container>

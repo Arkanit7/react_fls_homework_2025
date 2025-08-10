@@ -5,12 +5,12 @@ function DataCard({className, title, data}) {
   return (
     <div
       className={cn(
-        'card-border card border-base-300 bg-base-100 card-sm',
+        'card-border card border-base-300 bg-base-100 max-md:card-sm',
         className,
       )}
     >
-      <div className="card-body gap-0.25">
-        <Typography className="font-secondary text-base-content">
+      <div className="card-body gap-1 lg:gap-2">
+        <Typography variant="h3" component="span">
           {title}
         </Typography>
         <span>{data}</span>
