@@ -31,12 +31,12 @@
 
 ## Лікарі (`/admin/doctors`)
 
-| Метод  | Роут                             | Опис                    |
-| ------ | -------------------------------- | ----------------------- |
-| GET    | `/admin/doctors?all=true`        | Отримати список лікарів |
-| GET    | `/admin/doctors?size=10&page=1`` | Пагінація               |
-| GET    | `/admin/doctors/:id`             | Отримати лікаря за ID   |
-| POST   | `/admin/doctors`                 | Додати нового лікаря    |
-| PUT    | `/admin/doctors/:id`             | Оновити лікаря          |
-| DELETE | `/admin/doctors/:id`             | Видалити лікаря         |
-| GET    | `/admin/doctors/?name=іван`      | Фільтр за ПІБ           |
+| Метод  | Роут                            | Опис                    |
+| ------ | ------------------------------- | ----------------------- |
+| GET    | `/admin/doctors?all=true`       | Отримати список лікарів |
+| GET    | `/admin/doctors?size=10&page=1` | Пагінація               |
+| GET    | `/admin/doctors/:id`            | Отримати лікаря за ID   |
+| POST   | `/admin/doctors`                | Додати нового лікаря    |
+| PUT    | `/admin/doctors/:id`            | Оновити лікаря          |
+| DELETE | `/admin/doctors/:id`            | Видалити лікаря         |
+| GET    | `/admin/doctors/?name=іван`     | Фільтр за ПІБ           |
